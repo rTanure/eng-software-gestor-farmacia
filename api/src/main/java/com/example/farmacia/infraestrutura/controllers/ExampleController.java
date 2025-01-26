@@ -19,4 +19,10 @@ public class ExampleController {
         Example exemplo = exampleService.buscarValorPorId(buscaExampleDTO);
         return ResponseEntity.ok(exemplo);
     }
+
+    @GetMapping("/hello")
+    public String hello2() {
+        return "Hello world";
+    }
+
 }
