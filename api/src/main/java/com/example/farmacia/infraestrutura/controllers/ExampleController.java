@@ -22,7 +22,7 @@ public class ExampleController {
 
     @GetMapping("/hello")
     public String hello2() {
-        return "Hello world";
+        return "Hello world 2";
     }
 
 }
