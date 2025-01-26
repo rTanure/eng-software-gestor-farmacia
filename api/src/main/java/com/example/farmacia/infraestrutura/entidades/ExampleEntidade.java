@@ -18,6 +18,7 @@ public class ExampleEntidade {
 
     private String valor;
 
+    @Enumerated(EnumType.STRING)
     private EnumExample tipo;
 
     private String teste;
