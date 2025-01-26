@@ -9,7 +9,7 @@ import java.util.Map;
 @AllArgsConstructor
 public enum EnumExample {
     NORMAL("NORMAL", "Enum Normal"),
-    AVANCADO("AVANCADO", "Enum Avancado");
+    AVANCADO("AVANCADO", "Avancado");
 
     private String id;
     private String descricao;
