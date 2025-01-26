@@ -21,8 +21,6 @@ public class ExampleEntidade {
     @Enumerated(EnumType.STRING)
     private EnumExample tipo;
 
-    private String teste;
-
     public static ExampleEntidade fromModel(Example example) {
         ExampleEntidade entidade = new ExampleEntidade();
         entidade.setId(example.getId());
