@@ -18,9 +18,8 @@ public class ExampleEntidade {
 
     private String valor;
 
+    @Enumerated(EnumType.STRING)
     private EnumExample tipo;
-
-    private String teste;
 
     public static ExampleEntidade fromModel(Example example) {
         ExampleEntidade entidade = new ExampleEntidade();

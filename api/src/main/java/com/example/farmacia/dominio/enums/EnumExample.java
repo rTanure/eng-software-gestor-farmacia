@@ -1,5 +1,6 @@
 package com.example.farmacia.dominio.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 
@@ -7,10 +8,10 @@ import java.util.Map;
 
 @AllArgsConstructor
 public enum EnumExample {
-    NORMAL(1, "Enum Normal"),
-    AVANCADO(2, "Enum Avancado");
+    NORMAL("NORMAL", "Enum Normal"),
+    AVANCADO("AVANCADO", "Enum Avancado");
 
-    private int id;
+    private String id;
     private String descricao;
 
     @JsonValue
