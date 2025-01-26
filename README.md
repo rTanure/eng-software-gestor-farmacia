@@ -27,7 +27,11 @@ docker-compose up -d
 - Instalar o IntelliJ IDEA
 - Abrir o diretório ./api como projeto no IntelliJ
 - Instalar as dependências
+  
 ![Instalação de dependências](docs/prints/maven-install.png)
+
 - Iniciar a aplicação
+  
 ![Rodando serviço](docs/prints/run-services.png)
+
   - Caso não apareça o serviço, clique no "+" logo abaixo de "Services" e clique em: Run Configuration Type -> Spring Boot
