@@ -14,7 +14,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Docker e Docker Compose 
 - Node
 - Maven
-- Java Development Kit (JDK)
+- Java Development Kit (JDK 21)
 
 ## Preparando o ambiente
 ### 1. Back-end
