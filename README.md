@@ -34,4 +34,4 @@ docker-compose up -d
   
 ![Rodando serviço](docs/prints/run-services.png)
 
-  - Caso não apareça o serviço, clique no "+" logo abaixo de "Services" e clique em: Run Configuration Type -> Spring Boot
+  - Caso não apareça o serviço, clique no "+" logo abaixo de "Services" e clique em: Run Configuration Type -> Spring Boot.
