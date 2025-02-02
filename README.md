@@ -131,8 +131,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ## Backlog da Sprint
 
-1. *Gestão de Estoque*
-**Tarefas:**
+1. *Gestão de Estoque*<br><br>
+**Tarefas:**<br>
 **Configurar Banco de Dados**
 - Escolher o sistema de gerenciamento de banco de dados.
 - Configurar o banco de dados no servidor de desenvolvimento.
@@ -166,6 +166,155 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Integrar frontend com API.
 - Implementar confirmação de deleção para evitar exclusões acidentais.
 - Testar remoção de medicamentos e produtos do estoque.
+- Implementar notificações para exclusões bem-sucedidas.
+
+2. *Cadastro de Clientes*<br><br>
+**Tarefas:**<br>
+
+**Configurar Banco de Dados**  
+- Escolher o sistema de gerenciamento de banco de dados.  
+- Configurar o banco de dados no servidor de desenvolvimento.  
+- Definir o esquema do banco de dados para armazenar informações dos clientes.  
+- Implementar migrações.  
+- Testar a conexão entre backend e banco de dados.  
+
+**Criar Cliente**  
+- Criar formulário de entrada para cadastro de clientes.  
+- Implementar validação do formulário (campos obrigatórios: nome, CPF, telefone, e-mail).  
+- Desenvolver API de criação de clientes.  
+- Integrar frontend com API.  
+- Testar criação de cliente e validação de dados.  
+
+**Visualizar Clientes**  
+- Criar página de listagem de clientes.  
+- Desenvolver API de listagem de clientes.  
+- Integrar frontend com API.  
+- Implementar paginação e filtros (por nome, CPF, telefone).  
+- Testar visualização de clientes.  
+
+**Atualizar Cliente**  
+- Criar formulário de edição de clientes.  
+- Implementar validação do formulário para atualização de dados.  
+- Desenvolver API de atualização de clientes.  
+- Integrar frontend com API.  
+- Testar atualização de clientes.  
+
+**Excluir Cliente**  
+- Desenvolver API de deleção de clientes.  
+- Integrar frontend com API.  
+- Implementar confirmação de deleção para evitar exclusões acidentais.  
+- Testar remoção de clientes.  
+- Implementar notificações para exclusões bem-sucedidas.    
+
+4. *Histórico de Receitas*<br><br>
+**Tarefas:**<br> 
+
+**Configurar Banco de Dados**  
+- Escolher o sistema de gerenciamento de banco de dados.  
+- Configurar o banco de dados no servidor de desenvolvimento.  
+- Definir o esquema do banco de dados para armazenar receitas médicas associadas aos clientes.  
+- Implementar migrações.  
+- Testar a conexão entre backend e banco de dados.  
+
+**Cadastrar Receita Médica**  
+- Criar formulário para upload de receitas médicas.  
+- Implementar validação do formulário (formatos suportados: PDF, JPG, PNG).  
+- Desenvolver API para armazenamento de receitas médicas associadas ao cliente.  
+- Integrar frontend com API.  
+- Testar cadastro de receitas médicas.  
+
+**Visualizar Histórico de Receitas**  
+- Criar página de listagem de receitas médicas associadas a um cliente.  
+- Desenvolver API de listagem de receitas.  
+- Integrar frontend com API.  
+- Implementar filtros por data, médico prescritor e medicamento.  
+- Testar visualização do histórico de receitas.  
+
+**Atualizar Receita Médica**  
+- Criar funcionalidade para adicionar observações às receitas.  
+- Implementar API para atualizar informações associadas à receita.  
+- Integrar frontend com API.  
+- Testar atualização de receitas médicas.  
+
+**Excluir Receita Médica**  
+- Desenvolver API de deleção de receitas.  
+- Integrar frontend com API.  
+- Implementar confirmação de deleção para evitar remoção acidental.  
+- Testar remoção de receitas médicas.  
+- Implementar notificações para exclusões bem-sucedidas.
+   
+6. *Gestão de Vendas*<br><br>
+**Tarefas:**<br>
+
+**Configurar Banco de Dados**  
+- Escolher o sistema de gerenciamento de banco de dados.  
+- Configurar o banco de dados no servidor de desenvolvimento.  
+- Definir o esquema do banco de dados para armazenar informações de vendas.  
+- Implementar migrações.  
+- Testar a conexão entre backend e banco de dados.  
+
+**Registrar Venda**  
+- Criar formulário para registrar vendas.  
+- Implementar validação do formulário (campos obrigatórios: cliente, produtos, quantidade, método de pagamento).  
+- Desenvolver API para registrar vendas no sistema.  
+- Integrar frontend com API.  
+- Testar registro de venda e validação de dados.  
+
+**Visualizar Histórico de Vendas**  
+- Criar página de listagem de vendas realizadas.  
+- Desenvolver API de listagem de vendas.  
+- Integrar frontend com API.  
+- Implementar filtros por data, cliente e método de pagamento.  
+- Testar visualização do histórico de vendas.  
+
+**Atualizar Informações de Venda**  
+- Criar funcionalidade para edição de vendas realizadas (exemplo: ajuste na quantidade de um produto).  
+- Desenvolver API para atualizar informações de uma venda.  
+- Integrar frontend com API.  
+- Testar atualização de vendas.  
+
+**Cancelar Venda**  
+- Desenvolver API para cancelamento de vendas.  
+- Integrar frontend com API.  
+- Implementar confirmação antes de cancelar uma venda.  
+- Testar funcionalidade de cancelamento de vendas.  
+- Implementar notificações para cancelamentos bem-sucedidos.  
+
+8. *Cadastro de Fornecedores*<br><br>
+**Tarefas:**<br>
+
+**Configurar Banco de Dados**  
+- Escolher o sistema de gerenciamento de banco de dados.  
+- Configurar o banco de dados no servidor de desenvolvimento.  
+- Definir o esquema do banco de dados para armazenar informações dos fornecedores.  
+- Implementar migrações.  
+- Testar a conexão entre backend e banco de dados.  
+
+**Cadastrar Fornecedor**  
+- Criar formulário para cadastro de fornecedores.  
+- Implementar validação do formulário (campos obrigatórios: nome, CNPJ, telefone, e-mail, produtos fornecidos).  
+- Desenvolver API para armazenar fornecedores no banco de dados.  
+- Integrar frontend com API.  
+- Testar cadastro de fornecedores e validação de dados.  
+
+**Visualizar Lista de Fornecedores**  
+- Criar página de listagem de fornecedores cadastrados.  
+- Desenvolver API de listagem de fornecedores.  
+- Integrar frontend com API.  
+- Implementar filtros por nome, CNPJ e categoria de produtos fornecidos.  
+- Testar visualização da lista de fornecedores.  
+
+**Atualizar Informações do Fornecedor**  
+- Criar funcionalidade para editar informações do fornecedor.  
+- Desenvolver API para atualização dos dados do fornecedor.  
+- Integrar frontend com API.  
+- Testar atualização dos fornecedores.  
+
+**Excluir Fornecedor**  
+- Desenvolver API para deletar fornecedores.  
+- Integrar frontend com API.  
+- Implementar confirmação antes da exclusão para evitar remoção acidental.  
+- Testar funcionalidade de remoção de fornecedores.  
 - Implementar notificações para exclusões bem-sucedidas.
 
 ## Membros e Funções
