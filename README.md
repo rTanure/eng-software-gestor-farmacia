@@ -141,11 +141,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Testar a conexão entre backend e banco de dados.
 
 **Cadastrar Medicamentos e Produtos Farmacêuticos**
-- Criar formulário de entrada de novos produtos.(Kemelly)
+- Criar formulário de entrada de novos produtos.
 - Implementar validação do formulário (campos obrigatórios: medicamento, quantidade, lote, vencimento, tipo).
 - Desenvolver API de criação.
 - Integrar frontend com API.(Kemelly)
-- Testar cadastro de medicamentos e produtos.(Kemelly)
+- Testar cadastro de medicamentos e produtos.
 
 **Visualizar Controle de Estoque**
 - Criar página de listagem de medicamentos e produtos no estoque.
