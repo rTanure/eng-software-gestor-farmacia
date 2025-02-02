@@ -1,12 +1,26 @@
-# MedMais: Sistema de Gerenciamento de Farmácia
+# ✚ MedMais: Sistema de Gerenciamento de Farmácia
 
-# Descrição
+## Descrição
 
 Este projeto tem como objetivo desenvolver um software de gerenciamento de uma farmácia, com o intuito de facilitar a gestão de estoque, como entrada e saída de medicações, vendas, prescrições médicas, controle de validade de medicamentos e facilitar a comunicação com clientes.
 
 Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo Prof. Euler Horta Marinho, na Universidade Federal de Ouro Preto (UFOP).
 
-### Membros e Funções
+## Sumário
+
+1. [Funcionalidades do Produto](funcionalidades-do-produto)
+2. [Backlog do Produto](#backlog-do-produto)
+3. [Backlog da Sprint](backlog-do-produto)
+4. [Membros e Funções](#membros-e-funções)
+5. [Dependências](#dependências)
+
+## Funcionalidades do Produto
+
+## Backlog do Produto
+
+## Backlog Sprint
+
+## Membros e Funções
 1. Richardy Rodrigues Tanure - Backend, Banco de Dados
 2. Pedro Alves de Paula - Backend, Banco de Dados
 3. Vitor Angelo dos Santos - Frontend
