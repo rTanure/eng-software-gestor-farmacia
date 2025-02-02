@@ -145,11 +145,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
    **Tarefas:**<br>
    **Configurar Banco de Dados**
 
-- [ ] () -Escolher o sistema de gerenciamento de banco de dados.
-- [ ] () -Configurar o banco de dados no servidor de desenvolvimento.
-- [ ] () -Definir o esquema do banco de dados para medicamentos e produtos farmacêuticos.
-- [ ] () -Implementar migrações.
-- [ ] () -Testar a conexão entre backend e banco de dados.
+- [ ] (Richardy) -Escolher o sistema de gerenciamento de banco de dados.
+- [ ] (Richardy) -Configurar o banco de dados no servidor de desenvolvimento.
+- [ ] (Richardy) -Definir o esquema do banco de dados para medicamentos e produtos farmacêuticos.
+- [ ] (Richardy) -Implementar migrações.
+- [ ] (Richardy) -Testar a conexão entre backend e banco de dados.
 
 **Cadastrar Medicamentos e Produtos Farmacêuticos**
 
@@ -188,11 +188,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Configurar Banco de Dados**
 
-- [ ] () -Escolher o sistema de gerenciamento de banco de dados.
-- [ ] () -Configurar o banco de dados no servidor de desenvolvimento.
-- [ ] () -Definir o esquema do banco de dados para armazenar informações dos clientes.
-- [ ] () -Implementar migrações.
-- [ ] () -Testar a conexão entre backend e banco de dados.
+- [ ] (Richardy) -Escolher o sistema de gerenciamento de banco de dados.
+- [ ] (Richardy) -Configurar o banco de dados no servidor de desenvolvimento.
+- [ ] (Richardy) -Definir o esquema do banco de dados para armazenar informações dos clientes.
+- [ ] (Richardy) -Implementar migrações.
+- [ ] (Richardy) -Testar a conexão entre backend e banco de dados.
 
 **Criar Cliente**
 
@@ -231,11 +231,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Configurar Banco de Dados**
 
-- [ ] () -Escolher o sistema de gerenciamento de banco de dados.
-- [ ] () -Configurar o banco de dados no servidor de desenvolvimento.
-- [ ] () -Definir o esquema do banco de dados para armazenar receitas médicas associadas aos clientes.
-- [ ] () -Implementar migrações.
-- [ ] () -Testar a conexão entre backend e banco de dados.
+- [ ] (Richardy) -Escolher o sistema de gerenciamento de banco de dados.
+- [ ] (Richardy) -Configurar o banco de dados no servidor de desenvolvimento.
+- [ ] (Richardy) -Definir o esquema do banco de dados para armazenar receitas médicas associadas aos clientes.
+- [ ] (Richardy) -Implementar migrações.
+- [ ] (Richardy) -Testar a conexão entre backend e banco de dados.
 
 **Cadastrar Receita Médica**
 
@@ -273,11 +273,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Configurar Banco de Dados**
 
-- [ ] () -Escolher o sistema de gerenciamento de banco de dados.
-- [ ] () -Configurar o banco de dados no servidor de desenvolvimento.
-- [ ] () -Definir o esquema do banco de dados para armazenar informações de vendas.
-- [ ] () -Implementar migrações.
-- [ ] () -Testar a conexão entre backend e banco de dados.
+- [ ] (Richardy) -Escolher o sistema de gerenciamento de banco de dados.
+- [ ] (Richardy) -Configurar o banco de dados no servidor de desenvolvimento.
+- [ ] (Richardy) -Definir o esquema do banco de dados para armazenar informações de vendas.
+- [ ] (Richardy) -Implementar migrações.
+- [ ] (Richardy) -Testar a conexão entre backend e banco de dados.
 
 **Registrar Venda**
 
@@ -315,11 +315,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Configurar Banco de Dados**
 
-- [ ] () -Escolher o sistema de gerenciamento de banco de dados.
-- [ ] () -Configurar o banco de dados no servidor de desenvolvimento.
-- [ ] () -Definir o esquema do banco de dados para armazenar informações dos fornecedores.
-- [ ] () -Implementar migrações.
-- [ ] () -Testar a conexão entre backend e banco de dados.
+- [ ] (Richardy) -Escolher o sistema de gerenciamento de banco de dados.
+- [ ] (Richardy) -Configurar o banco de dados no servidor de desenvolvimento.
+- [ ] (Richardy) -Definir o esquema do banco de dados para armazenar informações dos fornecedores.
+- [ ] (Richardy) -Implementar migrações.
+- [ ] (Richardy) -Testar a conexão entre backend e banco de dados.
 
 **Cadastrar Fornecedor**
 
