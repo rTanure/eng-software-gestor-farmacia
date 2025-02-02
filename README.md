@@ -12,7 +12,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 2. [Backlog do Produto](#backlog-do-produto)
 3. [Backlog da Sprint](#backlog-do-produto)
 4. [Membros e Funções](#membros-e-funções)
-5. [Dependências](#dependências)
+5. [Tecnologias](#tecnologias)
 
 ## Funcionalidades do Produto
 
@@ -57,7 +57,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 3. O farmacêutico deve visualizar as vendas anteriores.
 4. O sistema deve garantir que todos os dados sejam gerenciados de forma restrita, exigindo autenticação por senha.
 
-- *Alertas de vencimento:*
+- *Alertas de Vencimento*
   
 **História:** Como usuário, eu gostaria de ser notificado sobre medicamentos que estão próximos ao vencimento.<br>
 **Operações CRUD:** Criar alertas automáticos, Ler alertas de medicamentos que estão próximos ao vencimento, Deletar alertas de medicamentos que já foram descartados ou vendidos.<br>
@@ -117,6 +117,17 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 4. O sistema deve permitir associar medicamentos a fornecedores específicos.
 
 ## Backlog do Produto
+
+1. Gestão de Estoque
+2. Cadastro de Clientes
+3. Histórico de Receitas
+4. Gestão de Vendas
+5. Alertas de Vencimento
+6. Marketing
+7. Autorização de Vendas de Medicamentos Controlados
+8. Relatórios Financeiros
+9. Agendamento de retirada de medicamentos e produtos
+10. Cadastro de Fornecedores
 
 ## Backlog Sprint
 
