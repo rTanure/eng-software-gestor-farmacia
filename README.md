@@ -88,8 +88,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 - *Relatórios Financeiros*
 
-**História:**Como farmacêutico, eu desejo acessar relatórios financeiros detalhados, para acompanhar o faturamento da farmácia.<br>
-**Operações CRUD:**Criar registros de vendas no sistema financeiro, Ler relatórios de faturamento por período, Atualizar filtros para visualização personalizada dos dados, Deletar registros financeiros obsoletos.<br>
+**História:** Como farmacêutico, eu desejo acessar relatórios financeiros detalhados, para acompanhar o faturamento da farmácia.<br>
+**Operações CRUD:** Criar registros de vendas no sistema financeiro, Ler relatórios de faturamento por período, Atualizar filtros para visualização personalizada dos dados, Deletar registros financeiros obsoletos.<br>
 **Critérios de Aceitação:**
 1. O sistema deve gerar relatórios diários, semanais e mensais de faturamento.
 2. O farmacêutico deve poder visualizar gráficos de vendas e tendências.
@@ -97,6 +97,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 4. O sistema deve permitir exportar os relatórios em PDF e Excel.
 
 - *Agendamento de retirada de medicamentos e produtos*
+
 **História:** Como cliente, eu desejo agendar a retirada de medicamentos na farmácia, para evitar filas e agilizar meu atendimento.<br>
 **Operações CRUD:** Criar, Ler, Atualizar e Deletar agendamentos.<br>
 **Critérios de Aceitação**:
@@ -105,7 +106,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 3. O farmacêutico deve receber uma notificação de novos agendamentos.
 4. O cliente deve poder cancelar ou reagendar a retirada.
 
-- *Cadastro de Fornecedores*
+-  *Cadastro de Fornecedores*
+
 **História:** Como farmacêutico da farmácia, eu desejo cadastrar fornecedores no sistema, para facilitar a gestão de compras e reposição de estoque.<br>
 **Operações CRUD:** Criar, Ler, Atualizar e Deletar os fornecedores da farmácia.<br>
 **Critérios de Aceitação:**
