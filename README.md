@@ -141,16 +141,16 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Testar a conexão entre backend e banco de dados.
 
 **Cadastrar Medicamentos e Produtos Farmacêuticos**
-- Criar formulário de entrada de novos produtos.
+- Criar formulário de entrada de novos produtos.(Kemelly)
 - Implementar validação do formulário (campos obrigatórios: medicamento, quantidade, lote, vencimento, tipo).
 - Desenvolver API de criação.
-- Integrar frontend com API.
-- Testar cadastro de medicamentos e produtos.
+- Integrar frontend com API.(Kemelly)
+- Testar cadastro de medicamentos e produtos.(Kemelly)
 
 **Visualizar Controle de Estoque**
 - Criar página de listagem de medicamentos e produtos no estoque.
 - Desenvolver API de listagem de estoque.
-- Integrar frontend com API.
+- Integrar frontend com API.(Kemelly)
 - Implementar paginação e filtros (por nome, categoria, lote, vencimento).
 - Testar visualização do estoque.
 
@@ -158,12 +158,12 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Criar formulário de atualização de medicamentos e produtos farmacêuticos.
 - Implementar validação do formulário.
 - Desenvolver API de atualização de estoque.
-- Integrar frontend com API.
+- Integrar frontend com API.(Vitor)
 - Testar atualização de medicamentos e produtos no estoque.
 
 **Excluir Medicamentos e Produtos Farmacêuticos**
 - Desenvolver API de deleção de medicamentos. 
-- Integrar frontend com API.
+- Integrar frontend com API.(Vitor)
 - Implementar confirmação de deleção para evitar exclusões acidentais.
 - Testar remoção de medicamentos e produtos do estoque.
 - Implementar notificações para exclusões bem-sucedidas.
@@ -182,13 +182,13 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Criar formulário de entrada para cadastro de clientes.  
 - Implementar validação do formulário (campos obrigatórios: nome, CPF, telefone, e-mail).  
 - Desenvolver API de criação de clientes.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly)
 - Testar criação de cliente e validação de dados.  
 
 **Visualizar Clientes**  
 - Criar página de listagem de clientes.  
 - Desenvolver API de listagem de clientes.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly)
 - Implementar paginação e filtros (por nome, CPF, telefone).  
 - Testar visualização de clientes.  
 
@@ -196,17 +196,17 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Criar formulário de edição de clientes.  
 - Implementar validação do formulário para atualização de dados.  
 - Desenvolver API de atualização de clientes.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly)
 - Testar atualização de clientes.  
 
 **Excluir Cliente**  
 - Desenvolver API de deleção de clientes.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly) 
 - Implementar confirmação de deleção para evitar exclusões acidentais.  
 - Testar remoção de clientes.  
 - Implementar notificações para exclusões bem-sucedidas.    
 
-4. *Histórico de Receitas*<br><br>
+3. *Histórico de Receitas*<br><br>
 **Tarefas:**<br> 
 
 **Configurar Banco de Dados**  
@@ -220,30 +220,30 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Criar formulário para upload de receitas médicas.  
 - Implementar validação do formulário (formatos suportados: PDF, JPG, PNG).  
 - Desenvolver API para armazenamento de receitas médicas associadas ao cliente.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Vitor)  
 - Testar cadastro de receitas médicas.  
 
 **Visualizar Histórico de Receitas**  
 - Criar página de listagem de receitas médicas associadas a um cliente.  
 - Desenvolver API de listagem de receitas.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Vitor)  
 - Implementar filtros por data, médico prescritor e medicamento.  
 - Testar visualização do histórico de receitas.  
 
 **Atualizar Receita Médica**  
 - Criar funcionalidade para adicionar observações às receitas.  
 - Implementar API para atualizar informações associadas à receita.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Vitor) 
 - Testar atualização de receitas médicas.  
 
 **Excluir Receita Médica**  
 - Desenvolver API de deleção de receitas.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Vitor)  
 - Implementar confirmação de deleção para evitar remoção acidental.  
 - Testar remoção de receitas médicas.  
 - Implementar notificações para exclusões bem-sucedidas.
    
-6. *Gestão de Vendas*<br><br>
+4. *Gestão de Vendas*<br><br>
 **Tarefas:**<br>
 
 **Configurar Banco de Dados**  
@@ -257,30 +257,30 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Criar formulário para registrar vendas.  
 - Implementar validação do formulário (campos obrigatórios: cliente, produtos, quantidade, método de pagamento).  
 - Desenvolver API para registrar vendas no sistema.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly)  
 - Testar registro de venda e validação de dados.  
 
 **Visualizar Histórico de Vendas**  
 - Criar página de listagem de vendas realizadas.  
 - Desenvolver API de listagem de vendas.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly)  
 - Implementar filtros por data, cliente e método de pagamento.  
 - Testar visualização do histórico de vendas.  
 
 **Atualizar Informações de Venda**  
 - Criar funcionalidade para edição de vendas realizadas (exemplo: ajuste na quantidade de um produto).  
 - Desenvolver API para atualizar informações de uma venda.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly) 
 - Testar atualização de vendas.  
 
 **Cancelar Venda**  
 - Desenvolver API para cancelamento de vendas.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly) 
 - Implementar confirmação antes de cancelar uma venda.  
 - Testar funcionalidade de cancelamento de vendas.  
 - Implementar notificações para cancelamentos bem-sucedidos.  
 
-8. *Cadastro de Fornecedores*<br><br>
+5. *Cadastro de Fornecedores*<br><br>
 **Tarefas:**<br>
 
 **Configurar Banco de Dados**  
@@ -294,7 +294,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Criar formulário para cadastro de fornecedores.  
 - Implementar validação do formulário (campos obrigatórios: nome, CNPJ, telefone, e-mail, produtos fornecidos).  
 - Desenvolver API para armazenar fornecedores no banco de dados.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Kemelly)
 - Testar cadastro de fornecedores e validação de dados.  
 
 **Visualizar Lista de Fornecedores**  
@@ -307,12 +307,12 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 **Atualizar Informações do Fornecedor**  
 - Criar funcionalidade para editar informações do fornecedor.  
 - Desenvolver API para atualização dos dados do fornecedor.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Danielly)
 - Testar atualização dos fornecedores.  
 
 **Excluir Fornecedor**  
 - Desenvolver API para deletar fornecedores.  
-- Integrar frontend com API.  
+- Integrar frontend com API.(Danielly)
 - Implementar confirmação antes da exclusão para evitar remoção acidental.  
 - Testar funcionalidade de remoção de fornecedores.  
 - Implementar notificações para exclusões bem-sucedidas.
