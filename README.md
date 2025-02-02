@@ -27,10 +27,49 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 4. O farmacêutico deve visualizar o controle de estoque da farmácia.
 5. O sistema deve garantir que todos os dados sejam gerenciados de forma restrita, exigindo autenticação por senha.
 
+- *Cadastro de Clientes*
+
+**História:** Como usuário, eu desejo gerenciar os clientes da famárcia no sistema, para que eu possa cadastrar, atualizar, deletar dados dos clientes.
+**Operações CRUD:** Cadastrar, Ler, Atualiza, Deletar dados de clientes.
+**Critérios de Aceitação:**
+1. O farmacêutico deve cadastrar novos clientes (nome, endereço, idade, cpf, celular).
+2. O farmacêutico deve atualizar os dados do cliente(nome, endereço, idade, cpf, celular).
+3. O farmacêutico deve excluir cliente da farmácia.
+4. O farmacêutico deve visualizar os dados do cliente da farmácia.
+5. O sistema deve garantir que todos os dados sejam gerenciados de forma restrita, exigindo autenticação por senha.
+
+- *Histórico de Receitas*
+
+**História:** Como usuário, eu desejo acessar o histórico de receitas dos clientes, para que o atendimento seja mais ágil.
+**Operações CRUD:** Ler os dados da receita.
+**Critérios de Aceitação:**
+1. O farmacêutico deve visualizar o histórico de receitas dos clientes.
+2. O farmacêutico deve baixar todas as receitas em pdf.
+3. O sistema deve garantir que todas as receitas sejam armazenadas e organizadas de forma segura.
+
 - *Gestão de Vendas*
-1. O farmacêutico deve 
+  
+**História:** Como usuário, eu desejo monitorar as vendas da farmácia, conseguindo acompanhar os lucros.
+**Operações CRUD:** Criar, Ler, Atualizar, Excluir as vendas da farmácia.
+**Critérios de Aceitação:**
+1. O farmacêutico deve cadastrar uma nova venda(produto, medicamento, quantidade, preço, data).
+2. O farmacêutico deve excluir uma venda do sistema.
+3. O farmacêutico deve visualizar as vendas anteriores.
+4. O sistema deve garantir que todos os dados sejam gerenciados de forma restrita, exigindo autenticação por senha.
 
+- *Alertas de vencimento:*
+  
+**História:** Como usuário, eu gostaria de ser notificado sobre medicamentos que estão próximos ao vencimento.
+**Operações CRUD:** Criar alertas automáticos, Ler alertas de medicamentos que estão próximos ao vencimento, Deletar alertas de medicamentos que já foram descartados ou vendidos.
 
+**Crtérios de Aceitação:**
+1. O farmacêutico deve visualizar uma lista de produtos vencidos em um documento que pode ser baixado.
+2. 
+
+- **
+1. 
+
+- *
 ## Backlog do Produto
 
 ## Backlog Sprint
@@ -43,11 +82,16 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 5. Kemelly Steisse da Silva - Frontend
 6. Lucas Amaral Leme - Backend
 
-## Dependências
+## Tecnologias
 - Docker e Docker Compose 
 - Node
 - Maven
 - Java Development Kit (JDK 21)
+- JavaScript
+- CSS
+- HTML
+- React
+- FIGMA
 
 ## Como Rodar o Projeto
 
