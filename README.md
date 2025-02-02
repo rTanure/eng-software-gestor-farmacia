@@ -132,7 +132,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 ## Backlog Sprint
 
 ## Membros e Funções
-1. Richardy Rodrigues Tanure - Backend, Banco de Dados
+1. Richardy Rodrigues Tanure - Full-Stack, Banco de Dados
 2. Pedro Alves de Paula - Backend, Banco de Dados
 3. Vitor Angelo dos Santos - Frontend
 4. Danielly Mariana Martins Fragoso - Frontend
