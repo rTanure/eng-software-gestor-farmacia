@@ -154,34 +154,34 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 **Cadastrar Medicamentos e Produtos Farmacêuticos**
 
 - [ ] (Kemelly) -Criar formulário de entrada de novos produtos.
-- [ ] () -Implementar validação do formulário (campos obrigatórios: medicamento, quantidade, lote, vencimento, tipo).
-- [ ] () -Desenvolver API de criação.
+- [ ] (Danielly) -Implementar validação do formulário (campos obrigatórios: medicamento, quantidade, lote, vencimento, tipo).
+- [ ] (Pedro) -Desenvolver API de criação.
 - [ ] (Kemelly) -Integrar frontend com API.
 - [ ] (Kemelly) -Testar cadastro de medicamentos e produtos.
 
 **Visualizar Controle de Estoque**
 
-- [ ] () -Criar página de listagem de medicamentos e produtos no estoque.
-- [ ] () -Desenvolver API de listagem de estoque.
+- [ ] (Danielly) -Criar página de listagem de medicamentos e produtos no estoque.
+- [ ] (Lucas) -Desenvolver API de listagem de estoque.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Implementar paginação e filtros (por nome, categoria, lote, vencimento).
-- [ ] () -Testar visualização do estoque.
+- [ ] (Danielly) -Implementar paginação e filtros (por nome, categoria, lote, vencimento).
+- [ ] (Lucas) -Testar visualização do estoque.
 
 **Atualizar Estoque**
 
-- [ ] () -Criar formulário de atualização de medicamentos e produtos farmacêuticos.
-- [ ] () -Implementar validação do formulário.
-- [ ] () -Desenvolver API de atualização de estoque.
+- [ ] (Vitor) -Criar formulário de atualização de medicamentos e produtos farmacêuticos.
+- [ ] (Vitor) -Implementar validação do formulário.
+- [ ] (Pedro) -Desenvolver API de atualização de estoque.
 - [ ] (Vitor) -Integrar frontend com API.
-- [ ] () -Testar atualização de medicamentos e produtos no estoque.
+- [ ] (Pedro) -Testar atualização de medicamentos e produtos no estoque.
 
 **Excluir Medicamentos e Produtos Farmacêuticos**
 
-- [ ] () -Desenvolver API de deleção de medicamentos.
+- [ ] (Lucas) -Desenvolver API de deleção de medicamentos.
 - [ ] (Vitor) -Integrar frontend com API.
-- [ ] () -Implementar confirmação de deleção para evitar exclusões acidentais.
-- [ ] () -Testar remoção de medicamentos e produtos do estoque.
-- [ ] () -Implementar notificações para exclusões bem-sucedidas.
+- [ ] (Vitor) -Implementar confirmação de deleção para evitar exclusões acidentais.
+- [ ] (Pedro) -Testar remoção de medicamentos e produtos do estoque.
+- [ ] (Vitor) -Implementar notificações para exclusões bem-sucedidas.
 
 2. _Cadastro de Clientes_<br><br>
    **Tarefas:**<br>
@@ -196,35 +196,35 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Criar Cliente**
 
-- [ ] () -Criar formulário de entrada para cadastro de clientes.
-- [ ] () -Implementar validação do formulário (campos obrigatórios: nome, CPF, telefone, e-mail).
-- [ ] () -Desenvolver API de criação de clientes.
+- [ ] (Vitor) -Criar formulário de entrada para cadastro de clientes.
+- [ ] (Kemelly) -Implementar validação do formulário (campos obrigatórios: nome, CPF, telefone, e-mail).
+- [ ] (Pedro) -Desenvolver API de criação de clientes.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Testar criação de cliente e validação de dados.
+- [ ] (Lucas) -Testar criação de cliente e validação de dados.
 
 **Visualizar Clientes**
 
-- [ ] () -Criar página de listagem de clientes.
-- [ ] () -Desenvolver API de listagem de clientes.
+- [ ] (Kemelly) -Criar página de listagem de clientes.
+- [ ] (Lucas) -Desenvolver API de listagem de clientes.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Implementar paginação e filtros (por nome, CPF, telefone).
-- [ ] () -Testar visualização de clientes.
+- [ ] (Kemelly) -Implementar paginação e filtros (por nome, CPF, telefone).
+- [ ] (Pedro) -Testar visualização de clientes.
 
 **Atualizar Cliente**
 
-- [ ] () -Criar formulário de edição de clientes.
-- [ ] () -Implementar validação do formulário para atualização de dados.
-- [ ] () -Desenvolver API de atualização de clientes.
+- [ ] (Kemelly) -Criar formulário de edição de clientes.
+- [ ] (Kemelly) -Implementar validação do formulário para atualização de dados.
+- [ ] (Pedro) -Desenvolver API de atualização de clientes.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Testar atualização de clientes.
+- [ ] (Lucas) -Testar atualização de clientes.
 
 **Excluir Cliente**
 
-- [ ] () -Desenvolver API de deleção de clientes.
+- [ ] (Lucas) -Desenvolver API de deleção de clientes.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Implementar confirmação de deleção para evitar exclusões acidentais.
-- [ ] () -Testar remoção de clientes.
-- [ ] () -Implementar notificações para exclusões bem-sucedidas.
+- [ ] (Vitor) -Implementar confirmação de deleção para evitar exclusões acidentais.
+- [ ] (Pedro) -Testar remoção de clientes.
+- [ ] (Vitor) -Implementar notificações para exclusões bem-sucedidas.
 
 3. _Histórico de Receitas_<br><br>
    **Tarefas:**<br>
@@ -239,34 +239,34 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Cadastrar Receita Médica**
 
-- [ ] () -Criar formulário para upload de receitas médicas.
-- [ ] () -Implementar validação do formulário (formatos suportados: PDF, JPG, PNG).
-- [ ] () -Desenvolver API para armazenamento de receitas médicas associadas ao cliente.
+- [ ] (Vitor) -Criar formulário para upload de receitas médicas.
+- [ ] (Vitor) -Implementar validação do formulário (formatos suportados: PDF, JPG, PNG).
+- [ ] (Pedro) -Desenvolver API para armazenamento de receitas médicas associadas ao cliente.
 - [ ] (Vitor) -Integrar frontend com API.
-- [ ] () -Testar cadastro de receitas médicas.
+- [ ] (Lucas) -Testar cadastro de receitas médicas.
 
 **Visualizar Histórico de Receitas**
 
-- [ ] () -Criar página de listagem de receitas médicas associadas a um cliente.
-- [ ] () -Desenvolver API de listagem de receitas.
+- [ ] (Danielly) -Criar página de listagem de receitas médicas associadas a um cliente.
+- [ ] (Pedro) -Desenvolver API de listagem de receitas.
 - [ ] (Vitor) -Integrar frontend com API.
-- [ ] () -Implementar filtros por data, médico prescritor e medicamento.
-- [ ] () -Testar visualização do histórico de receitas.
+- [ ] (Danielly) -Implementar filtros por data, médico prescritor e medicamento.
+- [ ] (Lucas) -Testar visualização do histórico de receitas.
 
 **Atualizar Receita Médica**
 
-- [ ] () -Criar funcionalidade para adicionar observações às receitas.
-- [ ] () -Implementar API para atualizar informações associadas à receita.
+- [ ] (Danielly) -Criar funcionalidade para adicionar observações às receitas.
+- [ ] (Pedro) -Implementar API para atualizar informações associadas à receita.
 - [ ] (Vitor) -Integrar frontend com API.
-- [ ] () -Testar atualização de receitas médicas.
+- [ ] (Lucas) -Testar atualização de receitas médicas.
 
 **Excluir Receita Médica**
 
-- [ ] () -Desenvolver API de deleção de receitas.
+- [ ] (Pedro) -Desenvolver API de deleção de receitas.
 - [ ] (Vitor) -Integrar frontend com API.
-- [ ] () -Implementar confirmação de deleção para evitar remoção acidental.
-- [ ] () -Testar remoção de receitas médicas.
-- [ ] () -Implementar notificações para exclusões bem-sucedidas.
+- [ ] (Danielly) -Implementar confirmação de deleção para evitar remoção acidental.
+- [ ] (Richardy) -Testar remoção de receitas médicas.
+- [ ] (Danielly) -Implementar notificações para exclusões bem-sucedidas.
 
 4. _Gestão de Vendas_<br><br>
    **Tarefas:**<br>
@@ -281,34 +281,34 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Registrar Venda**
 
-- [ ] () -Criar formulário para registrar vendas.
-- [ ] () -Implementar validação do formulário (campos obrigatórios: cliente, produtos, quantidade, método de pagamento).
-- [ ] () -Desenvolver API para registrar vendas no sistema.
+- [ ] (Danielly) -Criar formulário para registrar vendas.
+- [ ] (Danielly) -Implementar validação do formulário (campos obrigatórios: cliente, produtos, quantidade, método de pagamento).
+- [ ] (Lucas) -Desenvolver API para registrar vendas no sistema.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Testar registro de venda e validação de dados.
+- [ ] (Pedro) -Testar registro de venda e validação de dados.
 
 **Visualizar Histórico de Vendas**
 
-- [ ] () -Criar página de listagem de vendas realizadas.
-- [ ] () -Desenvolver API de listagem de vendas.
+- [ ] (Vitor) -Criar página de listagem de vendas realizadas.
+- [ ] (Pedro) -Desenvolver API de listagem de vendas.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Implementar filtros por data, cliente e método de pagamento.
-- [ ] () -Testar visualização do histórico de vendas.
+- [ ] (Vitor) -Implementar filtros por data, cliente e método de pagamento.
+- [ ] (Lucas) -Testar visualização do histórico de vendas.
 
 **Atualizar Informações de Venda**
 
-- [ ] () -Criar funcionalidade para edição de vendas realizadas (exemplo: ajuste na quantidade de um produto).
-- [ ] () -Desenvolver API para atualizar informações de uma venda.
+- [ ] (Vitor) -Criar funcionalidade para edição de vendas realizadas (exemplo: ajuste na quantidade de um produto).
+- [ ] (Pedro) -Desenvolver API para atualizar informações de uma venda.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Testar atualização de vendas.
+- [ ] (Pedro) -Testar atualização de vendas.
 
 **Cancelar Venda**
 
-- [ ] () -Desenvolver API para cancelamento de vendas.
+- [ ] (Lucas) -Desenvolver API para cancelamento de vendas.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Implementar confirmação antes de cancelar uma venda.
-- [ ] () -Testar funcionalidade de cancelamento de vendas.
-- [ ] () -Implementar notificações para cancelamentos bem-sucedidos.
+- [ ] (Vitor) -Implementar confirmação antes de cancelar uma venda.
+- [ ] (Lucas) -Testar funcionalidade de cancelamento de vendas.
+- [ ] (Vitor) -Implementar notificações para cancelamentos bem-sucedidos.
 
 5. _Cadastro de Fornecedores_<br><br>
    **Tarefas:**<br>
@@ -323,34 +323,34 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 **Cadastrar Fornecedor**
 
-- [ ] () -Criar formulário para cadastro de fornecedores.
-- [ ] () -Implementar validação do formulário (campos obrigatórios: nome, CNPJ, telefone, e-mail, produtos fornecidos).
-- [ ] () -Desenvolver API para armazenar fornecedores no banco de dados.
+- [ ] (Danielly) -Criar formulário para cadastro de fornecedores.
+- [ ] (Danielly) -Implementar validação do formulário (campos obrigatórios: nome, CNPJ, telefone, e-mail, produtos fornecidos).
+- [ ] (Pedro) -Desenvolver API para armazenar fornecedores no banco de dados.
 - [ ] (Kemelly) -Integrar frontend com API.
-- [ ] () -Testar cadastro de fornecedores e validação de dados.
+- [ ] (Pedro) -Testar cadastro de fornecedores e validação de dados.
 
 **Visualizar Lista de Fornecedores**
 
-- [ ] () -Criar página de listagem de fornecedores cadastrados.
-- [ ] () -Desenvolver API de listagem de fornecedores.
-- [ ] () -Integrar frontend com API.
-- [ ] () -Implementar filtros por nome, CNPJ e categoria de produtos fornecidos.
-- [ ] () -Testar visualização da lista de fornecedores.
+- [ ] (Danielly) -Criar página de listagem de fornecedores cadastrados.
+- [ ] (Pedro) -Desenvolver API de listagem de fornecedores.
+- [ ] (Richardy) -Integrar frontend com API.
+- [ ] (Danielly) -Implementar filtros por nome, CNPJ e categoria de produtos fornecidos.
+- [ ] (Lucas) -Testar visualização da lista de fornecedores.
 
 **Atualizar Informações do Fornecedor**
 
-- [ ] () -Criar funcionalidade para editar informações do fornecedor.
-- [ ] () -Desenvolver API para atualização dos dados do fornecedor.
+- [ ] (Danielly) -Criar funcionalidade para editar informações do fornecedor.
+- [ ] (Pedro) -Desenvolver API para atualização dos dados do fornecedor.
 - [ ] (Danielly) -Integrar frontend com API.
-- [ ] () -Testar atualização dos fornecedores.
+- [ ] (Lucas) -Testar atualização dos fornecedores.
 
 **Excluir Fornecedor**
 
-- [ ] () -Desenvolver API para deletar fornecedores.
-- [ ] () -Integrar frontend com API.
-- [ ] () -Implementar confirmação antes da exclusão para evitar remoção acidental.
-- [ ] () -Testar funcionalidade de remoção de fornecedores.
-- [ ] () -Implementar notificações para exclusões bem-sucedidas.
+- [ ] (Pedro) -Desenvolver API para deletar fornecedores.
+- [ ] (Richardy) -Integrar frontend com API.
+- [ ] (Danielly) -Implementar confirmação antes da exclusão para evitar remoção acidental.
+- [ ] (Pedro) -Testar funcionalidade de remoção de fornecedores.
+- [ ] (Danielly) -Implementar notificações para exclusões bem-sucedidas.
 
 ## Membros e Funções
 
