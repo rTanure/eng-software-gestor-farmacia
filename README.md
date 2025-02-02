@@ -10,7 +10,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 1. [Funcionalidades do Produto](#funcionalidades-do-produto)
 2. [Backlog do Produto](#backlog-do-produto)
-3. [Backlog da Sprint](#backlog-da-sprint-(-5-historias))
+3. [Backlog da Sprint](#backlog-da-sprint)
 4. [Membros e Funções](#membros-e-funções)
 5. [Tecnologias](#tecnologias)
 
@@ -129,7 +129,7 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 9. Agendamento de retirada de medicamentos e produtos
 10. Cadastro de Fornecedores
 
-## Backlog da Sprint - 5 historias
+## Backlog da Sprint
 
 1. *Gestão de Estoque*<br><br>
 **Tarefas:**<br>
