@@ -1,14 +1,18 @@
-# Sistema de gerenciamento de farmácia.
+# MedMais: Sistema de Gerenciamento de Farmácia
+
+# Descrição
+
+Este projeto tem como objetivo desenvolver um software de gerenciamento de uma farmácia, com o intuito de facilitar a gestão de estoque, como entrada e saída de medicações, vendas, prescrições médicas, controle de validade de medicamentos e facilitar a comunicação com clientes.
 
 Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo Prof. Euler Horta Marinho, na Universidade Federal de Ouro Preto (UFOP).
 
-### Alunos
-1. Richardy Rodrigues Tanure
-2. Pedro Alves de Paula
-3. Vitor Angelo dos Santos
-4. Danielly Mariana Martins Fragoso
-5. Kemelly Steisse da Silva
-6. Lucas Amaral Leme
+### Membros e Funções
+1. Richardy Rodrigues Tanure - Backend, Banco de Dados
+2. Pedro Alves de Paula - Backend, Banco de Dados
+3. Vitor Angelo dos Santos - Frontend
+4. Danielly Mariana Martins Fragoso - Frontend
+5. Kemelly Steisse da Silva - Frontend
+6. Lucas Amaral Leme - Backend
 
 ## Dependências
 - Docker e Docker Compose 
@@ -16,7 +20,15 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - Maven
 - Java Development Kit (JDK 21)
 
-## Preparando o ambiente
+## Como Rodar o Projeto
+
+## Clonando o Repositório
+
+``` bash
+git clone 
+``
+
+## Preparando o Ambiente
 ### 1. Back-end
 - Iniciar container docker com o banco de dados
 ```
