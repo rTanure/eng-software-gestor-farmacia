@@ -25,8 +25,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 ## Clonando o Repositório
 
 ``` bash
-git clone 
-``
+git clone https://github.com/rTanure/eng-software-gestor-farmacia.git
+```
 
 ## Preparando o Ambiente
 ### 1. Back-end
