@@ -18,8 +18,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 - *Gestão de Estoque*
 
-  **História:** Como usuário, eu desejo gerenciar as movimentações do estoque da famárcia no sistema , para que eu possa cadastrar, atualizar e deletar os medicamentos e produtos farmacêuticos.
-**Operações CRUD:** Criar, Ler, Atualizar, Excluir os medicamentos.
+**História:** Como usuário, eu desejo gerenciar as movimentações do estoque da famárcia no sistema , para que eu possa cadastrar, atualizar e deletar os medicamentos e produtos farmacêuticos.<br>
+**Operações CRUD:** Criar, Ler, Atualizar, Excluir os medicamentos.<br>
 **Critérios de Aceitação:**
 1. O farmacêutico deve cadastrar medicamentos e produtos farmacêuticos novos (medicamento, quantidade, lote, vencimento, tipo).
 2. O farmacêutico deve atualizar a situação dos medicamentos e produtos farmacêuticos no estoque ().
@@ -29,8 +29,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 - *Cadastro de Clientes*
 
-**História:** Como usuário, eu desejo gerenciar os clientes da famárcia no sistema, para que eu possa cadastrar, atualizar, deletar dados dos clientes.
-**Operações CRUD:** Cadastrar, Ler, Atualiza, Deletar dados de clientes.
+**História:** Como usuário, eu desejo gerenciar os clientes da famárcia no sistema, para que eu possa cadastrar, atualizar, deletar dados dos clientes.<br>
+**Operações CRUD:** Cadastrar, Ler, Atualiza, Deletar dados de clientes.<br>
 **Critérios de Aceitação:**
 1. O farmacêutico deve cadastrar novos clientes (nome, endereço, idade, cpf, celular).
 2. O farmacêutico deve atualizar os dados do cliente(nome, endereço, idade, cpf, celular).
@@ -40,8 +40,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 - *Histórico de Receitas*
 
-**História:** Como usuário, eu desejo acessar o histórico de receitas dos clientes, para que o atendimento seja mais ágil.
-**Operações CRUD:** Ler os dados da receita.
+**História:** Como usuário, eu desejo acessar o histórico de receitas dos clientes, para que o atendimento seja mais ágil.<br>
+**Operações CRUD:** Ler os dados da receita.<br>
 **Critérios de Aceitação:**
 1. O farmacêutico deve visualizar o histórico de receitas dos clientes.
 2. O farmacêutico deve baixar todas as receitas em pdf.
@@ -49,8 +49,8 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 - *Gestão de Vendas*
   
-**História:** Como usuário, eu desejo monitorar as vendas da farmácia, conseguindo acompanhar os lucros.
-**Operações CRUD:** Criar, Ler, Atualizar, Excluir as vendas da farmácia.
+**História:** Como usuário, eu desejo monitorar as vendas da farmácia, conseguindo acompanhar os lucros.<br>
+**Operações CRUD:** Criar, Ler, Atualizar, Excluir as vendas da farmácia.<br>
 **Critérios de Aceitação:**
 1. O farmacêutico deve cadastrar uma nova venda(produto, medicamento, quantidade, preço, data).
 2. O farmacêutico deve excluir uma venda do sistema.
@@ -59,17 +59,61 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 - *Alertas de vencimento:*
   
-**História:** Como usuário, eu gostaria de ser notificado sobre medicamentos que estão próximos ao vencimento.
-**Operações CRUD:** Criar alertas automáticos, Ler alertas de medicamentos que estão próximos ao vencimento, Deletar alertas de medicamentos que já foram descartados ou vendidos.
-
-**Crtérios de Aceitação:**
+**História:** Como usuário, eu gostaria de ser notificado sobre medicamentos que estão próximos ao vencimento.<br>
+**Operações CRUD:** Criar alertas automáticos, Ler alertas de medicamentos que estão próximos ao vencimento, Deletar alertas de medicamentos que já foram descartados ou vendidos.<br>
+**Critérios de Aceitação:**
 1. O farmacêutico deve visualizar uma lista de produtos vencidos em um documento que pode ser baixado.
-2. 
+2. O sistema deve gerar alertas automáticos para medicamentos com vencimento.
+3. O sistema deve permitir configurar o período de alerta conforme a necessidade da farmácia.
+4. Os alertas devem ser removidos automaticamente quando o medicamento for vendido ou descartado.
 
-- **
-1. 
+- *Marketing*
+  
+**História:** Como usuário, eu gostaria de enviar promoções para clientes via e-mail ou WhatsApp.<br>
+**Operações CRUD:** N/A.<br>
+**Critérios de Aceitação:**
+1. O sistema deve permitir o envio de promoções via e-mail e WhatsApp.
+2. O sistema deve permitir segmentar clientes com base no histórico de compras.
+3. O sistema deve garantir que promoções duplicadas não sejam enviadas para o mesmo cliente em um curto período.
 
-- *
+- *Autorização de Vendas de Medicamentos Controlados*
+  
+**História:** Como usuário, eu desejo verificar se um medicamento controlado pode ser vendido ao cliente, para garantir conformidade com a legislação.<br>
+**Operações CRUD:** Criar registro de validação de receita para medicamentos controlados, Ler informações sobre restrições de venda, Atualizar status de receita aprovada ou recusada.<br>
+**Critérios de Aceitação:**
+1. O sistema deve verificar automaticamente se o medicamento exige receita controlada.
+2. O farmacêutico deve poder escanear ou anexar a receita no sistema.
+3. O sistema deve armazenar a receita por um período definido pela legislação.
+4. O sistema deve impedir a venda de medicamentos controlados sem a documentação necessária.
+
+- *Relatórios Financeiros*
+
+**História:**Como farmacêutico, eu desejo acessar relatórios financeiros detalhados, para acompanhar o faturamento da farmácia.<br>
+**Operações CRUD:**Criar registros de vendas no sistema financeiro, Ler relatórios de faturamento por período, Atualizar filtros para visualização personalizada dos dados, Deletar registros financeiros obsoletos.<br>
+**Critérios de Aceitação:**
+1. O sistema deve gerar relatórios diários, semanais e mensais de faturamento.
+2. O farmacêutico deve poder visualizar gráficos de vendas e tendências.
+3. O relatório deve incluir categorias como medicamentos mais vendidos e formas de pagamento utilizadas.
+4. O sistema deve permitir exportar os relatórios em PDF e Excel.
+
+- *Agendamento de retirada de medicamentos e produtos*
+**História:** Como cliente, eu desejo agendar a retirada de medicamentos na farmácia, para evitar filas e agilizar meu atendimento.<br>
+**Operações CRUD:** Criar, Ler, Atualizar e Deletar agendamentos.<br>
+**Critérios de Aceitação**:
+1. O cliente deve poder selecionar data e horário para retirada do pedido.
+2. O sistema deve exibir os horários disponíveis conforme a demanda da farmácia.
+3. O farmacêutico deve receber uma notificação de novos agendamentos.
+4. O cliente deve poder cancelar ou reagendar a retirada.
+
+- *Cadastro de Fornecedores*
+**História:** Como farmacêutico da farmácia, eu desejo cadastrar fornecedores no sistema, para facilitar a gestão de compras e reposição de estoque.<br>
+**Operações CRUD:** Criar, Ler, Atualizar e Deletar os fornecedores da farmácia.<br>
+**Critérios de Aceitação:**
+1. O sistema deve permitir o cadastro de fornecedores (nome, CNPJ, telefone e e-mail).
+2. O farmaêutico deve poder visualizar a lista de fornecedores e os produtos que cada um fornece.
+3. O sistema deve permitir a edição e exclusão de fornecedores.
+4. O sistema deve permitir associar medicamentos a fornecedores específicos.
+
 ## Backlog do Produto
 
 ## Backlog Sprint
