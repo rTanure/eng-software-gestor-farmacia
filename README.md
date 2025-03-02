@@ -17,37 +17,53 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ## Protótipo de Telas
 
+### Painel Principal
 ![Painel Principal](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal.jpg)
 
+### Login
 ![Login](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Login.jpg)
 
+### Painel Principal - Estoque
 ![Painel Principal - Estoque](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Estoque.jpg)
 
-![Gestão de Estoque - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Gest%C3%A3o%20de%20Estoque%20-%20Adicionar%20e%20Editar.jpg).
+### Gestão de Estoque - Adicionar e Editar
+![Gestão de Estoque - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Gest%C3%A3o%20de%20Estoque%20-%20Adicionar%20e%20Editar.jpg)
 
-![Gestão de Estoque - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Gest%C3%A3o%20de%20Estoque%20-%20Visualizar.jpg).
+### Gestão de Estoque - Visualizar
+![Gestão de Estoque - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Gest%C3%A3o%20de%20Estoque%20-%20Visualizar.jpg)
 
+### Painel Principal - Fornecedores
 ![Painel Principal - Fornecedores](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Fornecedores.jpg)
 
+### Fornecedores - Adicionar e Editar
 ![Fornecedores - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Fornecedores%20-%20Adicionar%2C%20Editar.jpg)
 
-![Fornecedores - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Fornecedores%20-%20Visualizar.png).
+### Fornecedores - Visualizar
+![Fornecedores - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Fornecedores%20-%20Visualizar.png)
 
-![Painel Principal - Vendas](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Vendas.jpg).
+### Painel Principal - Vendas
+![Painel Principal - Vendas](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Vendas.jpg)
 
-![Vendas - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Vendas%20-%20Adicionar%20e%20Editar.jpg).
+### Vendas - Adicionar e Editar
+![Vendas - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Vendas%20-%20Adicionar%20e%20Editar.jpg)
 
-![Vendas - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Vendas%20-%20Visualizar.jpg).
+### Vendas - Visualizar
+![Vendas - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Vendas%20-%20Visualizar.jpg)
 
-![Painel Principal - Receitas](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Receitas.jpg).
+### Painel Principal - Receitas
+![Painel Principal - Receitas](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Receitas.jpg)
 
-![Receitas - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Receitas%20-%20Visualizar.jpg).
+### Receitas - Visualizar
+![Receitas - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Receitas%20-%20Visualizar.jpg)
 
+### Painel Principal - Clientes
 ![Painel Principal - Clientes](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Clientes.jpg)
 
-![Clientes - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Clientes%20-%20Adicionar%20e%20Editar.jpg).
+### Clientes - Adicionar e Editar
+![Clientes - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Clientes%20-%20Adicionar%20e%20Editar.jpg)
 
-![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Clientes%20-%20Visualizar.jpg).
+### Clientes - Visualizar
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Clientes%20-%20Visualizar.jpg)
 
 ## Funcionalidades do Produto
 
