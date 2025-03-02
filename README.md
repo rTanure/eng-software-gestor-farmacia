@@ -17,6 +17,18 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ## Protótipo de Telas
 
+![Painel Principal](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal.jpg)
+
+![Login](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Login.jpg)
+
+![Painel Principal - Estoque](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Estoque.jpg)
+
+
+
+
+
+
+
 
 
 ## Funcionalidades do Produto
