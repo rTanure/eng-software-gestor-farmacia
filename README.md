@@ -11,8 +11,9 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 1. [Funcionalidades do Produto](#funcionalidades-do-produto)
 2. [Backlog do Produto](#backlog-do-produto)
 3. [Backlog da Sprint](#backlog-da-sprint)
-4. [Membros e Funções](#membros-e-funções)
-5. [Tecnologias](#tecnologias)
+4. [Protótipo de Telas.](#protótipo-de-telas)
+5. [Membros e Funções](#membros-e-funções)
+6. [Tecnologias](#tecnologias)
 
 ## Funcionalidades do Produto
 
@@ -351,6 +352,10 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 - [ ] (Danielly) -Implementar confirmação antes da exclusão para evitar remoção acidental.
 - [ ] (Pedro) -Testar funcionalidade de remoção de fornecedores.
 - [ ] (Danielly) -Implementar notificações para exclusões bem-sucedidas.
+
+## Protótipo de Telas
+
+
 
 ## Membros e Funções
 
