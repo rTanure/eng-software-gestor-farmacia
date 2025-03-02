@@ -33,15 +33,21 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ![Fornecedores - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Fornecedores%20-%20Visualizar.png).
 
-![
+![Painel Principal - Vendas](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Vendas.jpg).
 
+![Vendas - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Vendas%20-%20Adicionar%20e%20Editar.jpg).
 
+![Vendas - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Vendas%20-%20Visualizar.jpg).
 
+![Painel Principal - Receitas](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Receitas.jpg).
 
+![Receitas - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Receitas%20-%20Visualizar.jpg).
 
+![Painel Principal - Clientes](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Clientes.jpg)
 
+![Clientes - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Clientes%20-%20Adicionar%20e%20Editar.jpg).
 
-
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Clientes%20-%20Visualizar.jpg).
 
 ## Funcionalidades do Produto
 
