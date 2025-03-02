@@ -23,6 +23,16 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ![Painel Principal - Estoque](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Estoque.jpg)
 
+![Gestão de Estoque - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Gest%C3%A3o%20de%20Estoque%20-%20Adicionar%20e%20Editar.jpg).
+
+![Gestão de Estoque - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Gest%C3%A3o%20de%20Estoque%20-%20Visualizar.jpg).
+
+![Painel Principal - Fornecedores](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Fornecedores.jpg)
+
+![Fornecedores - Adicionar e Editar]()
+
+![Fornecedores - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Fornecedores%20-%20Visualizar.png).
+
 
 
 
