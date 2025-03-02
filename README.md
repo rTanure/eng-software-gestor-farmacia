@@ -29,9 +29,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ![Painel Principal - Fornecedores](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Painel%20Principal%20-%20Fornecedores.jpg)
 
-![Fornecedores - Adicionar e Editar]()
+![Fornecedores - Adicionar e Editar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Fornecedores%20-%20Adicionar%2C%20Editar.jpg)
 
 ![Fornecedores - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/readmeAssets/Fornecedores%20-%20Visualizar.png).
+
+![
 
 
 
