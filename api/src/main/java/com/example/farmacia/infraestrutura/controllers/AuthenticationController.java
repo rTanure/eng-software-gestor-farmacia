@@ -1,8 +1,10 @@
 package com.example.farmacia.infraestrutura.controllers;
 
 import com.example.farmacia.dominio.dtos.AuthenticationDTO;
+import com.example.farmacia.dominio.dtos.LoginResponseDTO;
 import com.example.farmacia.dominio.dtos.ResgisterDTO;
 import com.example.farmacia.dominio.models.User;
+import com.example.farmacia.infra.security.TokenService;
 import com.example.farmacia.infraestrutura.entidades.UserEntidade;
 import com.example.farmacia.infraestrutura.repositories.UserRepositorio;
 import jdk.jfr.Registered;
@@ -24,13 +26,17 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserRepositorio userRepositorio;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthenticationDTO data) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody AuthenticationDTO data) {
         UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((UserEntidade) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
