@@ -6,16 +6,24 @@ body {
 }
 
 .Logo {
-  width: 250px !important;
-  height: 250px !important;
+  width: 186px !important;
+  height: 186px !important;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 0px;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .Texto {
   font-family: 'DM Sans', sans-serif;
   color: white;
+}
+
+.TextoB {
+  font-family: 'DM Sans', sans-serif;
+  color: black;
+  font-weight: 600 !important;
 }

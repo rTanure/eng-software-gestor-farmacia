@@ -1,10 +1,17 @@
 import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import EmailIcon from '@mui/icons-material/Email';
 import '../index.css';
+import InputAdornment from '@mui/material/InputAdornment';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
 const LoginFormulario = () => {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <Box
@@ -42,8 +49,17 @@ const LoginFormulario = () => {
             width: '50%',
           }}
         >
-          <Box className="Logo">
-            <figure className="Logo">
+          <Box
+            className="Logo"
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              m: 0,
+              p: 0,
+            }}
+          >
+            <figure>
               <img src="src/assets/MEDMAISBranca.png"></img>
             </figure>
           </Box>
@@ -51,15 +67,18 @@ const LoginFormulario = () => {
             className="Texto"
             sx={{
               fontSize: '40px',
-              fontWeight: 500,
+              fontWeight: 'bold',
+              marginBottom: '0.3px',
             }}
           >
             Bem-vindo!
           </Typography>
           <Typography
             className="Texto"
-            SX={{
-              fontSize: '30px',
+            sx={{
+              fontSize: '25px',
+              fontWeight: '600',
+              marginTop: '0.1px',
             }}
           >
             Faça o login
@@ -69,8 +88,91 @@ const LoginFormulario = () => {
           className="containerDireito"
           sx={{
             bgcolor: 'rgba(255,255,255,1)',
+            display: 'flex',
+            justifyContent: 'center',
+            height: '100%',
+            width: '50%',
           }}
-        ></Box>
+        >
+          <Box
+            component="form"
+            className="FormsLogin"
+            onSubmit={handleSubmit}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'column',
+              mt: 0,
+              width: '50%',
+            }}
+          >
+            <Typography
+              className="TextoB"
+              sx={{
+                fontSize: '40px',
+                marginTop: '100px',
+                letterSpacing: '2px',
+                mb: '5vh',
+              }}
+            >
+              Login
+            </Typography>
+
+            <TextField
+              placeholder="Email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              sx={{
+                borderRadius: 5,
+              }}
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <EmailIcon fontSize="small" />
+                    </InputAdornment>
+                  ),
+                },
+              }}
+            ></TextField>
+
+            <TextField
+              placeholder="Senha"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              sx={{
+                borderRadius: 5,
+              }}
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <VpnKeyIcon fontSize="small" />
+                    </InputAdornment>
+                  ),
+                },
+              }}
+            ></TextField>
+
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              className="loginBotao"
+              sx={{
+                backgroundColor: '#4c585b',
+                marginTop: '5vh',
+                borderRadius: 40,
+                height: '45px',
+                width: '250px',
+              }}
+            >
+              Entrar
+            </Button>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
