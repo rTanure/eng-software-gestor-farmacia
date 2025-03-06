@@ -5,7 +5,9 @@ import Home from './pages/Home';
 const AppRotas = () => {
   return (
     <BrowserRouter>
-      <Routes></Routes>
+      <Routes>
+        <Route path="/Login" element={<Login />} />
+      </Routes>
     </BrowserRouter>
   );
 };
