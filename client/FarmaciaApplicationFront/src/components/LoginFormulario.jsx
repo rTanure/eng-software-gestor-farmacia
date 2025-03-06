@@ -11,6 +11,7 @@ const LoginFormulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    window.location.href = '../src/pages/Home.jsx';
   };
 
   return (
@@ -157,7 +158,6 @@ const LoginFormulario = () => {
             ></TextField>
 
             <Button
-              href="Home.jsx"
               type="submit"
               variant="contained"
               fullWidth
