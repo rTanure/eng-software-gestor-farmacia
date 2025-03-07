@@ -1,13 +1,16 @@
-import { Router, BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 
 const AppRotas = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/Login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
+
+export default AppRotas;

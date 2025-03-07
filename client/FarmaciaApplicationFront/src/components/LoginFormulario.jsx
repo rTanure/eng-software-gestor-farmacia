@@ -4,14 +4,17 @@ import EmailIcon from '@mui/icons-material/Email';
 import '../index.css';
 import InputAdornment from '@mui/material/InputAdornment';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import { useNavigate } from 'react-router-dom';
 
 const LoginFormulario = () => {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
+  //Usar o Navigate para navegar entres as páginas
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.location.href = '../src/pages/Home.jsx';
+    navigate('/home');
   };
 
   return (
@@ -124,6 +127,8 @@ const LoginFormulario = () => {
               variant="outlined"
               fullWidth
               margin="normal"
+              value={usuario}
+              onChange={(e) => setUsuario(e.target.value)}
               sx={{
                 borderRadius: 5,
               }}
@@ -143,6 +148,8 @@ const LoginFormulario = () => {
               variant="outlined"
               fullWidth
               margin="normal"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
               sx={{
                 borderRadius: 5,
               }}
