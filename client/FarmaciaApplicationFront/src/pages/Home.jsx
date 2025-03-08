@@ -17,7 +17,7 @@ const Home = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        minHeight: '100vh',
+        minHeight: '200vh',
         border: 'none',
         margin: 0,
         padding: 0,
@@ -148,6 +148,105 @@ const Home = () => {
             </IconButton>
           </Box>
         </Box>
+        <Box
+          sx={{
+            width: '100%',
+            height: '65vh',
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            padding: '0 40px',
+            overflow: 'hidden',
+            mt: 12,
+          }}
+        >
+          <Box
+            sx={{
+              maxWidth: '50%',
+              height: 'auto',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <figure style={{ margin: 0, padding: 0, maxWidth: '100%', display: 'flex' }}>
+              <img
+                src="src/assets/Imagem1PaginaPrincipal.png"
+                alt="Imagem Principal"
+                style={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
+            </figure>
+          </Box>
+          <Box
+            sx={{
+              maxWidth: '50%',
+              height: 'auto',
+              display: 'flex',
+              justifyContent: 'start',
+              alignContent: 'flex-end',
+              flexDirection: 'column',
+              mr: 15,
+            }}
+          >
+            <Typography
+              className="Texto"
+              sx={{
+                textAlign: 'right',
+                fontSize: '50px',
+                fontWeight: 'bold',
+              }}
+            >
+              Sobre <br />
+            </Typography>
+            <Typography
+              className="Texto"
+              sx={{
+                textAlign: 'right',
+                fontSize: '23px',
+                fontWeight: 'medium',
+              }}
+            >
+              <br /> O sistema controla o estoque, monitorando entradas e saídas, cadastra clientes,
+              mantendo as informações organizadas, gerencia os dados dos fornecedores, armazena o
+              histórico de receitas de forma segura, gerencia as vendas com relatórios estratégicos.
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          width: '100%',
+          height: '65vh',
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          padding: '0 40px',
+          overflow: 'hidden',
+          mt: 10,
+        }}
+      >
+        <Box
+          sx={{
+            ml: 10,
+          }}
+        >
+          <Typography
+            className="Texto"
+            sx={{
+              textAlign: 'right',
+              fontSize: '50px',
+              fontWeight: 'bold',
+            }}
+          >
+            Funções
+          </Typography>
+        </Box>
+        <Box className="CarrosselIcones"></Box>
       </Box>
     </Box>
   );
