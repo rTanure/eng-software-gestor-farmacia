@@ -6,6 +6,7 @@ import { Textsms } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -223,16 +224,16 @@ const Home = () => {
           width: '100%',
           height: '65vh',
           display: 'flex',
-          justifyContent: 'space-between',
-          flexDirection: 'row',
+          flexDirection: 'column',
           padding: '0 40px',
           overflow: 'hidden',
-          mt: 10,
+          mt: 8,
         }}
       >
         <Box
           sx={{
             ml: 10,
+            display: 'flex',
           }}
         >
           <Typography
@@ -246,7 +247,24 @@ const Home = () => {
             Funções
           </Typography>
         </Box>
-        <Box className="CarrosselIcones"></Box>
+
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            mt: 10,
+          }}
+        >
+          <motion.div className="CarrosselIcones">
+            <motion.div className="Interno">
+              <img className="imagensCarrossel" src="src/assets/FornecedoresCarrosel.png"></img>
+              <img className="imagensCarrossel" src="src/assets/VendasCarrosel.png"></img>
+              <img className="imagensCarrossel" src="src/assets/ClientesCarrosel.png"></img>
+              <img className="imagensCarrossel" src="src/assets/RceitasCarrosel.png"></img>
+              <img className="imagensCarrossel" src="src/assets/EstoqueCarrosel.png"></img>
+            </motion.div>
+          </motion.div>
+        </Box>
       </Box>
     </Box>
   );

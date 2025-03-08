@@ -10,6 +10,11 @@ body {
   font-family: 'DM Sans', sans-serif !important;
 }
 
+.imagensCarrossel {
+  width: 250px;
+  height: 300px;
+}
+
 .Logo {
   width: 186px !important;
   height: 186px !important;
