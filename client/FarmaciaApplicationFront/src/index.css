@@ -5,6 +5,11 @@ body {
   font-family: 'DM Sans', sans-serif;
 }
 
+.BotaoMenu {
+  color: white !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
 .Logo {
   width: 186px !important;
   height: 186px !important;
@@ -17,6 +22,15 @@ body {
   padding: 0;
 }
 
+.Logo-principal {
+  width: 140px !important;
+  height: 140px !important;
+  display: flex;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
 .Texto {
   font-family: 'DM Sans', sans-serif;
   color: white;
@@ -26,4 +40,9 @@ body {
   font-family: 'DM Sans', sans-serif;
   color: black;
   font-weight: 600 !important;
+}
+
+.imagem-logo-principal {
+  max-width: 100%;
+  height: auto;
 }
