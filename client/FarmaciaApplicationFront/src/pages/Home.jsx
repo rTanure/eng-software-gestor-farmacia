@@ -82,6 +82,7 @@ const Home = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             flexDirection: 'row',
+            mt: 3,
           }}
         >
           <Box
