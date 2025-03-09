@@ -10,9 +10,27 @@ body {
   font-family: 'DM Sans', sans-serif !important;
 }
 
+.Externo {
+  height: 1000px !important;
+  width: 48% !important;
+}
+
 .imagensCarrossel {
-  width: 250px;
-  height: 300px;
+  width: 230px;
+  height: 100%;
+  padding: 15px;
+  pointer-events: none;
+}
+
+.carrossel {
+  max-width: 100% !important;
+}
+
+.Interno {
+  height: auto;
+  width: 100% !important;
+  max-width: max-content !important;
+  flex-direction: row;
 }
 
 .Logo {
@@ -42,7 +60,7 @@ body {
 }
 
 .TextoB {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans' !important;
   color: black;
   font-weight: 600 !important;
 }

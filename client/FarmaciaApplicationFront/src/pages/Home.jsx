@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, TextField, Typography, Tooltip } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React, { useState } from 'react';
 import '../index.css';
@@ -7,9 +7,18 @@ import IconButton from '@mui/material/IconButton';
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
+  const carousel = useRef();
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    console.log(carousel.current?.scrollWidth, carousel.current?.offsetWidth);
+    setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
+  }, []);
+
   return (
     <Box
       className="papel-de-parede"
@@ -18,7 +27,7 @@ const Home = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        minHeight: '200vh',
+        minHeight: '260vh',
         border: 'none',
         margin: 0,
         padding: 0,
@@ -42,6 +51,7 @@ const Home = () => {
         }}
       >
         <Box
+          id="PrimeiraDiv"
           sx={{
             width: '100%',
             height: '25vh',
@@ -152,12 +162,11 @@ const Home = () => {
         <Box
           sx={{
             width: '100%',
-            height: '65vh',
+            height: '160vh',
             display: 'flex',
             justifyContent: 'space-between',
             flexDirection: 'row',
             padding: '0 40px',
-            overflow: 'hidden',
             mt: 12,
           }}
         >
@@ -168,11 +177,12 @@ const Home = () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              mt: 5,
             }}
           >
             <figure style={{ margin: 0, padding: 0, maxWidth: '100%', display: 'flex' }}>
               <img
-                src="src/assets/Imagem1PaginaPrincipal.png"
+                src="src/assets/Imagem1PaginaPrincipal.svg"
                 alt="Imagem Principal"
                 style={{
                   maxWidth: '100%',
@@ -186,7 +196,7 @@ const Home = () => {
           <Box
             sx={{
               maxWidth: '50%',
-              height: 'auto',
+              height: '100%',
               display: 'flex',
               justifyContent: 'start',
               alignContent: 'flex-end',
@@ -195,10 +205,12 @@ const Home = () => {
             }}
           >
             <Typography
+              id="Sobre"
               className="Texto"
               sx={{
                 textAlign: 'right',
                 fontSize: '50px',
+                fontFamily: 'DM Sans',
                 fontWeight: 'bold',
               }}
             >
@@ -210,6 +222,7 @@ const Home = () => {
                 textAlign: 'right',
                 fontSize: '23px',
                 fontWeight: 'medium',
+                fontFamily: 'DM Sans',
               }}
             >
               <br /> O sistema controla o estoque, monitorando entradas e saídas, cadastra clientes,
@@ -220,19 +233,20 @@ const Home = () => {
         </Box>
       </Box>
       <Box
+        id="SegundaDiv"
         sx={{
           width: '100%',
-          height: '65vh',
+          height: '60vh',
           display: 'flex',
           flexDirection: 'column',
           padding: '0 40px',
           overflow: 'hidden',
-          mt: 8,
+          mt: 13,
         }}
       >
         <Box
           sx={{
-            ml: 10,
+            ml: 8,
             display: 'flex',
           }}
         >
@@ -247,23 +261,137 @@ const Home = () => {
             Funções
           </Typography>
         </Box>
-
         <Box
+          className="Externo"
           sx={{
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
-            mt: 10,
+            mt: 13,
+            margin: '0 auto',
+            overflow: 'hidden',
           }}
         >
-          <motion.div className="CarrosselIcones">
-            <motion.div className="Interno">
-              <img className="imagensCarrossel" src="src/assets/FornecedoresCarrosel.png"></img>
-              <img className="imagensCarrossel" src="src/assets/VendasCarrosel.png"></img>
-              <img className="imagensCarrossel" src="src/assets/ClientesCarrosel.png"></img>
-              <img className="imagensCarrossel" src="src/assets/RceitasCarrosel.png"></img>
-              <img className="imagensCarrossel" src="src/assets/EstoqueCarrosel.png"></img>
+          <motion.div
+            ref={carousel}
+            className="carrossel"
+            whileHover={{ cursor: 'grab' }}
+            whileTap={{ cursor: 'grabbing' }}
+            style={{ overflow: 'hidden' }}
+          >
+            <motion.div
+              drag="x"
+              dragConstraints={{ right: 0, left: -width }}
+              dragElastic={0.8}
+              className="Interno"
+              style={{ display: 'flex' }}
+            >
+              <img
+                className="imagensCarrossel"
+                src="src/assets/FornecedoresCarrosel.png"
+                alt="Fornecedores"
+              ></img>
+              <img
+                className="imagensCarrossel"
+                src="src/assets/VendasCarrosel.png"
+                alt="Vendas"
+              ></img>
+              <img
+                className="imagensCarrossel"
+                src="src/assets/ClientesCarrosel.png"
+                alt="Clientes"
+              ></img>
+              <img
+                className="imagensCarrossel"
+                src="src/assets/RceitasCarrosel.png"
+                alt="Receitas"
+              ></img>
+              <img
+                className="imagensCarrossel"
+                src="src/assets/EstoqueCarrosel.png"
+                alt="Estoque"
+              ></img>
             </motion.div>
           </motion.div>
+        </Box>
+      </Box>
+      <Box
+        id="TerceiraDiv"
+        sx={{
+          width: '100%',
+          height: '65vh',
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          padding: '0 40px',
+          overflow: 'hidden',
+          mt: 12,
+        }}
+      >
+        <Box
+          id="DivSub1"
+          sx={{
+            maxWidth: '50%',
+            height: 'auto',
+            display: 'flex',
+          }}
+        >
+          <figure style={{ margin: 0, padding: 0, maxWidth: '100%', display: 'flex' }}>
+            <img
+              src="src/assets/Imagem2Pagina.svg"
+              alt="Imagem Principal2"
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+            />
+          </figure>
+        </Box>
+        <Box
+          id="DivSub2"
+          sx={{
+            maxWidth: '50%',
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'start',
+            alignContent: 'start',
+            flexDirection: 'column',
+            mr: 15,
+          }}
+        >
+          <Typography
+            className="Texto"
+            sx={{
+              textAlign: 'right',
+              fontSize: '50px',
+              fontWeight: 'bold',
+              fontFamily: 'DM Sans',
+            }}
+          >
+            Membros
+            <br />
+          </Typography>
+          <Typography
+            className="Texto"
+            sx={{
+              textAlign: 'right',
+              fontSize: '23px',
+              fontWeight: 'medium',
+              fontFamily: 'DM Sans',
+            }}
+          >
+            <br />
+            Danielly Mariana Martins Fragoso - Frontend
+            <br /> Kemelly Steisse da Silva - Frontend
+            <br />
+            Lucas Amaral Leme - Backend
+            <br /> Pedro Alves de Paula - Backend, Banco de Dados
+            <br /> Richardy Rodrigues Tanure - Full-Stack, Banco de Dados
+            <br /> Vitor Angelo dos Santos - Frontend
+            <br />
+          </Typography>
         </Box>
       </Box>
     </Box>
