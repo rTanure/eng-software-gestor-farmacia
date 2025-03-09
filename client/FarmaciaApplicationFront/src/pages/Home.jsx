@@ -11,13 +11,36 @@ import { useEffect, useRef } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
-  const carousel = useRef();
+  const carousel = useRef(); //Referenciando o carrossel
   const [width, setWidth] = useState(0);
+  const Sobre = useRef(null); //Referenciado
+  const Funcao = useRef(null); //Referenciando
+  const Membros = useRef(null); //Referenciando
 
   useEffect(() => {
     console.log(carousel.current?.scrollWidth, carousel.current?.offsetWidth);
     setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
   }, []);
+
+  //Função para ir para a Div
+
+  const scrollParaSobre = () => {
+    if (Sobre.current) {
+      Sobre.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollParaFuncao = () => {
+    if (Funcao.current) {
+      Funcao.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollParaMembros = () => {
+    if (Membros.current) {
+      Membros.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <Box
@@ -27,7 +50,7 @@ const Home = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        minHeight: '260vh',
+        minHeight: '340vh',
         border: 'none',
         margin: 0,
         padding: 0,
@@ -97,6 +120,7 @@ const Home = () => {
             <Button
               className="BotaoMenu"
               variant="Text"
+              onClick={scrollParaSobre}
               sx={{
                 textTransform: 'none',
                 fontSize: '18px',
@@ -108,6 +132,7 @@ const Home = () => {
             <Button
               className="BotaoMenu"
               variant="Text"
+              onClick={scrollParaFuncao}
               sx={{
                 textTransform: 'none',
                 fontSize: '18px',
@@ -119,6 +144,7 @@ const Home = () => {
             <Button
               className="BotaoMenu"
               variant="Text"
+              onClick={scrollParaMembros}
               sx={{
                 textTransform: 'none',
                 fontSize: '18px',
@@ -160,6 +186,7 @@ const Home = () => {
           </Box>
         </Box>
         <Box
+          ref={Sobre}
           sx={{
             width: '100%',
             height: '160vh',
@@ -177,7 +204,7 @@ const Home = () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              mt: 5,
+              mt: 13,
             }}
           >
             <figure style={{ margin: 0, padding: 0, maxWidth: '100%', display: 'flex' }}>
@@ -202,6 +229,7 @@ const Home = () => {
               alignContent: 'flex-end',
               flexDirection: 'column',
               mr: 15,
+              mt: 15,
             }}
           >
             <Typography
@@ -209,9 +237,9 @@ const Home = () => {
               className="Texto"
               sx={{
                 textAlign: 'right',
-                fontSize: '50px',
                 fontFamily: 'DM Sans',
                 fontWeight: 'bold',
+                fontSize: '70px',
               }}
             >
               Sobre <br />
@@ -234,14 +262,16 @@ const Home = () => {
       </Box>
       <Box
         id="SegundaDiv"
+        ref={Funcao}
         sx={{
           width: '100%',
-          height: '60vh',
+          height: '80vh',
           display: 'flex',
           flexDirection: 'column',
           padding: '0 40px',
           overflow: 'hidden',
-          mt: 13,
+          mt: 30,
+          mb: 30,
         }}
       >
         <Box
@@ -254,8 +284,9 @@ const Home = () => {
             className="Texto"
             sx={{
               textAlign: 'right',
-              fontSize: '50px',
+              fontSize: '70px',
               fontWeight: 'bold',
+              mt: 15,
             }}
           >
             Funções
@@ -317,9 +348,10 @@ const Home = () => {
       </Box>
       <Box
         id="TerceiraDiv"
+        ref={Membros}
         sx={{
           width: '100%',
-          height: '65vh',
+          height: '80vh',
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
@@ -334,6 +366,7 @@ const Home = () => {
             maxWidth: '50%',
             height: 'auto',
             display: 'flex',
+            mt: 5,
           }}
         >
           <figure style={{ margin: 0, padding: 0, maxWidth: '100%', display: 'flex' }}>
@@ -359,13 +392,14 @@ const Home = () => {
             alignContent: 'start',
             flexDirection: 'column',
             mr: 15,
+            mt: 20,
           }}
         >
           <Typography
             className="Texto"
             sx={{
               textAlign: 'right',
-              fontSize: '50px',
+              fontSize: '70px',
               fontWeight: 'bold',
               fontFamily: 'DM Sans',
             }}
