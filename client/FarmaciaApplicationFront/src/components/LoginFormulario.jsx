@@ -14,7 +14,7 @@ const LoginFormulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/home');
+    navigate('/estoque');
   };
 
   return (
