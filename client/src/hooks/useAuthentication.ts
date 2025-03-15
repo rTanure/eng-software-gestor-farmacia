@@ -51,7 +51,7 @@ export const useAuthentication = () => {
     if(getToken()) {
       getUser().then(e => setUser(e.data))
     }
-  }, [getToken])
+  }, [])
 
   return {
     login,
