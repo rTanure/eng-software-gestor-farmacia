@@ -49,7 +49,7 @@ export const useAuthentication = () => {
 
   useEffect(()=> {
     if(getToken()) {
-      getUser().then(e => setUser(e.data))
+      getUser().then(e => setUser(e?.data))
     }
   }, [])
 
@@ -58,6 +58,7 @@ export const useAuthentication = () => {
     register,
     error,
     logout,
-    user
+    user,
+    getUser
   }
 }

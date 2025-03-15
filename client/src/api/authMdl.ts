@@ -16,6 +16,7 @@ class AuthMdl extends ModeloBase {
   }
 
   async userByToken() {
+    if(!window.localStorage.getItem('token')) return null
     return this.defaultGetRequest("/userByToken");
   }
 }
