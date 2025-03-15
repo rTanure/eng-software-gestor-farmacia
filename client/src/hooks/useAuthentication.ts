@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { authMdl } from "../api/authMdl";
 import { LoginProps, RegisterProps } from "../types/auth.types"
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const useAuthentication = () => {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export const useAuthentication = () => {
     if(getToken()) {
       getUser().then(e => setUser(e.data))
     }
-  }, [getToken])
+  }, [])
 
   return {
     login,
