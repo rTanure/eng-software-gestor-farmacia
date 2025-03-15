@@ -1,6 +1,6 @@
-package com.example.farmacia.infraestrutura.entidades;
+package com.example.farmacia.entidades;
 
-import com.example.farmacia.dominio.enums.EnumUserRoles;
+import com.example.farmacia.enums.EnumUserRoles;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,7 +17,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserEntidade implements UserDetails {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     private UUID id;
@@ -25,7 +25,7 @@ public class UserEntidade implements UserDetails {
     private String password;
     private EnumUserRoles role;
 
-    public UserEntidade(String login, String password, EnumUserRoles role) {
+    public User(String login, String password, EnumUserRoles role) {
         this.login = login;
         this.password = password;
         this.role = role;

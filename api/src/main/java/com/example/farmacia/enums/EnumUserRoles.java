@@ -1,4 +1,4 @@
-package com.example.farmacia.dominio.enums;
+package com.example.farmacia.enums;
 
 public enum EnumUserRoles {
     ADMIN("admin"),

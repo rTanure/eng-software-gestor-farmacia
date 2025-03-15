@@ -1,4 +1,4 @@
-package com.example.farmacia.dominio.dtos;
+package com.example.farmacia.dtos;
 
 public record LoginResponseDTO(String token) {
 }

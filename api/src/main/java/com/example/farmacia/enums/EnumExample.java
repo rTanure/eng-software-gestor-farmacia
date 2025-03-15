@@ -1,4 +1,4 @@
-package com.example.farmacia.dominio.enums;
+package com.example.farmacia.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
