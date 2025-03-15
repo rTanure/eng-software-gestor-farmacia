@@ -1,17 +1,16 @@
-package com.example.farmacia.infraestrutura.controllers;
+package com.example.farmacia.controllers;
 
-import com.example.farmacia.dominio.dtos.AuthenticationDTO;
-import com.example.farmacia.dominio.dtos.LoginResponseDTO;
-import com.example.farmacia.dominio.dtos.ResgisterDTO;
-import com.example.farmacia.dominio.dtos.UserResponseDTO;
+import com.example.farmacia.dtos.AuthenticationRequestDTO;
+import com.example.farmacia.dtos.LoginResponseDTO;
+import com.example.farmacia.dtos.ResgisterRequestDTO;
+import com.example.farmacia.dtos.UserResponseDTO;
 import com.example.farmacia.infra.security.TokenService;
-import com.example.farmacia.infraestrutura.entidades.UserEntidade;
-import com.example.farmacia.infraestrutura.repositories.UserRepositorio;
+import com.example.farmacia.entidades.User;
+import com.example.farmacia.repositories.UserRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,28 +26,28 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody AuthenticationDTO data) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody AuthenticationRequestDTO data) {
         UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = authenticationManager.authenticate(usernamePassword);
 
-        var token = tokenService.generateToken((UserEntidade) auth.getPrincipal());
+        var token = tokenService.generateToken((User) auth.getPrincipal());
 
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<LoginResponseDTO> register(@RequestBody ResgisterDTO data) {
+    public ResponseEntity<LoginResponseDTO> register(@RequestBody ResgisterRequestDTO data) {
         if(this.userRepositorio.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        UserEntidade newUser = new UserEntidade(data.login(), encryptedPassword, data.role());
+        User newUser = new User(data.login(), encryptedPassword, data.role());
 
         this.userRepositorio.save(newUser);
 
         UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = authenticationManager.authenticate(usernamePassword);
 
-        var token = tokenService.generateToken((UserEntidade) auth.getPrincipal());
+        var token = tokenService.generateToken((User) auth.getPrincipal());
 
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
@@ -56,7 +55,7 @@ public class AuthenticationController {
     @GetMapping("/userByToken")
     public ResponseEntity<UserResponseDTO> getUserByToken(@RequestHeader("Authorization") String token) {
         var login = tokenService.validateToken(token);
-        UserEntidade userEntidade = userRepositorio.findUserEntidadeByLogin(login);
-        return ResponseEntity.ok(UserResponseDTO.fromUserEntidade(userEntidade));
+        User user = userRepositorio.findUserByLogin(login);
+        return ResponseEntity.ok(UserResponseDTO.fromUser(user));
     }
 }

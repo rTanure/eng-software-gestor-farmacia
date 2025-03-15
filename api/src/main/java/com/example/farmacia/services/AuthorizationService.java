@@ -1,6 +1,6 @@
-package com.example.farmacia.infraestrutura.services;
+package com.example.farmacia.services;
 
-import com.example.farmacia.infraestrutura.repositories.UserRepositorio;
+import com.example.farmacia.repositories.UserRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

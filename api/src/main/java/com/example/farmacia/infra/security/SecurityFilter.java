@@ -1,6 +1,6 @@
 package com.example.farmacia.infra.security;
 
-import com.example.farmacia.infraestrutura.repositories.UserRepositorio;
+import com.example.farmacia.repositories.UserRepositorio;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
