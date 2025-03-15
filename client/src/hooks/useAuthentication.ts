@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { authMdl } from "../api/authMdl";
 import { LoginProps, RegisterProps } from "../types/auth.types"
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useAuthentication = () => {
   const navigate = useNavigate();
