@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class StockController {
 
     @Autowired
-    StockServices stockService;
+    private StockServices stockService;
 
 }
