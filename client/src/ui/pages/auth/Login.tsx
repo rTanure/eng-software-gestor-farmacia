@@ -1,43 +1,57 @@
-import React from "react";
-import { Controller, useForm } from "react-hook-form";
-import { LoginProps, RegisterProps, UserRole } from "../../../types/auth.types";
-import { useAuthentication } from "../../../hooks/useAuthentication";
-import { Link } from "react-router-dom";
+import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import LoginFormulario from './LoginFormulario';
+import { useAuthentication } from '../../../hooks/useAuthentication';
+import { useNavigate } from 'react-router';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-export default function Login() {
-  const { login, error: loginError } = useAuthentication();
-  const { control, handleSubmit } = useForm<LoginProps>();
+const Login = () => {
+  const {getUser} = useAuthentication()
+  const navigate = useNavigate()
 
-  const onSubmit = async (data: LoginProps) => {
-    try {
-      console.log(data);
-      await login(data); 
-    } catch (error) {
-      console.error("Erro no login", error);
-    }
-  };
+  useEffect(() => {
+    getUser()
+      .then(e => {
+        if(!!e?.data) navigate('/app')
+      })
+  }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name="login"
-          control={control}
-          render={({ field }) => (
-            <input {...field} placeholder="Login" />
-          )}
-        />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => (
-            <input type="password" {...field} placeholder="Password" />
-          )}
-        />
-        <button type="submit">Login</button>
-        <Link to="/auth/register">Register</Link>
-        <p>{loginError}</p>
-      </form>
-    </div>
+    <Box
+      className="papel-de-parede"
+      sx={{
+        backgroundImage: 'url("/img/background.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '100vh',
+        border: 'none',
+        margin: 0,
+        padding: 0,
+        boxSizing: 'border-box',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
+    >
+      <Button
+        onClick={() => navigate('/')}
+        sx={{
+          position: 'absolute',
+          top: 10,
+          left: 10,
+          color: 'white',
+        }}
+      >
+        <ArrowBackIosIcon />
+        Voltar
+      </Button>
+
+      <LoginFormulario />
+    </Box>
   );
-}
+};
+
+export default Login;

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+html,
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.BotaoMenu {
+  color: white !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.Externo {
+  height: 1000px !important;
+  width: 48% !important;
+}
+
+.imagensCarrossel {
+  width: 230px;
+  height: 100%;
+  padding: 15px;
+  pointer-events: none;
+}
+
+.carrossel {
+  max-width: 100% !important;
+}
+
+.Interno {
+  height: auto;
+  width: 100% !important;
+  max-width: max-content !important;
+  flex-direction: row;
+}
+
+.Logo {
+  width: 186px !important;
+  height: 186px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.Logo-principal {
+  width: 140px !important;
+  height: 140px !important;
+  display: flex;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
+.Texto {
+  font-family: 'DM Sans', sans-serif;
+  color: white;
+}
+
+.TextoB {
+  font-family: 'DM Sans' !important;
+  color: black;
+  font-weight: 600 !important;
+}
+
+.imagem-logo-principal {
+  max-width: 100%;
+  height: auto;
+}

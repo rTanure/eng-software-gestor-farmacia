@@ -1,59 +1,57 @@
-import React, { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { LoginProps, RegisterProps, UserRole } from "../../../types/auth.types";
-import { useAuthentication } from "../../../hooks/useAuthentication";
-import { Link } from "react-router-dom";
+import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import LoginFormulario from './LoginFormulario';
+import { useAuthentication } from '../../../hooks/useAuthentication';
+import { useNavigate } from 'react-router';
+import RegisterFormulario from './RegisterFormulario';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-export default function Login() {
-  const { register, error: registerError } = useAuthentication();
-  const { control, handleSubmit, setValue } = useForm<RegisterProps>();
-
-  const onSubmit = async (data: RegisterProps) => {
-    try {
-      await register(data); 
-    } catch (error) {
-      console.error("Erro no login", error);
-    }
-  };
+const Login = () => {
+  const {getUser} = useAuthentication()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    setValue("role", UserRole.USER);
-  }, [])
+    getUser()
+      .then(e => {
+        if(!!e?.data) navigate('/app')
+      })
+  }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name="login"
-          control={control}
-          render={({ field }) => (
-            <input {...field} placeholder="Login" />
-          )}
-        />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => (
-            <input type="password" {...field} placeholder="Password" />
-          )}
-        />
-        <Controller
-          name="role"
-          control={control}
-          render={({ field }) => (
-            <select {...field} defaultValue={UserRole.USER}>
-              {Object.values(UserRole).map((role) => (
-                <option key={role} value={role}>
-                  {role}
-                </option>
-              ))}
-            </select>
-          )}
-        />
-        <button type="submit">Register</button>
-        <Link to="/auth/login">Login</Link>
-        <p>{registerError}</p>
-      </form>
-    </div>
+    <Box
+      className="papel-de-parede"
+      sx={{
+        backgroundImage: 'url("/img/background.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '100vh',
+        border: 'none',
+        margin: 0,
+        padding: 0,
+        boxSizing: 'border-box',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
+    >
+      <Button
+        onClick={() => navigate('/')}
+        sx={{
+          position: 'absolute',
+          top: 10,
+          left: 10,
+          color: 'white',
+        }}
+      >
+        <ArrowBackIosIcon />
+        Voltar
+      </Button>
+      <RegisterFormulario />
+    </Box>
   );
-}
+};
+
+export default Login;
