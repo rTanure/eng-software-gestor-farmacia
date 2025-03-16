@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 
 @Service
 public class StockServices {
@@ -22,5 +24,12 @@ public class StockServices {
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
         Page<Product> products = productRepository.findByNameContainingIgnoreCase(name, pageable);
         return products.map(ProductResponseDTO::fromProduct);
+    }
+
+    public void deleteProductById(UUID id) {
+        productRepository.findById(id)
+                .ifPresentOrElse(product -> productRepository.delete(product), () -> {;
+                    throw new RuntimeException("Produto não encontrado");
+                });
     }
 }
