@@ -4,10 +4,12 @@ import com.example.farmacia.dtos.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class StockServices {
@@ -15,10 +17,10 @@ public class StockServices {
     @Autowired
     ProductRepository productRepository;
 
-    public List<ProductResponseDTO> findProductsByName(String name) {
-        List<Product> products = productRepository.findByNameContainingIgnoreCase(name);
-        return products.stream()
-                .map(ProductResponseDTO::fromProduct)
-                .collect(Collectors.toList());
+    public Page<ProductResponseDTO> findProductsByName(String name, int page, int size, String sortBy, String order) {
+        Sort.Direction direction = Sort.Direction.fromString(order);
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
+        Page<Product> products = productRepository.findByNameContainingIgnoreCase(name, pageable);
+        return products.map(ProductResponseDTO::fromProduct);
     }
 }
