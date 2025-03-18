@@ -2,6 +2,7 @@ package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.ClientFilterRequestDTO;
 import com.example.farmacia.dtos.CreateClientRequestDTO;
+import com.example.farmacia.dtos.UpdateClientDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -53,6 +54,36 @@ public class ClientService {
         if (userExists) {
             clientRepository.deleteById(id);
         }
+    }
+
+    public void updateClientById(String userId, UpdateClientDTO updateClientDTO) {
+        var id = UUID.fromString(userId);
+
+        var client = clientRepository.findById(id);
+
+        if (client.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado");
+        }
+
+        var c = client.get();
+
+        if (updateClientDTO.getName() != null) {
+            c.setName(updateClientDTO.getName());
+        }
+
+        if (updateClientDTO.getPhoneNumber() != null) {
+            c.setPhoneNumber(updateClientDTO.getPhoneNumber());
+        }
+
+        if (updateClientDTO.getDateOfBirth() != null) {
+            c.setDateOfBirth(updateClientDTO.getDateOfBirth());
+        }
+
+        if (updateClientDTO.getSex() != null) {
+            c.setSex(updateClientDTO.getSex());
+        }
+
+        clientRepository.save(c);
     }
 
 }

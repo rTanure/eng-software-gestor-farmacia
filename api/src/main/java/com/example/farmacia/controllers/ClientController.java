@@ -3,6 +3,7 @@ package com.example.farmacia.controllers;
 import com.example.farmacia.dtos.ClientFilterRequestDTO;
 import com.example.farmacia.dtos.CreateClientRequestDTO;
 import com.example.farmacia.dtos.DeleteClientDTO;
+import com.example.farmacia.dtos.UpdateClientDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.services.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -41,10 +42,18 @@ public class ClientController {
         return ResponseEntity.ok(findClient);
     }
 
+    @PutMapping("/{clientId}")
+    public ResponseEntity<Void> updateClientById(@PathVariable("clientId") String userId,
+                                                 @RequestBody UpdateClientDTO updateClientDTO) {
+        clientService.updateClientById(userId, updateClientDTO);
+
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteClient(@RequestParam DeleteClientDTO deleteClientDTO) {
         clientService.deleteById(deleteClientDTO.getId());
 
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
