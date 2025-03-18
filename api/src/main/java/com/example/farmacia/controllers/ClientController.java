@@ -1,16 +1,14 @@
 package com.example.farmacia.controllers;
 
 import com.example.farmacia.dtos.ClientFilterRequestDTO;
-import com.example.farmacia.dtos.CreateClientRequestDTO;
-import com.example.farmacia.dtos.DeleteClientDTO;
-import com.example.farmacia.dtos.UpdateClientDTO;
+import com.example.farmacia.dtos.ClientCreatRequestDTO;
+import com.example.farmacia.dtos.ClientDeleteDTO;
+import com.example.farmacia.dtos.ClientUpdateDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.services.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/clients")
@@ -22,8 +20,8 @@ public class ClientController {
     private final ClientService clientService;
 
     @PostMapping()
-    public ResponseEntity<Void> addNewClient(@RequestBody CreateClientRequestDTO createClientRequestDTO) {
-        clientService.save(createClientRequestDTO);
+    public ResponseEntity<Void> addNewClient(@RequestBody ClientCreatRequestDTO clientCreatRequestDTO) {
+        clientService.save(clientCreatRequestDTO);
 
         return ResponseEntity.ok().build();
     }
@@ -44,15 +42,15 @@ public class ClientController {
 
     @PutMapping("/{clientId}")
     public ResponseEntity<Void> updateClientById(@PathVariable("clientId") String userId,
-                                                 @RequestBody UpdateClientDTO updateClientDTO) {
-        clientService.updateClientById(userId, updateClientDTO);
+                                                 @RequestBody ClientUpdateDTO clientUpdateDTO) {
+        clientService.updateClientById(userId, clientUpdateDTO);
 
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Void> deleteClient(@RequestParam DeleteClientDTO deleteClientDTO) {
-        clientService.deleteById(deleteClientDTO.getId());
+    public ResponseEntity<Void> deleteClient(@RequestParam ClientDeleteDTO clientDeleteDTO) {
+        clientService.deleteById(clientDeleteDTO.getId());
 
         return ResponseEntity.ok().build();
     }

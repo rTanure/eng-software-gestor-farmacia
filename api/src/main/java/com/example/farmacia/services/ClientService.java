@@ -1,8 +1,8 @@
 package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.ClientFilterRequestDTO;
-import com.example.farmacia.dtos.CreateClientRequestDTO;
-import com.example.farmacia.dtos.UpdateClientDTO;
+import com.example.farmacia.dtos.ClientCreatRequestDTO;
+import com.example.farmacia.dtos.ClientUpdateDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Service
@@ -18,14 +19,24 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
-    public void save(CreateClientRequestDTO createClientRequestDTO) {
-        Client client = createClientRequestDTO.toModel();
+    public void save(ClientCreatRequestDTO clientCreatRequestDTO) {
 
-        if (clientRepository.findByCpf(createClientRequestDTO.getCpf()) != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF já cadastrado");
+        var entity = new Client(UUID.randomUUID(),
+                null,
+                clientCreatRequestDTO.getName(),
+                clientCreatRequestDTO.getCpf(),
+                clientCreatRequestDTO.getEmail(),
+                clientCreatRequestDTO.getPhoneNumber(),
+                clientCreatRequestDTO.getDateOfBirth(),
+                clientCreatRequestDTO.getSex(),
+                Instant.now(),
+                null);
+
+        if (clientRepository.findByCpf(clientCreatRequestDTO.getCpf()) != null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente já cadastrado");
         }
 
-        clientRepository.save(client);
+        clientRepository.save(entity);
     }
 
     public Client findByCpf(ClientFilterRequestDTO clientFilterRequestDTO) {
@@ -56,7 +67,7 @@ public class ClientService {
         }
     }
 
-    public void updateClientById(String userId, UpdateClientDTO updateClientDTO) {
+    public void updateClientById(String userId, ClientUpdateDTO clientUpdateDTO) {
         var id = UUID.fromString(userId);
 
         var client = clientRepository.findById(id);
@@ -67,21 +78,23 @@ public class ClientService {
 
         var c = client.get();
 
-        if (updateClientDTO.getName() != null) {
-            c.setName(updateClientDTO.getName());
+        if (clientUpdateDTO.getName() != null) {
+            c.setName(clientUpdateDTO.getName());
         }
 
-        if (updateClientDTO.getPhoneNumber() != null) {
-            c.setPhoneNumber(updateClientDTO.getPhoneNumber());
+        if (clientUpdateDTO.getPhoneNumber() != null) {
+            c.setPhoneNumber(clientUpdateDTO.getPhoneNumber());
         }
 
-        if (updateClientDTO.getDateOfBirth() != null) {
-            c.setDateOfBirth(updateClientDTO.getDateOfBirth());
+        if (clientUpdateDTO.getDateOfBirth() != null) {
+            c.setDateOfBirth(clientUpdateDTO.getDateOfBirth());
         }
 
-        if (updateClientDTO.getSex() != null) {
-            c.setSex(updateClientDTO.getSex());
+        if (clientUpdateDTO.getSex() != null) {
+            c.setSex(clientUpdateDTO.getSex());
         }
+
+        c.setUpdateDate(Instant.now());
 
         clientRepository.save(c);
     }

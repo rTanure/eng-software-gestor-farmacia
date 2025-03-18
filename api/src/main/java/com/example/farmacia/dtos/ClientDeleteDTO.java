@@ -7,6 +7,6 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class DeleteClientDTO {
+public class ClientDeleteDTO {
     private UUID id;
 }
