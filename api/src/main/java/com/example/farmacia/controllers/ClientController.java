@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/clients")
 @CrossOrigin(origins = "*")
@@ -38,6 +40,13 @@ public class ClientController {
         Client findClient = clientService.findByName(clientFilterRequestDTO);
 
         return ResponseEntity.ok(findClient);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Client>> getAllClients() {
+        var clients = clientService.listClients();
+
+        return ResponseEntity.ok(clients);
     }
 
     @PutMapping("/{clientId}")

@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 import java.util.UUID;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -37,6 +38,10 @@ public class ClientService {
         }
 
         clientRepository.save(entity);
+    }
+
+    public List<Client> listClients() {
+        return clientRepository.findAll();
     }
 
     public Client findByCpf(ClientFilterRequestDTO clientFilterRequestDTO) {
