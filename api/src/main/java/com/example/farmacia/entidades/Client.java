@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -19,9 +20,12 @@ public class Client {
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     private UUID id;
 
+    private UUID prescriptionId;
     private String name;
     private String cpf;
     private String email;
     private String phoneNumber;
+    private Date dateOfBirth;
+    private String sex;
     }
 
