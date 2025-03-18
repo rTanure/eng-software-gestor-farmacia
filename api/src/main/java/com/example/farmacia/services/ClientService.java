@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class ClientService {
@@ -43,6 +45,14 @@ public class ClientService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome não encontrado");
         }
         return c;
+    }
+
+    public void deleteById(UUID id) {
+        var userExists = clientRepository.existsById(id);
+
+        if (userExists) {
+            clientRepository.deleteById(id);
+        }
     }
 
 }

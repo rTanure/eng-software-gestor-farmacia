@@ -7,8 +7,6 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class ClientFilterRequestDTO {
+public class DeleteClientDTO {
     private UUID id;
-    private String name;
-    private String cpf;
 }
