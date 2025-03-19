@@ -65,9 +65,28 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 ### Clientes - Visualizar
 ![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/Clientes%20-%20Visualizar.jpg)
 
-##Diagramas
+## Diagramas
 
-- _Diagramas de casos de uso
+### Diagramas de casos de uso
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/Diagram casos de uso.jpg)
+
+### Diagramas de atividades para o cliente
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/diagram atividades cliente.jpg)
+
+### Diagramas de atividades para o fornecedor
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/diagram atividades fornecedor.jpg)
+
+### Diagramas de atividades para a receita
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/diagram atividades receitas.jpg)
+
+### Diagramas de atividades para o estoque
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/diagram atividades stock.jpg)
+
+### Diagramas de atividades para vendas
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/diagram atividades vendas.jpg)
+
+### Diagrama de classes
+![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/diagram classe.png)
 
 ## Funcionalidades do Produto
 
