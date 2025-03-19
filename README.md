@@ -65,6 +65,10 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 ### Clientes - Visualizar
 ![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/Clientes%20-%20Visualizar.jpg)
 
+##Diagramas
+
+- _Diagramas de casos de uso
+
 ## Funcionalidades do Produto
 
 - _Gestão de Estoque_
