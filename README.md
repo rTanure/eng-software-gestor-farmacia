@@ -10,10 +10,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 1. [Funcionalidades do Produto](#funcionalidades-do-produto)
 2. [Protótipo de Telas.](#protótipo-de-telas)
-3. [Backlog do Produto](#backlog-do-produto)
-4. [Backlog da Sprint](#backlog-da-sprint)
-5. [Membros e Funções](#membros-e-funções)
-6. [Tecnologias](#tecnologias)
+3. [Diagramas](#diagramas)
+4. [Backlog do Produto](#backlog-do-produto)
+5. [Backlog da Sprint](#backlog-da-sprint)
+6. [Membros e Funções](#membros-e-funções)
+7. [Tecnologias](#tecnologias)
 
 ## Protótipo de Telas
 
