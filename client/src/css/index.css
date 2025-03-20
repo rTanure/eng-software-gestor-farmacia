@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
 html,
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 .BotaoMenu {
   color: white !important;
-  font-family: 'DM Sans', sans-serif !important;
+  font-family: "DM Sans", sans-serif !important;
 }
 
 .Externo {
@@ -55,12 +55,12 @@ body {
 }
 
 .Texto {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: white;
 }
 
 .TextoB {
-  font-family: 'DM Sans' !important;
+  font-family: "DM Sans" !important;
   color: black;
   font-weight: 600 !important;
 }
@@ -68,4 +68,9 @@ body {
 .imagem-logo-principal {
   max-width: 100%;
   height: auto;
+}
+
+.Texto-Top {
+  font-weight: 700 !important;
+  font-family: "DM Sans" !important;
 }
