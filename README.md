@@ -10,10 +10,11 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 1. [Funcionalidades do Produto](#funcionalidades-do-produto)
 2. [Protótipo de Telas.](#protótipo-de-telas)
-3. [Backlog do Produto](#backlog-do-produto)
-4. [Backlog da Sprint](#backlog-da-sprint)
-5. [Membros e Funções](#membros-e-funções)
-6. [Tecnologias](#tecnologias)
+3. [Diagramas](#diagramas)
+4. [Backlog do Produto](#backlog-do-produto)
+5. [Backlog da Sprint](#backlog-da-sprint)
+6. [Membros e Funções](#membros-e-funções)
+7. [Tecnologias](#tecnologias)
 
 ## Protótipo de Telas
 
@@ -64,6 +65,29 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ### Clientes - Visualizar
 ![Clientes - Visualizar](https://github.com/rTanure/eng-software-gestor-farmacia/blob/main/docs/readmeAssets/Clientes%20-%20Visualizar.jpg)
+
+## Diagramas
+
+### Diagramas de casos de uso
+![Diagram casos de uso](https://github.com/user-attachments/assets/8d899cc5-03b9-4eed-b72c-a70f1020f567)
+
+### Diagramas de atividades para o cliente
+![diagram atividades cliente](https://github.com/user-attachments/assets/c91b86cc-65d7-4c99-acde-6d68fb89c9af)
+
+### Diagramas de atividades para o fornecedor
+![diagram atividades fornecedor](https://github.com/user-attachments/assets/41ce20ab-fb64-4835-9567-02b1395dd497)
+
+### Diagramas de atividades para a receita
+![diagram atividades receitas](https://github.com/user-attachments/assets/a969a0d1-9000-4a3c-9a40-0c38d3bde2ca)
+
+### Diagramas de atividades para o estoque
+![diagram atividades stock](https://github.com/user-attachments/assets/b3d3030c-f939-465e-8755-1aba3382af7c)
+
+### Diagramas de atividades para vendas
+![diagram atividades vendas](https://github.com/user-attachments/assets/5367c01d-049e-4561-a790-5d7dececf2a1)
+
+### Diagrama de classes
+![diagram classe](https://github.com/user-attachments/assets/e39c55ad-2876-413e-8cfc-84f2c4b1c3c9)
 
 ## Funcionalidades do Produto
 
