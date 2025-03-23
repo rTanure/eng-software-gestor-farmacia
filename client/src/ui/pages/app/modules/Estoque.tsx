@@ -137,37 +137,85 @@ export default function Estoque() {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                backgroundcolor: "#4C585B",
-                border: 3,
+                bgcolor: "rgba(76, 88, 91, 1)",
                 borderRadius: 3,
-                width: "25%",
+                width: "30%",
                 height: "50%",
+                mr: 2,
               }}
             >
               <Typography
+                className="TextoB"
                 sx={{
                   ml: 3,
+                  color: "white",
                 }}
               >
                 MEDICAMENTOS
               </Typography>
-              <Box sx={{}}>
-                <TextField
+              <Box
+                sx={{
+                  width: "20%",
+                  height: "70%",
+                  mr: 3,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  className="TextoB"
                   sx={{
-                    width: "20%",
-                    height: "50%",
-                    mr: 3,
+                    color: "white",
                   }}
-                ></TextField>
+                >
+                  0
+                </Typography>
               </Box>
             </Box>
             <Box
               className="PRODUTOS"
               sx={{
-                border: 3,
-                color: "#4C585B",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                bgcolor: "rgba(76, 88, 91, 1)",
+                borderRadius: 3,
+                width: "30%",
+                height: "50%",
+                ml: 2,
               }}
-            ></Box>
+            >
+              <Typography
+                className="TextoB"
+                sx={{
+                  ml: 3,
+                  color: "white",
+                }}
+              >
+                PRODUTOS
+              </Typography>
+              <Box
+                sx={{
+                  width: "20%",
+                  height: "70%",
+                  mr: 3,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  className="TextoB"
+                  sx={{
+                    color: "white",
+                  }}
+                >
+                  0
+                </Typography>
+              </Box>
+            </Box>
           </Box>
         </Box>
         <Box
@@ -184,7 +232,14 @@ export default function Estoque() {
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
-        ></Box>
+        >
+          <Box
+            className="Primeira-Div"
+            sx={{
+              display: "flex",
+            }}
+          ></Box>
+        </Box>
       </Box>
     </Box>
   );
