@@ -78,14 +78,34 @@ export default function PermanentDrawerLeft() {
         <Divider />
         <List
           sx={{
-            mt: 3,
-          }}
+            height: '45%', mt: 3, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}
         >
           {modules.map((module, index) => (
             <ListItem key={module.label} disablePadding>
-              <ListItemButton onClick={() => navigate("/app" + module.path)}>
-                <ListItemIcon>{<module.icon />}</ListItemIcon>
-                <ListItemText primary={module.label} />
+              <ListItemButton 
+              onClick={() => navigate("/app" + module.path)} 
+              sx={{
+                  '&:hover': {
+                    backgroundColor: '#7E99A3',
+                    border: '2px solid #FFFFFF',
+                    borderRadius: '8px',
+                  },
+                  '&:active': {
+                    backgroundColor: '#7E99A3',
+                    border: '2px solid #FFFFFF',
+                    borderRadius: '8px',
+                  }
+                }}>
+                <ListItemIcon>{<module.icon sx={{color: 'white'}} />}</ListItemIcon>
+                <ListItemText 
+                primary={module.label}
+                sx={{
+                  '& .MuiListItemText-primary': {
+                    fontWeight: 'bold',
+                    color: '#FFFFFF'
+                    }
+                  }}
+                />
               </ListItemButton>
             </ListItem>
           ))}

@@ -2,6 +2,12 @@ import { Box, TextField } from "@mui/material";
 import React from "react";
 import { drawerWidth } from "../MenuLateral";
 import Typography from "@mui/material/Typography";
+import StorageIcon from "@mui/icons-material/Storage";
+import PeopleIcon from "@mui/icons-material/People";
+import SellIcon from "@mui/icons-material/Sell";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 
 export default function Estoque() {
   return (
@@ -20,54 +26,220 @@ export default function Estoque() {
       }}
     >
       <Box
+        className="wrapper"
         sx={{
-          width: "100%",
-          height: "100%",
           display: "flex",
-          border: 4,
           flexDirection: "column",
+          height: "100%",
+          width: "80%",
+          border: 4,
         }}
       >
         <Box
-          className="Logo-Estoque"
           sx={{
-            width: "80%",
-          }}
-        ></Box>
-        <Box
-          className="Título-Pagina1"
-          sx={{
-            height: "100px",
-            width: "100%",
             display: "flex",
+            flexDirection: "row",
+            border: 4,
+            width: "100%",
+            height: "13%",
+            borderRadius: 5,
+            borderColor: "#4C585B",
             alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 20,
-            margin: "20px",
+            backgroundColor: "#D9D9D9",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
           <Box
-            className="Texto-Top"
             sx={{
-              backgroundColor: "#D9D9D9",
-              width: "70%",
-              height: "100%",
-              border: 3,
-              borderColor: "#4C585B",
-              flexDirection: "column",
-              borderRadius: "20px",
               display: "flex",
-              marginLeft: "40px",
+              width: "10%",
+              height: "50%",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            CLIENTES
+            <StorageIcon
+              sx={{
+                width: "100%",
+                height: "70%",
+                color: "#1B2C44",
+              }}
+            ></StorageIcon>
+          </Box>
+          <Typography variant="h6" className="Titulo">
+            GESTÃO DE ESTOQUE
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            border: 4,
+            width: "100%",
+            height: "30%",
+            borderRadius: 5,
+            borderColor: "#4C585B",
+            backgroundColor: "#D9D9D9",
+            mt: 2.5,
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+          }}
+        >
+          <Box
+            className="Dashboard-primeira-linha"
+            sx={{
+              flexDirection: "row",
+              display: "flex",
+              alignItems: "center",
+              height: "28%",
+              width: "100%",
+              border: 3,
+              borderRadius: 4,
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                width: "10%",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <LeaderboardIcon
+                sx={{
+                  width: "100%",
+                  height: "60%",
+                  color: "#1B2C44",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              ></LeaderboardIcon>
+            </Box>
+            <Typography className="Titulo">DASHBOARD</Typography>
+          </Box>
+          <Box
+            sx={{
+              flexDirection: "row",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "72%",
+              width: "100%",
+              border: 3,
+              borderRadius: 4,
+            }}
+          >
+            <Box
+              className="MEDICAMENTOS"
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                bgcolor: "rgba(76, 88, 91, 1)",
+                borderRadius: 3,
+                width: "30%",
+                height: "50%",
+                mr: 2,
+              }}
+            >
+              <Typography
+                className="TextoB"
+                sx={{
+                  ml: 3,
+                  color: "white",
+                }}
+              >
+                MEDICAMENTOS
+              </Typography>
+              <Box
+                sx={{
+                  width: "20%",
+                  height: "70%",
+                  mr: 3,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  className="TextoB"
+                  sx={{
+                    color: "white",
+                  }}
+                >
+                  0
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              className="PRODUTOS"
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                bgcolor: "rgba(76, 88, 91, 1)",
+                borderRadius: 3,
+                width: "30%",
+                height: "50%",
+                ml: 2,
+              }}
+            >
+              <Typography
+                className="TextoB"
+                sx={{
+                  ml: 3,
+                  color: "white",
+                }}
+              >
+                PRODUTOS
+              </Typography>
+              <Box
+                sx={{
+                  width: "20%",
+                  height: "70%",
+                  mr: 3,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  className="TextoB"
+                  sx={{
+                    color: "white",
+                  }}
+                >
+                  0
+                </Typography>
+              </Box>
+            </Box>
           </Box>
         </Box>
         <Box
           sx={{
+            display: "flex",
+            flexDirection: "row",
             border: 4,
+            width: "100%",
+            height: "57%",
+            borderRadius: 5,
+            borderColor: "#4C585B",
+            alignItems: "center",
+            backgroundColor: "#D9D9D9",
+            mt: 2.5,
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
-        ></Box>
+        >
+          <Box
+            className="Primeira-Div"
+            sx={{
+              display: "flex",
+            }}
+          ></Box>
+        </Box>
       </Box>
     </Box>
   );
