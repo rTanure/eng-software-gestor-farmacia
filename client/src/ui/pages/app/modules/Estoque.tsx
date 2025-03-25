@@ -9,7 +9,7 @@ import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { SearchBar } from "../SearchBar";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 export default function Estoque() {
   return (
@@ -95,6 +95,7 @@ export default function Estoque() {
               height: "28%",
               width: "100%",
               borderRadius: 4,
+              mt: 2,
             }}
           >
             <Box
@@ -217,7 +218,7 @@ export default function Estoque() {
             </Box>
           </Box>
         </Box>
-        
+
         <Box
           sx={{
             display: "flex",
@@ -231,29 +232,31 @@ export default function Estoque() {
             backgroundColor: "#D9D9D9",
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+            justifyContent: "center",
           }}
         >
           {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-              bgcolor: '#D9D9D9',
-              borderRadius: '20px',
-              width: '100%',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              bgcolor: "#D9D9D9",
+              borderRadius: "20px",
+              width: "90%",
               height: "15%",
+              mt: 4,
             }}
           >
             {/* Barra de pesquisa */}
             <Box
-              className="Search Bar"
+              className="BarraPesquisa"
               sx={{
-                bgcolor: ' #D9D9D9',
-                border: '3px solid #1B2C44',
-                width: "70%",
+                bgcolor: " #D9D9D9",
+                border: "3px solid #1B2C44",
+                width: "78%",
                 height: "75%",
-                borderRadius: '50px',
+                borderRadius: "50px",
               }}
             >
               <SearchBar />
@@ -262,76 +265,87 @@ export default function Estoque() {
             {/* Botão de adicionar */}
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '7%',
-                height: '75%',
-                borderRadius: '10px',
-                bgcolor: '#4C585B',
-                '&:hover': {
-                  backgroundColor: '#7E99A3',
-                  border: '2px solid #FFFFFF',
-                  borderRadius: '8px',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "7%",
+                height: "75%",
+                borderRadius: "10px",
+                bgcolor: "#4C585B",
+                "&:hover": {
+                  backgroundColor: "#7E99A3",
+                  border: "2px solid #FFFFFF",
+                  borderRadius: "8px",
                 },
-                '&:active': {
-                  backgroundColor: '#7E99A3',
-                  border: '2px solid #FFFFFF',
-                  borderRadius: '8px',
-                }
-
+                "&:active": {
+                  backgroundColor: "#7E99A3",
+                  border: "2px solid #FFFFFF",
+                  borderRadius: "8px",
+                },
               }}
             >
-              <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }}>
+              <Button
+                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+              >
                 <AddCircleOutlineIcon
                   sx={{
-                    width: '100%',
-                    height: '100%',
+                    width: "100%",
+                    height: "90%",
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",
-                  }}></AddCircleOutlineIcon>
+                  }}
+                ></AddCircleOutlineIcon>
               </Button>
             </Box>
-
           </Box>
 
           {/* Histórico */}
           <Box
-            className="Clients"
+            className="Produtos"
             sx={{
-              display: 'flex',
+              display: "flex",
               alignItems: "center",
-              flexDirection: 'column',
-              bgcolor: ' #D9D9D9',
+              flexDirection: "column",
+              bgcolor: " #D9D9D9",
               borderRadius: "20px",
-              width: "100%",
+              width: "90%",
               height: "85%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
-                width: "90%",
-                height: "12%",
-                border: '2px',
-                borderRadius: '10px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '0 20px',
-                bgcolor: '#4C585B',
+                width: "100%",
+                height: "17%",
+                border: "2px",
+                borderRadius: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "0 20px",
+                bgcolor: "#4C585B",
+                mt: 2,
               }}
             >
-              <Box sx={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 'SemiBold' }}>
-                CLIENTE
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
+                PRODUTOS
               </Box>
 
-              <Box sx={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 'SemiBold' }}>
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
                 AÇÕES
               </Box>
             </Box>
-
           </Box>
         </Box>
       </Box>
