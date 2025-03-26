@@ -1,7 +1,7 @@
 package com.example.farmacia.controllers;
 
 import com.example.farmacia.dtos.ProductResponseDTO;
-import com.example.farmacia.services.StockServices;
+import com.example.farmacia.services.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.UUID;
 public class StockController {
 
     @Autowired
-    private StockServices stockService;
+    private StockService stockService;
 
     // Metodo de criação de estoque de produto
     @PostMapping("/createProduct")

@@ -14,7 +14,7 @@ import java.util.UUID;
 
 
 @Service
-public class StockServices {
+public class StockService {
 
     @Autowired
     ProductRepository productRepository;
