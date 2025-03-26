@@ -22,7 +22,7 @@ public class StockServices {
     // Metodo de criação de estoque de produto
     public ProductResponseDTO createProduct(ProductResponseDTO product) {
         // Converte o DTO para entidade
-        Product newProduct = Product.toProduct(product);
+        Product newProduct = product.toProduct();
         // Salva a entidade no banco de dados
         Product savedProduct = productRepository.save(newProduct);
         return ProductResponseDTO.fromProduct(savedProduct); // Converte a entidade para DTO e retorna
