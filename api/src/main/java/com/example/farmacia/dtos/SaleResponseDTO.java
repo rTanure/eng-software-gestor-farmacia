@@ -20,7 +20,6 @@ public class SaleResponseDTO {
     private EnumPaymenthMethod paymenthMethod; // metodo de pagamento
     private LocalDate paymenthDate;
     private int amount; // quantidade vendida
-    private double salePrice; // preço de venda
 
     // Converte a entidade para DTO
     public static SaleResponseDTO fromSale(Sale sale) {
@@ -32,7 +31,6 @@ public class SaleResponseDTO {
                 .paymenthMethod(sale.getPaymenthMethod())
                 .paymenthDate(sale.getPaymenthDate())
                 .amount(sale.getAmount())
-                .salePrice(sale.getSalePrice())
                 .build();
     }
 }

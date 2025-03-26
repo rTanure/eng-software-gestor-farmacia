@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
 public class SaleRequestDTO {
     private String nameClient; // nome do cliente
     private String nameProduct; // nome do produto
