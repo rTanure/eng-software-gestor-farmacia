@@ -35,6 +35,26 @@ public class StockServices {
         return products.map(ProductResponseDTO::fromProduct);
     }
 
+    // Metodo de ediçao de produto por id
+    public ProductResponseDTO updateProduct(UUID id, ProductResponseDTO product) {
+        // Busca o produto no banco de dados
+        Product productToUpdate = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        // Atualiza os campos do produto
+        productToUpdate.setName(product.getName());
+        productToUpdate.setCode(product.getCode());
+        productToUpdate.setBatch(product.getBatch());
+        productToUpdate.setExpirationDate(product.getExpirationDate());
+        productToUpdate.setReceivedAmount(product.getReceivedAmount());
+        productToUpdate.setPurchasePrice(product.getPurchasePrice());
+        productToUpdate.setSupplierId(product.getSupplierId());
+
+        // Salva a entidade no banco de dados
+        Product updatedProduct = productRepository.save(productToUpdate);
+        return ProductResponseDTO.fromProduct(updatedProduct); // Converte a entidade para DTO e retorna
+    }
+
     public void deleteProductById(UUID id) {
         productRepository.findById(id)
                 .ifPresentOrElse(product -> productRepository.delete(product), () -> {;
