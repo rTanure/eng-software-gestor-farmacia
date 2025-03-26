@@ -16,7 +16,15 @@ public class StockController {
     @Autowired
     private StockServices stockService;
 
-    @GetMapping("/search")
+    // Metodo de criação de estoque de produto
+    @PostMapping("/createProduct")
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductResponseDTO product) {
+        ProductResponseDTO productResponseDTO = stockService.createProduct(product);
+        return ResponseEntity.ok(productResponseDTO);
+    }
+
+    // Metodo de busca de estoque de produtos por nome
+    @GetMapping("/searchByName")
     public ResponseEntity<Page<ProductResponseDTO>> searchProduct(@RequestParam String name,
                                                                   @RequestParam(defaultValue = "0") int page,
                                                                   @RequestParam(defaultValue = "10") int size,
@@ -26,6 +34,7 @@ public class StockController {
         return ResponseEntity.ok(products);
     }
 
+    // Metodo de remoção de produto por id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
         stockService.deleteProductById(id);
