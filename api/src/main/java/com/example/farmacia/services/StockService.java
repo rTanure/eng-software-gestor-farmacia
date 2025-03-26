@@ -1,5 +1,6 @@
 package com.example.farmacia.services;
 
+import com.example.farmacia.dtos.ProductRequestDTO;
 import com.example.farmacia.dtos.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
@@ -20,9 +21,17 @@ public class StockService {
     ProductRepository productRepository;
 
     // Metodo de criação de estoque de produto
-    public ProductResponseDTO createProduct(ProductResponseDTO product) {
-        // Converte o DTO para entidade
-        Product newProduct = product.toProduct();
+    public ProductResponseDTO createProduct(ProductRequestDTO product) {
+        // Cria uma nova entidade de produto
+        Product newProduct = Product.builder()
+                .name(product.getName())
+                .code(product.getCode())
+                .batch(product.getBatch())
+                .expirationDate(product.getExpirationDate())
+                .receivedAmount(product.getReceivedAmount())
+                .purchasePrice(product.getPurchasePrice())
+                .supplierId(product.getSupplierId())
+                .build();
         // Salva a entidade no banco de dados
         Product savedProduct = productRepository.save(newProduct);
         return ProductResponseDTO.fromProduct(savedProduct); // Converte a entidade para DTO e retorna
