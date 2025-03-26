@@ -9,7 +9,6 @@ import java.util.UUID;
 @Getter
 @Setter
 public class ProductRequestDTO {
-    private UUID id; // id do produto
     private String name; // nome do produto
     private String code; // código de barras
     private String batch; // número do lote
