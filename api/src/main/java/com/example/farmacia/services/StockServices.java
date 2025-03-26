@@ -19,6 +19,15 @@ public class StockServices {
     @Autowired
     ProductRepository productRepository;
 
+    // Metodo de criação de estoque de produto
+    public ProductResponseDTO createProduct(ProductResponseDTO product) {
+        // Converte o DTO para entidade
+        Product newProduct = Product.toProduct(product);
+        // Salva a entidade no banco de dados
+        Product savedProduct = productRepository.save(newProduct);
+        return ProductResponseDTO.fromProduct(savedProduct); // Converte a entidade para DTO e retorna
+    }
+
     public Page<ProductResponseDTO> findProductsByName(String name, int page, int size, String sortBy, String order) {
         Sort.Direction direction = Sort.Direction.fromString(order);
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
