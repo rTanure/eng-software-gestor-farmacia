@@ -9,6 +9,8 @@ import com.example.farmacia.repositories.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class SaleService {
     @Autowired
@@ -49,5 +51,11 @@ public class SaleService {
 
         Sale savedSale = saleRepository.save(newSale);
         return SaleResponseDTO.fromSale(savedSale);
+    }
+
+    // Metodo para visualizar uma venda passando o id
+    public Sale getSaleById(UUID id) {
+        return saleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Venda não encontrada."));
     }
 }
