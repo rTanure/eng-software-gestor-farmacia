@@ -38,7 +38,7 @@ public class StockController {
 
     // Metodo de ediçao de produto por id
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductResponseDTO product) {
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductRequestDTO product) {
         ProductResponseDTO productResponseDTO = stockService.updateProduct(id, product);
         return ResponseEntity.ok(productResponseDTO);
     }

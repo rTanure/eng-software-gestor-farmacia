@@ -45,19 +45,19 @@ public class StockService {
     }
 
     // Metodo de ediçao de produto por id
-    public ProductResponseDTO updateProduct(UUID id, ProductResponseDTO product) {
+    public ProductResponseDTO updateProduct(UUID id, ProductRequestDTO product) {
         // Busca o produto no banco de dados
         Product productToUpdate = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        // Atualiza os campos do produto
-        productToUpdate.setName(product.getName());
-        productToUpdate.setCode(product.getCode());
-        productToUpdate.setBatch(product.getBatch());
-        productToUpdate.setExpirationDate(product.getExpirationDate());
-        productToUpdate.setReceivedAmount(product.getReceivedAmount());
-        productToUpdate.setPurchasePrice(product.getPurchasePrice());
-        productToUpdate.setSupplierId(product.getSupplierId());
+        // Atualiza os campos do produto(apenas os campos que foram passados no DTO)
+        if(product.getName() != null) productToUpdate.setName(product.getName());
+        if(product.getCode() != null) productToUpdate.setCode(product.getCode());
+        if(product.getBatch() != null) productToUpdate.setBatch(product.getBatch());
+        if(product.getExpirationDate() != null) productToUpdate.setExpirationDate(product.getExpirationDate());
+        if(product.getReceivedAmount() != 0) productToUpdate.setReceivedAmount(product.getReceivedAmount());
+        if(product.getPurchasePrice() != 0) productToUpdate.setPurchasePrice(product.getPurchasePrice());
+        if(product.getSupplierId() != null) productToUpdate.setSupplierId(product.getSupplierId());
 
         // Salva a entidade no banco de dados
         Product updatedProduct = productRepository.save(productToUpdate);
