@@ -23,6 +23,25 @@ public class Product {
     private String batch; // número do lote
     private UUID supplierId; // id do fornecedor
     private LocalDate expirationDate; // data de validade
-    private int receivedAmount; // quantidade recebida
+    private int receivedAmount; // quantidade recebida inicialmente
     private double purchasePrice; // preço de compra
+
+    // Controle de quantidade em estoque
+    private int currentAmount; // quantidade atual
+
+    // Metodos para adicionar e remover quantidade do estoque
+    public void addAmount(int amount) {
+        if(amount >= receivedAmount) {
+            throw new RuntimeException("Quantidade a ser adicionada é maior que a quantidade recebida.");
+        } else {
+            currentAmount += amount;
+        }
+    }
+    public void removeAmount(int amount) {
+        if(amount >= currentAmount) {
+            throw new RuntimeException("Quantidade a ser removida é maior que a quantidade atual.");
+        } else {
+            currentAmount -= amount;
+        }
+    }
 }
