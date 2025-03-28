@@ -9,9 +9,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 
 import java.time.Instant;
 import java.util.UUID;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,16 +25,7 @@ public class ClientService {
 
     public void save(ClientCreatRequestDTO clientCreatRequestDTO) {
 
-        var entity = new Client(UUID.randomUUID(),
-                null,
-                clientCreatRequestDTO.getName(),
-                clientCreatRequestDTO.getCpf(),
-                clientCreatRequestDTO.getEmail(),
-                clientCreatRequestDTO.getPhoneNumber(),
-                clientCreatRequestDTO.getDateOfBirth(),
-                clientCreatRequestDTO.getSex(),
-                Instant.now(),
-                null);
+        var entity = clientCreatRequestDTO.toModel();
 
         if (clientRepository.findByCpf(clientCreatRequestDTO.getCpf()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente já cadastrado");
@@ -39,24 +34,23 @@ public class ClientService {
         clientRepository.save(entity);
     }
 
-    public Client findByCpf(ClientFilterRequestDTO clientFilterRequestDTO) {
-
-        Client c = clientRepository.findByCpf(clientFilterRequestDTO.getCpf());
-
-        if (c == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF não encontrado");
-        }
-        return c;
+    public List<Client> listClients() {
+        return clientRepository.findAll();
     }
 
-    public Client findByName(ClientFilterRequestDTO clientFilterRequestDTO) {
+    public List<Client> findByFilter(ClientFilterRequestDTO clientFilterRequestDTO) {
+        Client c = new Client();
 
-        Client c = clientRepository.findByName(clientFilterRequestDTO.getName());
+        BeanUtils.copyProperties(c, clientFilterRequestDTO);
 
-        if (c == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome não encontrado");
-        }
-        return c;
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIgnoreCase()
+                .withIgnoreNullValues()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+
+        Example<Client> example = Example.of(c, matcher);
+
+        return clientRepository.findAll(example);
     }
 
     public void deleteById(UUID id) {
@@ -73,7 +67,7 @@ public class ClientService {
         var client = clientRepository.findById(id);
 
         if (client.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado");
         }
 
         var c = client.get();
