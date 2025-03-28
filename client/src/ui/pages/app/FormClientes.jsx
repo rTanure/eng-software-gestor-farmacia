@@ -33,17 +33,40 @@ TextMaskCustom.propTypes = {
     onChange: PropTypes.func.isRequired,
 };
 
+const TextMaskCPF = React.forwardRef(function TextMaskCPF(props, ref) {
+    const { onChange, ...other } = props;
+    return (
+        <IMaskInput
+            {...other}
+            mask="000.000.000-00"
+            definitions={{ "0": /[0-9]/ }}
+            inputRef={ref}
+            onAccept={(value) => onChange({ target: { name: props.name, value } })}
+            overwrite
+        />
+    );
+});
+
+TextMaskCPF.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+};
+
 const Input = styled("input")({
     display: "none",
 });
 
-export const FormAdd = () => {
-    const [values, setValues] = useState({ textmask: "" });
+export const FormClientes = () => {
+    const [values, setValues] = useState({ textmask: "", cpf: "" });
     const [birthdate, setBirthdate] = useState(null);
     const [gender, setGender] = useState("");
 
+
     const handleChange = (event) => {
-        setValues({ ...values, [event.target.name]: event.target.value });
+        setValues((prevValues) => ({
+            ...prevValues,
+            [event.target.name]: event.target.value,
+        }));
     };
 
     return (
@@ -61,8 +84,8 @@ export const FormAdd = () => {
                 className="main"
                 sx={{
                     display: "flex",
-                    height: "95%",
-                    width: "90%",
+                    height: "100%",
+                    width: "100%",
                     flexDirection: "row",
                     overflow: "auto",
                     borderRadius: 10,
@@ -116,7 +139,11 @@ export const FormAdd = () => {
                             placeholder="CPF"
                             variant="outlined"
                             margin="normal"
+                            value={values.cpf}
+                            onChange={handleChange}
+                            name="cpf"
                             InputProps={{
+                                inputComponent: TextMaskCPF,
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <BadgeOutlinedIcon fontSize="small" />
@@ -132,12 +159,13 @@ export const FormAdd = () => {
                             selected={birthdate}
                             onChange={(date) => setBirthdate(date)}
                             dateFormat="dd/MM/yyyy"
+                            placeholderText="Nascimento"
                             customInput={
                                 <TextField
                                     fullWidth
-                                    placeholder="Nascimento"
                                     variant="outlined"
                                     margin="normal"
+                                    style={{ width: "395px" }}  
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -203,8 +231,8 @@ export const FormAdd = () => {
                                     <label htmlFor="icon-button-file">
                                         <InputAdornment position="start">
                                             <Input accept="application/pdf" id="icon-button-file" type="file" />
-                                            <IconButton color="primary" aria-label="upload pdf" component="span" sx={{ marginLeft: -1}}>
-                                                <PictureAsPdfOutlineIcon fontSize="small" sx={{ color: "gray" }} /> 
+                                            <IconButton color="primary" aria-label="upload pdf" component="span" sx={{ marginLeft: -1 }}>
+                                                <PictureAsPdfOutlineIcon fontSize="small" sx={{ color: "gray" }} />
                                             </IconButton>
                                         </InputAdornment>
                                     </label>

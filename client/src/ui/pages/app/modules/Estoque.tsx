@@ -10,8 +10,11 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { SearchBar } from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { useNavigate } from "react-router";
 
 export default function Estoque() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -268,25 +271,20 @@ export default function Estoque() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "7%",
+                width: "8%",
                 height: "75%",
                 borderRadius: "10px",
                 bgcolor: "#4C585B",
+                '& .MuiTouchRipple-root': {
+                  color: '#FFFFFF'
+                },
                 "&:hover": {
                   backgroundColor: "#7E99A3",
                   border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
-                },
-                "&:active": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
                 },
               }}
             >
-              <Button
-                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
-              >
+              <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }} onClick={() => navigate("cadastro")}>
                 <AddCircleOutlineIcon
                   sx={{
                     width: "100%",

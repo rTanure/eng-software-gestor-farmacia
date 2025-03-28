@@ -8,7 +8,8 @@ import Fornecedores from './modules/Fornecedores';
 import Vendas from './modules/Vendas';
 import Receita from './modules/Receita';
 import Clientes from './modules/Clientes';
-import { FormAdd } from './FormAdd';
+import AdicionarClientes from './modules/AddCliente';
+import AdicionarProduto from './modules/AddProduto';
 
 export const modules = [
   {
@@ -43,6 +44,10 @@ export const modules = [
   },
   {
     "path": "/clientes/cadastro",
-    "component": FormAdd
-  }
+    "component": AdicionarClientes
+  },
+  {
+    "path": "/estoque/cadastro",
+    "component": AdicionarProduto
+  },
 ]

@@ -1,17 +1,18 @@
 /* Altera o estilo do contorno (borda) do input */
 .MuiOutlinedInput-root {
     border-radius: 10px !important;
+    background-color: #FFFFFF;
 }
 
 /* Estiliza a borda padrão */
 .MuiOutlinedInput-notchedOutline {
     border-color: #1B2C44 !important;
-    border-width: 3px !important; /* Ajusta a espessura da borda */
+    border-width: 3px !important; 
 }
 
 /* Quando o campo estiver focado */
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: none !important; /* Cor da borda ao focar */
+    border-color: none !important; 
 }
 
 /* Se quiser mudar a cor do texto dentro do input */

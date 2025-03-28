@@ -122,17 +122,13 @@ export default function Clientes() {
                 height: '50%',
                 borderRadius: '10px',
                 bgcolor: '#4C585B',
+                '& .MuiTouchRipple-root': {
+                  color: '#FFFFFF'
+                },
                 '&:hover': {
                   backgroundColor: '#7E99A3',
                   border: '2px solid #FFFFFF',
-                  borderRadius: '8px',
-                },
-                '&:active': {
-                  backgroundColor: '#7E99A3',
-                  border: '2px solid #FFFFFF',
-                  borderRadius: '8px',
                 }
-
               }}
             >
               <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }} onClick={() => navigate("cadastro")}>
@@ -184,7 +180,7 @@ export default function Clientes() {
                 AÇÕES
               </Box>
             </Box>
-  
+
           </Box>
         </Box>
 
