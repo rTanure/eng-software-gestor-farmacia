@@ -80,7 +80,7 @@ export default function PermanentDrawerLeft() {
           sx={{
             height: '45%', mt: 3, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}
         >
-          {modules.map((module, index) => (
+          {modules.filter(e => !!e.icon && !!e.label).map((module, index) => (
             <ListItem key={module.label} disablePadding>
               <ListItemButton 
               onClick={() => navigate("/app" + module.path)} 
