@@ -5,8 +5,11 @@ import Typography from "@mui/material/Typography";
 import PeopleIcon from "@mui/icons-material/People";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { SearchBar } from "../SearchBar";
+import { useNavigate } from "react-router";
 
 export default function Clientes() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -132,7 +135,7 @@ export default function Clientes() {
 
               }}
             >
-              <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }}>
+              <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }} onClick={() => navigate("cadastro")}>
                 <AddCircleOutlineIcon
                   sx={{
                     width: '100%',
