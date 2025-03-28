@@ -1,9 +1,12 @@
 package com.example.farmacia.entidades;
 
+import com.example.farmacia.enums.EnumGender;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -23,10 +26,10 @@ public class Client {
     private String cpf;
     private String email;
     private String phoneNumber;
-    private Date dateOfBirth;
-    private String sex;
-    private Instant creationDate;
-    private Instant updateDate;
+    private LocalDate dateOfBirth;
+    private EnumGender gender;
+    private LocalDateTime creationDate;
+    private LocalDateTime updateDate;
 
 
 }

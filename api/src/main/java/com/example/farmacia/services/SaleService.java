@@ -6,18 +6,18 @@ import com.example.farmacia.entidades.Product;
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.repositories.ProductRepository;
 import com.example.farmacia.repositories.SaleRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class SaleService {
-    @Autowired
-    private SaleRepository saleRepository;
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final SaleRepository saleRepository;
+    private final ProductRepository productRepository;
 
     // Metodo para salvar uma venda
     public SaleResponseDTO saveSale(SaleRequestDTO saleRequestDTO) {

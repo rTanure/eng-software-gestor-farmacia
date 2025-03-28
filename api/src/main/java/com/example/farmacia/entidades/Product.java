@@ -23,8 +23,8 @@ public class Product {
     private String batch; // número do lote
     private UUID supplierId; // id do fornecedor
     private LocalDate expirationDate; // data de validade
-    private int receivedAmount; // quantidade recebida
-    private double purchasePrice; // preço de compra
+    private Integer receivedAmount; // quantidade recebida
+    private Double purchasePrice; // preço de compra
 
     // Controle de quantidade em estoque
     // Metodos para adicionar e remover quantidade do estoque

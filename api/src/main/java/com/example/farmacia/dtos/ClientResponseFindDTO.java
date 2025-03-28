@@ -1,6 +1,10 @@
 package com.example.farmacia.dtos;
 
+import com.example.farmacia.enums.EnumGender;
+
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,8 +14,8 @@ public class ClientResponseFindDTO {
     private String cpf;
     private String email;
     private String phoneNumber;
-    private Date dateOfBirth;
-    private String sex;
-    private Instant creationDate;
-    private Instant lastUpdateDate;
+    private LocalDate dateOfBirth;
+    private EnumGender gender;
+    private LocalDateTime creationDate;
+    private LocalDateTime lastUpdateDate;
 }
