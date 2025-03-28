@@ -1,6 +1,13 @@
-import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
-import React, { FC, ReactNode, useState } from 'react';
-import PermanentDrawerLeft from './MenuLateral';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { FC, ReactNode, useState } from "react";
+import PermanentDrawerLeft from "./MenuLateral";
 
 interface AppContainerProps {
   children: ReactNode;
@@ -13,15 +20,15 @@ const AppContainer = (props: AppContainerProps) => {
         className="papel-de-parede"
         sx={{
           backgroundImage: 'url("/img/background.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          minHeight: '340vh',
-          border: 'none',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          minHeight: "100vh",
+          border: "none",
           margin: 0,
           padding: 0,
-          boxSizing: 'border-box',
-          position: 'absolute',
+          boxSizing: "border-box",
+          position: "absolute",
           top: 0,
           left: 0,
           right: 0,
