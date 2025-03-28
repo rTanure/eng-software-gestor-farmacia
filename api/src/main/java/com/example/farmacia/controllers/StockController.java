@@ -1,9 +1,11 @@
 package com.example.farmacia.controllers;
 
+import com.example.farmacia.dtos.ProductRequestDTO;
 import com.example.farmacia.dtos.ProductResponseDTO;
-import com.example.farmacia.services.StockServices;
+import com.example.farmacia.services.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,13 +16,13 @@ import java.util.UUID;
 public class StockController {
 
     @Autowired
-    private StockServices stockService;
+    private StockService stockService;
 
     // Metodo de criação de estoque de produto
     @PostMapping("/createProduct")
-    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductResponseDTO product) {
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductRequestDTO product) {
         ProductResponseDTO productResponseDTO = stockService.createProduct(product);
-        return ResponseEntity.ok(productResponseDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productResponseDTO);
     }
 
     // Metodo de busca de estoque de produtos por nome
@@ -36,7 +38,7 @@ public class StockController {
 
     // Metodo de ediçao de produto por id
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductResponseDTO product) {
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductRequestDTO product) {
         ProductResponseDTO productResponseDTO = stockService.updateProduct(id, product);
         return ResponseEntity.ok(productResponseDTO);
     }

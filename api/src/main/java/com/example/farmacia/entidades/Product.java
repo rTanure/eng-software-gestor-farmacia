@@ -25,4 +25,21 @@ public class Product {
     private LocalDate expirationDate; // data de validade
     private int receivedAmount; // quantidade recebida
     private double purchasePrice; // preço de compra
+
+    // Controle de quantidade em estoque
+    // Metodos para adicionar e remover quantidade do estoque
+    public void addAmount(int amount) {
+        if(amount > receivedAmount) {
+            throw new RuntimeException("Quantidade a ser adicionada é maior que a quantidade recebida.");
+        } else {
+            receivedAmount += amount;
+        }
+    }
+    public void removeAmount(int amount) {
+        if(amount > receivedAmount) {
+            throw new RuntimeException("Quantidade a ser removida é maior que a quantidade atual.");
+        } else {
+            receivedAmount -= amount;
+        }
+    }
 }
