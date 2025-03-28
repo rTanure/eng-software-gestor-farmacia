@@ -1,5 +1,6 @@
 package com.example.farmacia.entidades;
 
+import com.example.farmacia.enums.EnumGender;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,7 +27,7 @@ public class Client {
     private String email;
     private String phoneNumber;
     private LocalDate dateOfBirth;
-    private String sex;
+    private EnumGender gender;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
 

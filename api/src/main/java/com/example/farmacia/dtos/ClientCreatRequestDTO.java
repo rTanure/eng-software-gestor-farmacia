@@ -1,11 +1,11 @@
 package com.example.farmacia.dtos;
 
 import com.example.farmacia.entidades.Client;
+import com.example.farmacia.enums.EnumGender;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -15,7 +15,7 @@ public class ClientCreatRequestDTO {
     private String email;
     private String phoneNumber;
     private LocalDate dateOfBirth;
-    private String sex;
+    private EnumGender gender;
 
     public Client toModel(){
         return Client.builder()
@@ -24,7 +24,7 @@ public class ClientCreatRequestDTO {
                 .phoneNumber(this.phoneNumber)
                 .dateOfBirth(this.dateOfBirth)
                 .cpf(this.cpf)
-                .sex(this.sex)
+                .gender(this.gender)
                 .build();
     }
 }

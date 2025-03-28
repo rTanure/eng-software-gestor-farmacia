@@ -85,8 +85,8 @@ public class ClientService {
             c.setDateOfBirth(clientUpdateDTO.getDateOfBirth());
         }
 
-        if (clientUpdateDTO.getSex() != null) {
-            c.setSex(clientUpdateDTO.getSex());
+        if (clientUpdateDTO.getGender() != null) {
+            c.setGender(clientUpdateDTO.getGender());
         }
 
         c.setUpdateDate(LocalDateTime.now());
