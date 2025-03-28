@@ -24,6 +24,6 @@ public class Sale {
     private String codeProduct; // código de barras
     private EnumPaymenthMethod paymenthMethod; // metodo de pagamento
     private LocalDate paymenthDate;
-    private int amount; // quantidade vendida
-    private double salePrice; // preço de venda
+    private Integer amount; // quantidade vendida
+    private Double salePrice; // preço de venda
 }

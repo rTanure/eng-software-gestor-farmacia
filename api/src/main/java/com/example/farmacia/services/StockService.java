@@ -4,6 +4,7 @@ import com.example.farmacia.dtos.ProductRequestDTO;
 import com.example.farmacia.dtos.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,10 +16,10 @@ import java.util.UUID;
 
 
 @Service
+@RequiredArgsConstructor
 public class StockService {
 
-    @Autowired
-    ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     // Metodo de criação de estoque de produto
     public ProductResponseDTO createProduct(ProductRequestDTO product) {

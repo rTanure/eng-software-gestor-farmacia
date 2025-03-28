@@ -14,6 +14,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.List;
 
@@ -88,7 +89,7 @@ public class ClientService {
             c.setSex(clientUpdateDTO.getSex());
         }
 
-        c.setUpdateDate(Instant.now());
+        c.setUpdateDate(LocalDateTime.now());
 
         clientRepository.save(c);
     }

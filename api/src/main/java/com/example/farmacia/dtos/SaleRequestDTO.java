@@ -16,5 +16,5 @@ public class SaleRequestDTO {
     private String codeProduct; // código de barras
     private EnumPaymenthMethod paymenthMethod; // metodo de pagamento
     private LocalDate paymenthDate;
-    private int amount; // quantidade vendida
+    private Integer amount; // quantidade vendida
 }

@@ -14,6 +14,6 @@ public class ProductRequestDTO {
     private String batch; // número do lote
     private UUID supplierId; // id do fornecedor
     private LocalDate expirationDate; // data de validade
-    private int receivedAmount; // quantidade recebida inicialmente
-    private double purchasePrice; // preço de compra
+    private Integer receivedAmount; // quantidade recebida inicialmente
+    private Double purchasePrice; // preço de compra
 }

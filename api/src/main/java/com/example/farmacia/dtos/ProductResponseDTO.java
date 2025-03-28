@@ -17,8 +17,8 @@ public class ProductResponseDTO {
     private String code;
     private String batch;
     private LocalDate expirationDate;
-    private int receivedAmount;
-    private double purchasePrice;
+    private Integer receivedAmount;
+    private Double purchasePrice;
     private UUID supplierId;
 
     // Converte a entidade para DTO

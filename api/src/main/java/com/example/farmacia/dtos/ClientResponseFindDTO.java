@@ -1,6 +1,8 @@
 package com.example.farmacia.dtos;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,8 +12,8 @@ public class ClientResponseFindDTO {
     private String cpf;
     private String email;
     private String phoneNumber;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String sex;
-    private Instant creationDate;
-    private Instant lastUpdateDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime lastUpdateDate;
 }

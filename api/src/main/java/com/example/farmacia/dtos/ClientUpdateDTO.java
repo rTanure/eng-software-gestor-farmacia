@@ -3,13 +3,13 @@ package com.example.farmacia.dtos;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 public class ClientUpdateDTO {
     private String name;
     private String phoneNumber;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String sex;
 }

@@ -4,6 +4,7 @@ import com.example.farmacia.entidades.Client;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,7 +14,7 @@ public class ClientCreatRequestDTO {
     private String name;
     private String email;
     private String phoneNumber;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String sex;
 
     public Client toModel(){

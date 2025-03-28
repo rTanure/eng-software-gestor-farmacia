@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -23,10 +25,10 @@ public class Client {
     private String cpf;
     private String email;
     private String phoneNumber;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String sex;
-    private Instant creationDate;
-    private Instant updateDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime updateDate;
 
 
 }
