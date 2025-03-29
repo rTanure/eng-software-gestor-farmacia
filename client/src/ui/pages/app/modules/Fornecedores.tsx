@@ -79,7 +79,7 @@ export default function Fornecedores() {
             flexDirection: "column",
             border: 3,
             width: "100%",
-            height: "57%",
+            height: "100%",
             borderRadius: 5,
             borderColor: "#4C585B",
             alignItems: "center",
@@ -96,7 +96,7 @@ export default function Fornecedores() {
               bgcolor: "#D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "15%",
+              height: "10%",
               mt: 4,
             }}
           >
@@ -161,14 +161,14 @@ export default function Fornecedores() {
               bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "85%",
+              height: "95%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
                 width: "100%",
-                height: "17%",
+                height: "10%",
                 border: "2px",
                 borderRadius: "10px",
                 display: "flex",
@@ -185,7 +185,7 @@ export default function Fornecedores() {
                   color: "white",
                 }}
               >
-                FORNECEDORES
+                FORNECEDOR
               </Box>
 
               <Box
