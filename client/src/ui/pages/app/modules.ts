@@ -8,7 +8,9 @@ import Fornecedores from "./modules/Fornecedores";
 import Vendas from "./modules/Vendas";
 import Receita from "./modules/Receita";
 import Clientes from "./modules/Clientes";
+import EstoqueAdd from "./modules/EstoqueAdd";
 import { FormAdd } from "./FormAdd";
+import { path } from "framer-motion/client";
 
 export const modules = [
   {
@@ -44,5 +46,9 @@ export const modules = [
   {
     path: "/clientes/cadastro",
     component: FormAdd,
+  },
+  {
+    path: "/estoque/adicionar",
+    component: EstoqueAdd,
   },
 ];

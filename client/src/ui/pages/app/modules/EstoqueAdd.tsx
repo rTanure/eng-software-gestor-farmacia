@@ -140,13 +140,13 @@ export default function EstoqueAdd() {
               }}
             >
               <Button
-                onClick={() => navigate("/")}
                 sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                onClick={() => navigate("adicionar")}
               >
                 <AddCircleOutlineIcon
                   sx={{
                     width: "100%",
-                    height: "90%",
+                    height: "100%",
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",

@@ -11,7 +11,6 @@ export const RouterAuth = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<div>Not Found</div>} />
-      <Route path="/estoqueadd" element={<EstoqueAdd />} />
     </Routes>
   );
 };
