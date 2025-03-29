@@ -1,14 +1,20 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.response;
 
 import com.example.farmacia.enums.EnumGender;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
-public class ClientResponseFindDTO {
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class ClientResponseDTO {
     private UUID id;
     private String name;
     private String cpf;
@@ -17,5 +23,5 @@ public class ClientResponseFindDTO {
     private LocalDate dateOfBirth;
     private EnumGender gender;
     private LocalDateTime creationDate;
-    private LocalDateTime lastUpdateDate;
+    private LocalDateTime updateDate;
 }

@@ -1,7 +1,7 @@
 package com.example.farmacia.services;
 
-import com.example.farmacia.dtos.SaleRequestDTO;
-import com.example.farmacia.dtos.SaleResponseDTO;
+import com.example.farmacia.dtos.request.SaleRequestDTO;
+import com.example.farmacia.dtos.response.SaleResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.repositories.ProductRepository;

@@ -1,12 +1,10 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.request;
 
 import com.example.farmacia.enums.EnumPaymenthMethod;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Getter
 @Setter

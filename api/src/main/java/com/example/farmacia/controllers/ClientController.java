@@ -1,6 +1,9 @@
 package com.example.farmacia.controllers;
 
-import com.example.farmacia.dtos.*;
+import com.example.farmacia.dtos.request.ClientCreatRequestDTO;
+import com.example.farmacia.dtos.request.ClientFilterRequestDTO;
+import com.example.farmacia.dtos.request.ClientUpdateRequestDTO;
+import com.example.farmacia.dtos.response.ClientResponseDTO;
 import com.example.farmacia.services.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -28,10 +31,9 @@ public class ClientController {
     @GetMapping("/find")
     public ResponseEntity<List<ClientResponseFindDTO>> getClient(@ModelAttribute ClientFilterRequestDTO clientFilterRequestDTO){
         var clients = clientService.findByFilter(clientFilterRequestDTO);
-
-        List<ClientResponseFindDTO> clientDTOs = clients.stream()
+        List<ClientResponseDTO> clientDTOs = clients.stream()
                 .map(client -> {
-                    ClientResponseFindDTO dto = new ClientResponseFindDTO();
+                    ClientResponseDTO dto = new ClientResponseDTO();
                     BeanUtils.copyProperties(client, dto);
                     return dto;
                 })

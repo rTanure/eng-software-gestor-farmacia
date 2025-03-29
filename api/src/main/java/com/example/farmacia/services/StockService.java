@@ -1,7 +1,7 @@
 package com.example.farmacia.services;
 
-import com.example.farmacia.dtos.ProductRequestDTO;
-import com.example.farmacia.dtos.ProductResponseDTO;
+import com.example.farmacia.dtos.request.ProductRequestDTO;
+import com.example.farmacia.dtos.response.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
