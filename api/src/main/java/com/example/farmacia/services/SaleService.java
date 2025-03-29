@@ -7,8 +7,9 @@ import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.repositories.ProductRepository;
 import com.example.farmacia.repositories.SaleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
@@ -24,11 +25,11 @@ public class SaleService {
         Product products = productRepository.findByCode(saleRequestDTO.getCodeProduct());
 
         if(products == null) {
-            throw new RuntimeException("Produto não encontrado");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
         }
 
         if(products.getReceivedAmount() < saleRequestDTO.getAmount()) {
-            throw new RuntimeException("Quantidade insuficiente em estoque");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade insuficiente em estoque");
         } else {
             products.removeAmount(saleRequestDTO.getAmount());
         }
@@ -56,6 +57,6 @@ public class SaleService {
     // Metodo para visualizar uma venda passando o id
     public Sale getSaleById(UUID id) {
         return saleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Venda não encontrada."));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Venda não encontrada."));
     }
 }
