@@ -22,6 +22,7 @@ public class Sale {
     private String nameClient; // nome do cliente
     private String nameProduct; // nome do produto
     private String codeProduct; // código de barras
+    @Enumerated(EnumType.STRING)
     private EnumPaymenthMethod paymenthMethod; // metodo de pagamento
     private LocalDate paymenthDate;
     private Integer amount; // quantidade vendida
