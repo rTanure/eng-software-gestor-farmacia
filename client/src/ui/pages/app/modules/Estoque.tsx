@@ -311,14 +311,14 @@ export default function Estoque() {
               bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "85%",
+              height: "20%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
                 width: "100%",
-                height: "17%",
+                height: "100%",
                 border: "2px",
                 borderRadius: "10px",
                 display: "flex",
@@ -347,18 +347,25 @@ export default function Estoque() {
                 AÇÕES
               </Box>
             </Box>
+          </Box>
+          <Box
+            sx={{
+              width: "90%",
+              height: "70%",
+            }}
+          >
             {/* Produtos */}
-
             <Box
               sx={{
                 width: "100%",
                 height: "100%",
+                mt: 2,
               }}
             >
               <Box
                 sx={{
                   width: "100%",
-                  height: "20%",
+                  height: "25%",
                   border: 2,
                   borderRadius: "10px",
                 }}
