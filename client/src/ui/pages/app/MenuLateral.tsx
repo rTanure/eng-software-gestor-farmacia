@@ -33,7 +33,7 @@ export default function PermanentDrawerLeft() {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          '& .MuiDrawer-paper': {
+        '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
             bgcolor: '#4C585B',

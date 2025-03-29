@@ -6,6 +6,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { SearchBar } from "../SearchBar";
 import { useNavigate } from "react-router";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 export default function Clientes() {
   const navigate = useNavigate();
@@ -58,13 +59,13 @@ export default function Clientes() {
               justifyContent: "center",
             }}
           >
-            <PeopleIcon
+            <PersonAddIcon
               sx={{
                 width: "80%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            ></PeopleIcon>
+            ></PersonAddIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
             CLIENTES
