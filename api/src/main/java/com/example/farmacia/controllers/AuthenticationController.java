@@ -1,9 +1,9 @@
 package com.example.farmacia.controllers;
 
-import com.example.farmacia.dtos.AuthenticationRequestDTO;
-import com.example.farmacia.dtos.LoginResponseDTO;
-import com.example.farmacia.dtos.ResgisterRequestDTO;
-import com.example.farmacia.dtos.UserResponseDTO;
+import com.example.farmacia.dtos.request.AuthenticationRequestDTO;
+import com.example.farmacia.dtos.response.LoginResponseDTO;
+import com.example.farmacia.dtos.request.ResgisterRequestDTO;
+import com.example.farmacia.dtos.response.UserResponseDTO;
 import com.example.farmacia.infra.security.TokenService;
 import com.example.farmacia.entidades.User;
 import com.example.farmacia.repositories.UserRepositorio;

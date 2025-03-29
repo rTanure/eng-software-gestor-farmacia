@@ -1,4 +1,4 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.response;
 
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.enums.EnumPaymenthMethod;

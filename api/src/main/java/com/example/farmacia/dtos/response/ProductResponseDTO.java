@@ -1,4 +1,4 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.response;
 
 import com.example.farmacia.entidades.Product;
 import lombok.Builder;

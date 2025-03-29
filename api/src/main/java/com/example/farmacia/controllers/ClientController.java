@@ -1,6 +1,9 @@
 package com.example.farmacia.controllers;
 
-import com.example.farmacia.dtos.*;
+import com.example.farmacia.dtos.request.ClientCreatRequestDTO;
+import com.example.farmacia.dtos.request.ClientFilterRequestDTO;
+import com.example.farmacia.dtos.request.ClientUpdateRequestDTO;
+import com.example.farmacia.dtos.response.ClientResponseDTO;
 import com.example.farmacia.services.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -8,64 +11,50 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/client")
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
-public class ClientController {
-
-
+public class ClientController implements IClientController {
     private final ClientService clientService;
 
-    @PostMapping()
-    public ResponseEntity<Void> addNewClient(@RequestBody ClientCreatRequestDTO clientCreatRequestDTO) {
-        clientService.save(clientCreatRequestDTO);
+    public ResponseEntity<Void> createClient(@RequestBody ClientCreatRequestDTO clientCreatRequestDTO) {
+        clientService.createClient(clientCreatRequestDTO);
 
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<List<ClientResponseFindDTO>> getClient(@ModelAttribute ClientFilterRequestDTO clientFilterRequestDTO){
+    public ResponseEntity<List<ClientResponseDTO>> listClients(@ModelAttribute ClientFilterRequestDTO clientFilterRequestDTO){
         var clients = clientService.findByFilter(clientFilterRequestDTO);
-
-        List<ClientResponseFindDTO> clientDTOs = clients.stream()
+        List<ClientResponseDTO> clientDTOs = clients.stream()
                 .map(client -> {
-                    ClientResponseFindDTO dto = new ClientResponseFindDTO();
+                    ClientResponseDTO dto = new ClientResponseDTO();
                     BeanUtils.copyProperties(client, dto);
                     return dto;
                 })
                 .toList();
-
         return ResponseEntity.ok(clientDTOs);
     }
 
-    @GetMapping
-    public ResponseEntity<List<ClientResponseFindDTO>> getAllClients() {
-        var clients = clientService.listClients();
+    public ResponseEntity<ClientResponseDTO> getClient(@PathVariable UUID id) {
+        var client = clientService.getClient(id);
+        ClientResponseDTO dto = new ClientResponseDTO();
 
-        List<ClientResponseFindDTO> clientDTOs = clients.stream()
-                .map(client -> {
-                    ClientResponseFindDTO dto = new ClientResponseFindDTO();
-                    BeanUtils.copyProperties(client, dto);
-                    return dto;
-                })
-                .toList();
+        BeanUtils.copyProperties(client, dto);
 
-        return ResponseEntity.ok(clientDTOs);
+        return ResponseEntity.ok(dto);
     }
 
-    @PutMapping("/{clientId}")
-    public ResponseEntity<Void> updateClientById(@PathVariable("clientId") String userId,
-                                                 @RequestBody ClientUpdateDTO clientUpdateDTO) {
-        clientService.updateClientById(userId, clientUpdateDTO);
+    public ResponseEntity<Void> updateClientById(@RequestBody ClientUpdateRequestDTO clientUpdateRequestDTO) {
+        clientService.updateClientById(clientUpdateRequestDTO);
 
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<Void> deleteClient(@RequestParam ClientDeleteDTO clientDeleteDTO) {
-        clientService.deleteById(clientDeleteDTO.getId());
+    public ResponseEntity<Void> deleteClient(@PathVariable UUID id) {
+        clientService.deleteById(id);
 
         return ResponseEntity.ok().build();
     }

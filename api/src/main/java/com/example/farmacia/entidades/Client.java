@@ -4,10 +4,8 @@ import com.example.farmacia.enums.EnumGender;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -27,6 +25,7 @@ public class Client {
     private String email;
     private String phoneNumber;
     private LocalDate dateOfBirth;
+    @Enumerated(EnumType.STRING)
     private EnumGender gender;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;

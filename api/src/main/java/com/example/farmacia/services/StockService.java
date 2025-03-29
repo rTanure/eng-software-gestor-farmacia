@@ -1,16 +1,17 @@
 package com.example.farmacia.services;
 
-import com.example.farmacia.dtos.ProductRequestDTO;
-import com.example.farmacia.dtos.ProductResponseDTO;
+import com.example.farmacia.dtos.request.ProductRequestDTO;
+import com.example.farmacia.dtos.response.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
@@ -49,7 +50,7 @@ public class StockService {
     public ProductResponseDTO updateProduct(UUID id, ProductRequestDTO product) {
         // Busca o produto no banco de dados
         Product productToUpdate = productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado"));
 
         // Atualiza os campos do produto(apenas os campos que foram passados no DTO)
         if(product.getName() != null) productToUpdate.setName(product.getName());
@@ -67,8 +68,8 @@ public class StockService {
 
     public void deleteProductById(UUID id) {
         productRepository.findById(id)
-                .ifPresentOrElse(product -> productRepository.delete(product), () -> {;
-                    throw new RuntimeException("Produto não encontrado");
+                .ifPresentOrElse(productRepository::delete, () -> {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
                 });
     }
 }

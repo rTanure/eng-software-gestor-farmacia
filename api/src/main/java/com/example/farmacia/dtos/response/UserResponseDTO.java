@@ -1,4 +1,4 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.response;
 
 import com.example.farmacia.enums.EnumUserRoles;
 import com.example.farmacia.entidades.User;

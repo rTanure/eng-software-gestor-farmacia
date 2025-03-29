@@ -1,4 +1,4 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +7,6 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class ClientDeleteDTO {
+public class ClientDeleteRequestDTO {
     private UUID id;
 }

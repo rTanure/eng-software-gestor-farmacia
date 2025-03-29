@@ -9,6 +9,6 @@ import java.util.UUID;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, UUID>, QueryByExampleExecutor<Client> {
-    public Client findByCpf(String cpf);
-    public Client findByName(String name);
+    Client findByCpf(String cpf);
+    Client findByName(String name);
 }
