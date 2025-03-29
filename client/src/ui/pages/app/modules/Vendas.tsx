@@ -59,13 +59,13 @@ export default function Estoque() {
               justifyContent: "center",
             }}
           >
-            <StorageIcon
+            <SellIcon
               sx={{
                 width: "100%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            ></StorageIcon>
+            ></SellIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
             GESTÃO DE VENDAS

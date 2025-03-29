@@ -25,7 +25,7 @@ export default function Produto() {
         justifyContent: "space-between",
         width: "100%",
         height: "100%",
-        backgroundColor: "#7E99A3",
+        backgroundColor: "rgba(126, 153, 163, 0.6)",
         flexDirection: "row",
         borderRadius: 2,
       }}
@@ -33,91 +33,116 @@ export default function Produto() {
       <Box
         sx={{
           display: "center",
-          width: "20%",
-          height: "90%",
-          border: 2,
+          width: "18%",
+          height: "60%",
           ml: 2,
           alignItems: "center",
           justifyContent: "center",
         }}
-        className="Titulo"
       >
-        <Typography sx={{}}>
+        <Typography className="Titulo">
           {/* Coloque o nome do produto aqui, de acordo com o banco de dados */}
           DIPIRONA
         </Typography>
       </Box>
+
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
+          justifyContent: "space-around",
           alignItems: "center",
           width: "20%",
-          height: "90%",
+          height: "60%",
           mr: 2,
-          border: 2,
         }}
       >
         <Box
           id="Visualizar"
           sx={{
-            width: "100%",
-            height: "100%",
+            display: "flex",
+            width: "25%",
+            height: "95%",
             border: 2,
             borderRadius: 100,
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <IconButton
             sx={{
-              width: "100%",
-              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "135%",
+              height: "135%",
             }}
           >
             <VisibilityIcon
               sx={{
-                width: "100%",
-                height: "100%",
+                width: "85%",
+                height: "85%",
               }}
             ></VisibilityIcon>
           </IconButton>
         </Box>
         <Box
+          id="Deletar"
           sx={{
-            width: "100%",
+            width: "25%",
             height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             border: 2,
             borderRadius: 100,
           }}
         >
           <IconButton
             sx={{
-              width: "100%",
-              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "135%",
+              height: "135%",
             }}
           >
             <ClearIcon
               sx={{
-                width: "100%",
-                height: "100%",
+                width: "85%",
+                height: "85%",
               }}
             ></ClearIcon>
           </IconButton>
         </Box>
+
         <Box
+          id="Editar"
           sx={{
-            width: "100%",
-            height: "100%",
+            width: "25%",
+            height: "95%",
             border: 2,
             borderRadius: 100,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <IconButton
             sx={{
-              width: "100%",
-              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "135%",
+              height: "135%",
             }}
           >
-            <ModeEditIcon></ModeEditIcon>
+            <ModeEditIcon
+              sx={{
+                width: "85%",
+                height: "85%",
+              }}
+            ></ModeEditIcon>
           </IconButton>
         </Box>
       </Box>

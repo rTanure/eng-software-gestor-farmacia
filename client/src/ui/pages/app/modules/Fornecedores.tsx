@@ -10,7 +10,7 @@ import { SearchBar } from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PeopleIcon from "@mui/icons-material/People";
 
-export default function Fornecedores() {
+export default function Receita() {
   return (
 
     <Box
