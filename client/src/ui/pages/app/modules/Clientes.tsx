@@ -60,8 +60,8 @@ export default function Clientes() {
           >
             <PeopleIcon
               sx={{
-                width: "100%",
-                height: "100%",
+                width: "80%",
+                height: "80%",
                 color: "#1B2C44",
               }}
             ></PeopleIcon>
@@ -94,8 +94,9 @@ export default function Clientes() {
               alignItems: 'center',
               bgcolor: '#D9D9D9',
               borderRadius: '20px',
-              width: '100%',
+              width: '100.025%',
               height: "15%",
+              mt: 2.3,
             }}
           >
             {/* Barra de pesquisa */}
@@ -104,8 +105,8 @@ export default function Clientes() {
               sx={{
                 bgcolor: ' #D9D9D9',
                 border: '3px solid #1B2C44',
-                width: "70%",
-                height: "50%",
+                width: "74%",
+                height: "52%",
                 borderRadius: '50px',
               }}
             >
@@ -118,7 +119,7 @@ export default function Clientes() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: '7%',
+                width: '6.2%',
                 height: '50%',
                 borderRadius: '10px',
                 bgcolor: '#4C585B',
@@ -166,7 +167,7 @@ export default function Clientes() {
             <Box
               sx={{
                 width: "90%",
-                height: "8%",
+                height: "10%",
                 border: '2px',
                 borderRadius: '10px',
                 display: 'flex',
@@ -174,13 +175,15 @@ export default function Clientes() {
                 alignItems: 'center',
                 padding: '0 20px',
                 bgcolor: '#4C585B',
+                mt: .5,
+
               }}
             >
-              <Box sx={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 'SemiBold' }}>
+              <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
                 CLIENTE
               </Box>
 
-              <Box sx={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 'SemiBold' }}>
+              <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
                 AÇÕES
               </Box>
             </Box>

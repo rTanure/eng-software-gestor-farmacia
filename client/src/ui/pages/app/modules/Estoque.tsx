@@ -10,6 +10,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { SearchBar } from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import Produto from "./Produto";
 
 export default function Estoque() {
   return (
@@ -344,6 +345,25 @@ export default function Estoque() {
                 }}
               >
                 AÇÕES
+              </Box>
+            </Box>
+            {/* Produtos */}
+
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "20%",
+                  border: 2,
+                  borderRadius: "10px",
+                }}
+              >
+                <Produto />
               </Box>
             </Box>
           </Box>
