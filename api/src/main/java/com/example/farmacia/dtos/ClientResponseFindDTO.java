@@ -1,8 +1,6 @@
-package com.example.farmacia.entidades;
+package com.example.farmacia.dtos;
 
 import com.example.farmacia.enums.EnumGender;
-import jakarta.persistence.*;
-import lombok.*;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -10,18 +8,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
-@Entity
-@Table(name = "clients")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class Client {
-    @Id
-    @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
+public class ClientResponseFindDTO {
     private UUID id;
-
     private String name;
     private String cpf;
     private String email;
@@ -29,8 +17,5 @@ public class Client {
     private LocalDate dateOfBirth;
     private EnumGender gender;
     private LocalDateTime creationDate;
-    private LocalDateTime updateDate;
-
-
+    private LocalDateTime lastUpdateDate;
 }
-

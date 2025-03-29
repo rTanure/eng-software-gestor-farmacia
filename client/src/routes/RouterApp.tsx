@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { useAuthentication } from "../hooks/useAuthentication";
-import Estoque from "../ui/pages/app/modules/Estoque";
 import { modules } from "../ui/pages/app/modules";
 import AppContainer from "../ui/pages/app/AppContainer";
 
