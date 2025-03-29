@@ -9,6 +9,10 @@ import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { SearchBar } from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PeopleIcon from "@mui/icons-material/People";
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import ArticleIcon from '@mui/icons-material/Article';
+import DescriptionIcon from '@mui/icons-material/Description';
+
 
 export default function Receita() {
   return (
@@ -60,13 +64,13 @@ export default function Receita() {
               justifyContent: "center",
             }}
           >
-          <PeopleIcon
+          <DescriptionIcon
           sx={{
             width: "100%",
             height: "80%",
             color: "#1B2C44",
           }}
-          > </PeopleIcon>
+          > </DescriptionIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
             RECEITAS
