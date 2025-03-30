@@ -1,19 +1,50 @@
-import { Box, TextField, Button } from "@mui/material";
+import {
+  Box,
+  TextField,
+  InputAdornment,
+  Grid,
+  MenuItem,
+  Button,
+  IconButton,
+  Stack,
+} from "@mui/material";
 import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import { drawerWidth } from "./MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
 import PeopleIcon from "@mui/icons-material/People";
 import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import { SearchBar } from "../SearchBar";
+import { SearchBar } from "./SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Link, useNavigate } from "react-router-dom";
+import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import { IMaskInput } from "react-imask";
+import PropTypes from "prop-types";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
+import WcOutlineIcon from "@mui/icons-material/WcOutlined";
+import PhoneOutlineIcon from "@mui/icons-material/PhoneOutlined";
+import "../../../css/FormAdd.css";
+import { styled } from "@mui/material/styles";
+import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
+import { useState } from "react";
 
-export default function EstoqueAdd() {
+export const EstoqueAdd = () => {
   const navigate = useNavigate();
+  const [values, setValues] = useState({ textmask: "" });
+  const [birthdate, setBirthdate] = useState(null);
+  const [gender, setGender] = useState("");
+
+  const handleChange = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
+
   return (
     <Box
       sx={{
@@ -80,7 +111,7 @@ export default function EstoqueAdd() {
             flexDirection: "column",
             border: 3,
             width: "100%",
-            height: "57%",
+            height: "65%",
             borderRadius: 5,
             borderColor: "#4C585B",
             alignItems: "center",
@@ -89,74 +120,8 @@ export default function EstoqueAdd() {
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
             justifyContent: "center",
           }}
-        >
-          {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              bgcolor: "#D9D9D9",
-              borderRadius: "20px",
-              width: "90%",
-              height: "15%",
-              mt: 4,
-            }}
-          >
-            {/* Barra de pesquisa */}
-            <Box
-              className="BarraPesquisa"
-              sx={{
-                bgcolor: " #D9D9D9",
-                border: "3px solid #1B2C44",
-                width: "78%",
-                height: "75%",
-                borderRadius: "50px",
-              }}
-            >
-              <SearchBar />
-            </Box>
-
-            {/* Botão de adicionar */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "7%",
-                height: "75%",
-                borderRadius: "10px",
-                bgcolor: "#4C585B",
-                "&:hover": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
-                },
-                "&:active": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
-                },
-              }}
-            >
-              <Button
-                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
-                onClick={() => navigate("adicionar")}
-              >
-                <AddCircleOutlineIcon
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    color: "#D9D9D9",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                ></AddCircleOutlineIcon>
-              </Button>
-            </Box>
-          </Box>
-        </Box>
+        ></Box>
       </Box>
     </Box>
   );
-}
+};

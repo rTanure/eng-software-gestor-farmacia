@@ -1,6 +1,6 @@
 import { Box, TextField, Button } from "@mui/material";
 import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import { drawerWidth } from "./MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
 import PeopleIcon from "@mui/icons-material/People";
@@ -8,12 +8,11 @@ import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import { SearchBar } from "../SearchBar";
+import { SearchBar } from "./SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import Venda from "./Venda";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Vendas() {
+export const VendaAdd = () => {
   const navigate = useNavigate();
   return (
     <Box
@@ -352,36 +351,8 @@ export default function Vendas() {
               </Box>
             </Box>
           </Box>
-
-          <Box
-            sx={{
-              width: "90%",
-              height: "50%",
-              border: 2,
-            }}
-          >
-            {/* Venda */}
-            <Box
-              sx={{
-                width: "100%",
-                height: "35%",
-                mt: 2,
-              }}
-            >
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  border: 2,
-                  borderRadius: "10px",
-                }}
-              >
-                <Venda />
-              </Box>
-            </Box>
-          </Box>
         </Box>
       </Box>
     </Box>
   );
-}
+};

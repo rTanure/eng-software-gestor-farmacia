@@ -10,8 +10,10 @@ import { SearchBar } from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PeopleIcon from "@mui/icons-material/People";
 import Fornecedor from "./Fornecedor";
+import { useNavigate } from "react-router";
 
 export default function Fornecedores() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -139,6 +141,7 @@ export default function Fornecedores() {
             >
               <Button
                 sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                onClick={() => navigate("adicionarFornecedor")}
               >
                 <AddCircleOutlineIcon
                   sx={{
