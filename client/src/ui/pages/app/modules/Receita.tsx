@@ -9,14 +9,13 @@ import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { SearchBar } from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PeopleIcon from "@mui/icons-material/People";
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import ArticleIcon from '@mui/icons-material/Article';
-import DescriptionIcon from '@mui/icons-material/Description';
-
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import ArticleIcon from "@mui/icons-material/Article";
+import DescriptionIcon from "@mui/icons-material/Description";
+import ReceitaUni from "./ReceitaUni";
 
 export default function Receita() {
   return (
-
     <Box
       sx={{
         display: "flex",
@@ -30,7 +29,6 @@ export default function Receita() {
         height: "100%",
       }}
     >
-
       <Box
         className="wrapper"
         sx={{
@@ -64,13 +62,15 @@ export default function Receita() {
               justifyContent: "center",
             }}
           >
-          <DescriptionIcon
-          sx={{
-            width: "100%",
-            height: "80%",
-            color: "#1B2C44",
-          }}
-          > </DescriptionIcon>
+            <DescriptionIcon
+              sx={{
+                width: "100%",
+                height: "80%",
+                color: "#1B2C44",
+              }}
+            >
+              {" "}
+            </DescriptionIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
             RECEITAS
@@ -154,10 +154,10 @@ export default function Receita() {
                 ></AddCircleOutlineIcon>
               </Button>
             </Box>
-        </Box>
+          </Box>
           {/* Histórico */}
           <Box
-            className="Fornecedores"
+            className="Receitas"
             sx={{
               display: "flex",
               alignItems: "center",
@@ -165,14 +165,14 @@ export default function Receita() {
               bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "95%",
+              height: "11%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
                 width: "100%",
-                height: "10%",
+                height: "100%",
                 border: "2px",
                 borderRadius: "10px",
                 display: "flex",
@@ -202,8 +202,34 @@ export default function Receita() {
               </Box>
             </Box>
           </Box>
+          <Box
+            sx={{
+              width: "90%",
+              height: "70%",
+            }}
+          >
+            {/* Produtos */}
+            <Box
+              sx={{
+                width: "100%",
+                height: "15%",
+                mt: 2,
+              }}
+            >
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  border: 2,
+                  borderRadius: "10px",
+                }}
+              >
+                <ReceitaUni />
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       </Box>
     </Box>
-  </Box>
   );
 }

@@ -247,6 +247,7 @@ export default function Estoque() {
               width: "90%",
               height: "15%",
               mt: 4,
+              border: 3,
             }}
           >
             {/* Barra de pesquisa */}
@@ -262,7 +263,6 @@ export default function Estoque() {
             >
               <SearchBar />
             </Box>
-
             {/* Botão de adicionar */}
             <Box
               sx={{
@@ -308,10 +308,9 @@ export default function Estoque() {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
-              bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "20%",
+              height: "30%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
@@ -348,24 +347,25 @@ export default function Estoque() {
               </Box>
             </Box>
           </Box>
+
           <Box
             sx={{
               width: "90%",
-              height: "70%",
+              height: "50%",
             }}
           >
             {/* Produtos */}
             <Box
               sx={{
                 width: "100%",
-                height: "100%",
+                height: "35%",
                 mt: 2,
               }}
             >
               <Box
                 sx={{
                   width: "100%",
-                  height: "25%",
+                  height: "100%",
                   border: 2,
                   borderRadius: "10px",
                 }}
