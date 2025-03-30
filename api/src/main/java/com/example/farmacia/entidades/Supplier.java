@@ -1,8 +1,7 @@
 package com.example.farmacia.entidades;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -10,6 +9,9 @@ import java.util.UUID;
 @Table(name = "supplier")
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Supplier {
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
