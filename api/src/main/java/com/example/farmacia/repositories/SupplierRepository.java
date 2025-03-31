@@ -12,6 +12,5 @@ import java.util.UUID;
 
 @Repository
 public interface SupplierRepository extends JpaRepository<Supplier, UUID> {
-    @Query("SELECT s FROM Supplier s WHERE LOWER(s.companyName) LIKE LOWER(CONCAT('%', :companyName, '%'))")
-    Page<Supplier> findByCompanyNameIgnoreCase(@Param("companyName") String companyName, Pageable pageable);
+    Supplier findByCnpj(String cnpj);
 }
