@@ -34,7 +34,7 @@ public class SupplierController {
                 .map(supplier -> {
                     SupplierResponseDTO dto = new SupplierResponseDTO();
                     dto.setId(supplier.getId());
-                    dto.setName(supplier.getName());
+                    dto.setCompanyName(supplier.getCompanyName());
                     dto.setCnpj(supplier.getCnpj());
                     return dto;
                 })
