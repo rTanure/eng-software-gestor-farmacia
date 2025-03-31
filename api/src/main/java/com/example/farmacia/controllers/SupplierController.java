@@ -1,14 +1,14 @@
 package com.example.farmacia.controllers;
 
 import com.example.farmacia.dtos.request.SupplierCreatRequestDTO;
+import com.example.farmacia.dtos.request.SupplierFilterRequestDTO;
 import com.example.farmacia.dtos.response.SupplierResponseDTO;
 import com.example.farmacia.services.SupplierService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/supplier")
@@ -25,14 +25,20 @@ public class SupplierController {
         return ResponseEntity.ok().build();
     }
 
-    // Metodo para buscar um fornecedor por nome da companhia
-    @GetMapping("/searchByCompanyName")
-    public ResponseEntity<Page<SupplierResponseDTO>> searchSupplierByCompanyName(@RequestParam String companyName,
-                                                                           @RequestParam(defaultValue = "0") int page,
-                                                                           @RequestParam(defaultValue = "10") int size,
-                                                                           @RequestParam(defaultValue = "name") String sortBy,
-                                                                           @RequestParam(defaultValue = "asc") String order) {
-        Page<SupplierResponseDTO> suppliers = supplierService.findSupplierByCompanyName(companyName, page, size, sortBy, order);
-        return ResponseEntity.ok(suppliers);
+    // Metodo para buscar um fornecedor por id, nome ou cnpj
+    @GetMapping()
+    public ResponseEntity<List<SupplierResponseDTO>> listSuppliers(@ModelAttribute SupplierFilterRequestDTO filter) {
+        var suppliers = supplierService.findByFilter(filter); // Busca os fornecedores com base no filtro
+        // Mapeia os fornecedores para DTOs
+        List<SupplierResponseDTO> supplierDTOs = suppliers.stream()
+                .map(supplier -> {
+                    SupplierResponseDTO dto = new SupplierResponseDTO();
+                    dto.setId(supplier.getId());
+                    dto.setName(supplier.getName());
+                    dto.setCnpj(supplier.getCnpj());
+                    return dto;
+                })
+                .toList();
+        return ResponseEntity.ok(supplierDTOs);
     }
 }
