@@ -17,12 +17,12 @@ import { IMaskInput } from "react-imask";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../../css/FormAdd.css";
+import "../../../../../css/FormAdd.css"
 import { styled } from "@mui/material/styles";
-import { drawerWidth } from "./MenuLateral";
+import { drawerWidth } from "../../MenuLateral";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { set, useForm } from "react-hook-form";
-import { clienteMdl, ICliente } from "../../../api/clienteMdl";
+import { clienteMdl, ICliente } from "../../../../../api/clienteMdl";
 import PhoneOutlineIcon from "@mui/icons-material/PhoneOutlined";
 import WcOutlineIcon from "@mui/icons-material/WcOutlined";
 import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
@@ -252,7 +252,7 @@ export const FormAdd = () => {
                     </Grid>
 
                     {/* CPF */}
-                    <Grid item sm={6}>
+                    <Grid item sm={3}>
                       <TextField
                         fullWidth
                         placeholder="CPF"
@@ -271,7 +271,7 @@ export const FormAdd = () => {
                     </Grid>
 
                     {/* Data de Nascimento */}
-                    <Grid item sm={6}>
+                    <Grid item sm={3}>
                       <DatePicker
                         selected={birthdate}
                         onChange={(date) => {

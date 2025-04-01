@@ -3,7 +3,12 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "../../../css/SearchBar.css";
 
-export const SearchBar = () => {
+interface SearchBarProps {
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+}
+
+export default function SearchBar({onChange, value}: SearchBarProps) {
   return (
     <Box className="input-wrapper">
       <SearchIcon
@@ -13,7 +18,7 @@ export const SearchBar = () => {
           mr: 3,
         }}
       ></SearchIcon>
-      <input placeholder="Digite aqui..."></input>
+      <input onChange={onChange} value={value} placeholder="Digite aqui..."></input>
     </Box>
   );
 };

@@ -3,7 +3,8 @@ import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import { clienteMdl, ICliente } from "../../../../api/clienteMdl";
+import { clienteMdl, ICliente } from "../../../../../api/clienteMdl";
+import { useNavigate } from "react-router";
 
 interface IClienteListagemProps {
   cliente: ICliente;
@@ -11,12 +12,14 @@ interface IClienteListagemProps {
 }
 
 export default function ClienteListagem({cliente, refetch}: IClienteListagemProps) {
+  const navigate = useNavigate();
+
   const handleVisualizar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`${cliente.id}`);
   };
 
   const handleEditar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`editar/${cliente.id}`);
   };
 
   const handleDeletar = () => {
@@ -76,6 +79,7 @@ export default function ClienteListagem({cliente, refetch}: IClienteListagemProp
           }}
         >
           <IconButton
+            onClick={handleVisualizar}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -136,6 +140,7 @@ export default function ClienteListagem({cliente, refetch}: IClienteListagemProp
           }}
         >
           <IconButton
+            onClick={handleEditar}
             sx={{
               display: "flex",
               alignItems: "center",

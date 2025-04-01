@@ -38,7 +38,7 @@ public class ClientService {
     public List<Client> findByFilter(ClientFilterRequestDTO clientFilterRequestDTO) {
         Client c = new Client();
 
-        BeanUtils.copyProperties(c, clientFilterRequestDTO);
+        BeanUtils.copyProperties(clientFilterRequestDTO, c);
 
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withIgnoreCase()

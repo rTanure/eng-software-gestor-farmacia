@@ -1,24 +1,25 @@
 import { Box, Button } from "@mui/material";
 import React, { useEffect } from "react";
-import { drawerWidth } from "../MenuLateral";
+import { drawerWidth } from "../../MenuLateral";
 import Typography from "@mui/material/Typography";
 import PeopleIcon from "@mui/icons-material/People";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { SearchBar } from "../SearchBar";
 import { useNavigate } from "react-router";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { useQuery } from "react-query"
-import { clienteMdl } from "../../../../api/clienteMdl";
+import { clienteMdl } from "../../../../../api/clienteMdl";
 import ClienteListagem from "./Cliente";
+import SearchBar from "../../SearchBar";
 
 export default function Clientes() {
   const navigate = useNavigate();
+  const [nome, setNome] = React.useState<string>("");
 
   const {data: clientes, refetch} = useQuery(
-    "clientes", 
-    () => clienteMdl.getAllClientes(),
+    ["clientes", nome], 
+    () => clienteMdl.getAllClientes({name: nome}),
     {
-      select: data => data.data
+      select: data => data.data,
     }
   )
 
@@ -122,7 +123,7 @@ export default function Clientes() {
                 borderRadius: '50px',
               }}
             >
-              <SearchBar />
+              <SearchBar value={nome} onChange={e => setNome(e.target.value)} />
             </Box>
 
             {/* Botão de adicionar */}

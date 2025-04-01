@@ -9,13 +9,17 @@ export interface ICliente {
   dateOfBirth: string;
 }
 
+interface IClienteListagemFiltros {
+  name?: string;
+}
+
 class ClienteMdl extends ModeloBase {
   constructor() {
     super('/client');
   }
 
-  async getAllClientes() {
-    return this.defaultGetRequest<ICliente[]>("")
+  async getAllClientes({name}: IClienteListagemFiltros) {
+    return this.defaultGetRequest<ICliente[]>("", {name: name || undefined})
   }
 
   async getClienteById(id: string) {
