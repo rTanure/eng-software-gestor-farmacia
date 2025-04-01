@@ -1,15 +1,27 @@
 import { Box, Button } from "@mui/material";
-import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import React, { useEffect } from "react";
+import { drawerWidth } from "../../MenuLateral";
 import Typography from "@mui/material/Typography";
 import PeopleIcon from "@mui/icons-material/People";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { SearchBar } from "../SearchBar";
 import { useNavigate } from "react-router";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useQuery } from "react-query"
+import { clienteMdl } from "../../../../../api/clienteMdl";
+import ClienteListagem from "./Cliente";
+import SearchBar from "../../SearchBar";
 
 export default function Clientes() {
   const navigate = useNavigate();
+  const [nome, setNome] = React.useState<string>("");
+
+  const {data: clientes, refetch} = useQuery(
+    ["clientes", nome], 
+    () => clienteMdl.getAllClientes({name: nome}),
+    {
+      select: data => data.data,
+    }
+  )
 
   return (
     <Box
@@ -111,7 +123,7 @@ export default function Clientes() {
                 borderRadius: '50px',
               }}
             >
-              <SearchBar />
+              <SearchBar value={nome} onChange={e => setNome(e.target.value)} />
             </Box>
 
             {/* Botão de adicionar */}
@@ -126,12 +138,12 @@ export default function Clientes() {
                 bgcolor: '#4C585B',
                 '&:hover': {
                   backgroundColor: '#7E99A3',
-                  border: '2px solid #FFFFFF',
+                  outline: '2px solid #FFFFFF',
                   borderRadius: '8px',
                 },
                 '&:active': {
                   backgroundColor: '#7E99A3',
-                  border: '2px solid #FFFFFF',
+                  outline: '2px solid #FFFFFF',
                   borderRadius: '8px',
                 }
 
@@ -169,7 +181,7 @@ export default function Clientes() {
               sx={{
                 width: "90%",
                 height: "10%",
-                border: '2px',
+                outline: '2px',
                 borderRadius: '10px',
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -187,6 +199,23 @@ export default function Clientes() {
               <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
                 AÇÕES
               </Box>
+            </Box>
+            <Box
+              sx={{
+                width: "90%",
+                height: "70%",
+                display: "flex",
+                flexDirection: "column",
+                mt: 2,
+                gap: 2,
+              }}
+            >
+              {/* Produtos */}
+                {
+                  clientes?.map((cliente) => (
+                    <ClienteListagem cliente={cliente} refetch={refetch} key={cliente.id}/>
+                  ))
+                }
             </Box>
   
           </Box>
