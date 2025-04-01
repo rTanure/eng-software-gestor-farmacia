@@ -29,10 +29,6 @@ public class ClientService {
         if (clientRepository.findByCpf(clientCreatRequestDTO.getCpf()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente já cadastrado");
         }
-
-        entity.setCreationDate(LocalDateTime.now());
-        entity.setUpdateDate(LocalDateTime.now());
-
         clientRepository.save(entity);
     }
 
@@ -70,7 +66,6 @@ public class ClientService {
 
         Client client = new Client();
         BeanUtils.copyProperties(clientUpdateRequestDTO, client);
-        client.setUpdateDate(LocalDateTime.now());
         clientRepository.save(client);
     }
 

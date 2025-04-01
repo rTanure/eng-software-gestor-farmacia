@@ -25,11 +25,5 @@ public class Client {
     private String email;
     private String phoneNumber;
     private LocalDate dateOfBirth;
-    @Enumerated(EnumType.STRING)
-    private EnumGender gender;
-    private LocalDateTime creationDate;
-    private LocalDateTime updateDate;
-
-
 }
 

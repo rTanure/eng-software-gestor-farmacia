@@ -19,12 +19,10 @@ public class Sale {
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     private UUID id;
 
-    private String nameClient; // nome do cliente
-    private String nameProduct; // nome do produto
-    private String codeProduct; // código de barras
-    @Enumerated(EnumType.STRING)
-    private EnumPaymenthMethod paymenthMethod; // metodo de pagamento
-    private LocalDate paymenthDate;
-    private Integer amount; // quantidade vendida
-    private Double salePrice; // preço de venda
+    private UUID idClient;
+    private UUID idPrescription;
+    private UUID idProduct;
+    private LocalDate date;
+    private Integer amount;
+    private Double salePrice;
 }
