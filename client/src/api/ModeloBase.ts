@@ -56,6 +56,8 @@ export class ModeloBase {
   }
 
   async defaultDeleteRequest<T>(path: string): Promise<AxiosResponse<T>> {
+    
+    console.log("aqui")
     const response = await axios.delete<T>(
       API_URL + this.modulePath + path,
       {
@@ -64,8 +66,14 @@ export class ModeloBase {
         }
       }
     );
+
     return response;
   }
 
 
+}
+
+export interface ISpringResponse<T> {
+  data: T;
+  status: number;
 }

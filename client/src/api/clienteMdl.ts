@@ -15,7 +15,7 @@ class ClienteMdl extends ModeloBase {
   }
 
   async getAllClientes() {
-    return this.defaultGetRequest<ICliente>("")
+    return this.defaultGetRequest<ICliente[]>("")
   }
 
   async getClienteById(id: string) {
@@ -23,15 +23,16 @@ class ClienteMdl extends ModeloBase {
   }
 
   async createCliente(cliente: any) {
-    return this.defaultPostRequest<ICliente>("", cliente)
+    return this.defaultPostRequest<null>("", cliente)
   }
 
   async updateCliente(cliente: any) {
-    return this.defaultPutRequest<ICliente>("", cliente)
+    return this.defaultPutRequest<null>("", cliente)
   }
 
   async deleteCliente(id: string) {
-    return this.defaultDeleteRequest<ICliente>(`/${id}`)
+    console.log("aqui")
+    return this.defaultDeleteRequest<null>(`/${id}`)
   }
 }
 

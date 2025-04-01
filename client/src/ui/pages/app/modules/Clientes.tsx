@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { drawerWidth } from "../MenuLateral";
 import Typography from "@mui/material/Typography";
 import PeopleIcon from "@mui/icons-material/People";
@@ -7,9 +7,20 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { SearchBar } from "../SearchBar";
 import { useNavigate } from "react-router";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useQuery } from "react-query"
+import { clienteMdl } from "../../../../api/clienteMdl";
+import ClienteListagem from "./Cliente";
 
 export default function Clientes() {
   const navigate = useNavigate();
+
+  const {data: clientes, refetch} = useQuery(
+    "clientes", 
+    () => clienteMdl.getAllClientes(),
+    {
+      select: data => data.data
+    }
+  )
 
   return (
     <Box
@@ -187,6 +198,23 @@ export default function Clientes() {
               <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
                 AÇÕES
               </Box>
+            </Box>
+            <Box
+              sx={{
+                width: "90%",
+                height: "70%",
+                display: "flex",
+                flexDirection: "column",
+                mt: 2,
+                gap: 2,
+              }}
+            >
+              {/* Produtos */}
+                {
+                  clientes?.map((cliente) => (
+                    <ClienteListagem cliente={cliente} refetch={refetch} key={cliente.id}/>
+                  ))
+                }
             </Box>
   
           </Box>
