@@ -24,7 +24,6 @@ public class ClientCreatRequestDTO {
                 .phoneNumber(this.phoneNumber)
                 .dateOfBirth(this.dateOfBirth)
                 .cpf(this.cpf)
-                .gender(this.gender)
                 .build();
     }
 }

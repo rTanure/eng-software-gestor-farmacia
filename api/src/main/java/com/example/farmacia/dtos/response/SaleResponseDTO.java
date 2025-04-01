@@ -14,23 +14,24 @@ import java.util.UUID;
 @Builder
 public class SaleResponseDTO {
     private UUID id;
-    private String nameClient; // nome do cliente
-    private String nameProduct; // nome do produto
-    private String codeProduct; // código de barras
-    private EnumPaymenthMethod paymenthMethod; // metodo de pagamento
-    private LocalDate paymenthDate;
-    private Integer amount; // quantidade vendida
+
+    private UUID idClient;
+    private UUID idPrescription;
+    private UUID idProduct;
+    private LocalDate date;
+    private Integer amount;
+    private Double salePrice;
 
     // Converte a entidade para DTO
     public static SaleResponseDTO fromSale(Sale sale) {
         return SaleResponseDTO.builder()
                 .id(sale.getId())
-                .nameClient(sale.getNameClient())
-                .nameProduct(sale.getNameProduct())
-                .codeProduct(sale.getCodeProduct())
-                .paymenthMethod(sale.getPaymenthMethod())
-                .paymenthDate(sale.getPaymenthDate())
+                .idClient(sale.getIdClient())
+                .idPrescription(sale.getIdPrescription())
+                .idProduct(sale.getIdProduct())
+                .date(sale.getDate())
                 .amount(sale.getAmount())
+                .salePrice(sale.getSalePrice())
                 .build();
     }
 }

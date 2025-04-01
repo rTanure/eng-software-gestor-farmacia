@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -22,11 +24,13 @@ public class SaleService {
 
     // Metodo para salvar uma venda
     public SaleResponseDTO saveSale(SaleRequestDTO saleRequestDTO) {
-        Product products = productRepository.findByCode(saleRequestDTO.getCodeProduct());
+        Optional<Product> productOptional = productRepository.findById(saleRequestDTO.getIdProduct());
 
-        if(products == null) {
+        if(productOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
         }
+
+        Product products = productOptional.get();
 
         if(products.getReceivedAmount() < saleRequestDTO.getAmount()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade insuficiente em estoque");
@@ -42,11 +46,10 @@ public class SaleService {
 
         // Salva a venda no banco de dados
         Sale newSale = Sale.builder()
-                .nameClient(saleRequestDTO.getNameClient())
-                .nameProduct(saleRequestDTO.getNameProduct())
-                .codeProduct(saleRequestDTO.getCodeProduct())
-                .paymenthMethod(saleRequestDTO.getPaymenthMethod())
-                .paymenthDate(saleRequestDTO.getPaymenthDate())
+                .idClient(saleRequestDTO.getIdClient())
+                .idPrescription(saleRequestDTO.getIdPrescription())
+                .idProduct(saleRequestDTO.getIdProduct())
+                .date(saleRequestDTO.getPaymenthDate())
                 .amount(saleRequestDTO.getAmount())
                 .build();
 
