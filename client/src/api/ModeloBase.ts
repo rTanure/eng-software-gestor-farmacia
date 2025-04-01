@@ -42,4 +42,30 @@ export class ModeloBase {
     return response;
   }
 
+  async defaultPutRequest<T>(path: string, data?: Object): Promise<AxiosResponse<T>> {
+    const response = await axios.put<T>(
+      API_URL + this.modulePath + path,
+      data,
+      {
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      }
+    );
+    return response;
+  }
+
+  async defaultDeleteRequest<T>(path: string): Promise<AxiosResponse<T>> {
+    const response = await axios.delete<T>(
+      API_URL + this.modulePath + path,
+      {
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        }
+      }
+    );
+    return response;
+  }
+
+
 }

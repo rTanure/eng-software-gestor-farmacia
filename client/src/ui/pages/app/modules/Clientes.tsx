@@ -126,12 +126,12 @@ export default function Clientes() {
                 bgcolor: '#4C585B',
                 '&:hover': {
                   backgroundColor: '#7E99A3',
-                  border: '2px solid #FFFFFF',
+                  outline: '2px solid #FFFFFF',
                   borderRadius: '8px',
                 },
                 '&:active': {
                   backgroundColor: '#7E99A3',
-                  border: '2px solid #FFFFFF',
+                  outline: '2px solid #FFFFFF',
                   borderRadius: '8px',
                 }
 
@@ -169,7 +169,7 @@ export default function Clientes() {
               sx={{
                 width: "90%",
                 height: "10%",
-                border: '2px',
+                outline: '2px',
                 borderRadius: '10px',
                 display: 'flex',
                 justifyContent: 'space-between',

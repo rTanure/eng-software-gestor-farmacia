@@ -23,13 +23,12 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
-    public void createClient(ClientCreatRequestDTO clientCreatRequestDTO) {
-        var entity = clientCreatRequestDTO.toModel();
-
-        if (clientRepository.findByCpf(clientCreatRequestDTO.getCpf()) != null) {
+    public void createClient(Client client) {
+        if (clientRepository.findByCpf(client.getCpf()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente já cadastrado");
         }
-        clientRepository.save(entity);
+        client.setId(null);
+        clientRepository.save(client);
     }
 
     public Client getClient(UUID id) {
@@ -59,13 +58,10 @@ public class ClientService {
         }
     }
 
-    public void updateClientById(ClientUpdateRequestDTO clientUpdateRequestDTO) {
-        if (clientRepository.findById(clientUpdateRequestDTO.getId()).isEmpty()) {
+    public void updateClientById(Client client) {
+        if (clientRepository.findById(client.getId()).isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado");
         }
-
-        Client client = new Client();
-        BeanUtils.copyProperties(clientUpdateRequestDTO, client);
         clientRepository.save(client);
     }
 

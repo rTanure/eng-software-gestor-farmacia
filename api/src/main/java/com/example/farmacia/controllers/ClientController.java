@@ -4,6 +4,7 @@ import com.example.farmacia.dtos.request.ClientCreatRequestDTO;
 import com.example.farmacia.dtos.request.ClientFilterRequestDTO;
 import com.example.farmacia.dtos.request.ClientUpdateRequestDTO;
 import com.example.farmacia.dtos.response.ClientResponseDTO;
+import com.example.farmacia.entidades.Client;
 import com.example.farmacia.services.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -17,42 +18,36 @@ import java.util.UUID;
 @RequestMapping("/client")
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
-public class ClientController implements IClientController {
+public class ClientController {
     private final ClientService clientService;
 
-    public ResponseEntity<Void> createClient(@RequestBody ClientCreatRequestDTO clientCreatRequestDTO) {
-        clientService.createClient(clientCreatRequestDTO);
+    @PostMapping()
+    public ResponseEntity<Void> createClient(@RequestBody Client client) {
+        clientService.createClient(client);
 
         return ResponseEntity.ok().build();
     }
 
-    public ResponseEntity<List<ClientResponseDTO>> listClients(@ModelAttribute ClientFilterRequestDTO clientFilterRequestDTO){
+    @GetMapping()
+    public ResponseEntity<List<Client>> listClients(@ModelAttribute ClientFilterRequestDTO clientFilterRequestDTO){
         var clients = clientService.findByFilter(clientFilterRequestDTO);
-        List<ClientResponseDTO> clientDTOs = clients.stream()
-                .map(client -> {
-                    ClientResponseDTO dto = new ClientResponseDTO();
-                    BeanUtils.copyProperties(client, dto);
-                    return dto;
-                })
-                .toList();
-        return ResponseEntity.ok(clientDTOs);
+        return ResponseEntity.ok(clients);
     }
 
-    public ResponseEntity<ClientResponseDTO> getClient(@PathVariable UUID id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Client> getClient(@PathVariable UUID id) {
         var client = clientService.getClient(id);
-        ClientResponseDTO dto = new ClientResponseDTO();
-
-        BeanUtils.copyProperties(client, dto);
-
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(client);
     }
 
-    public ResponseEntity<Void> updateClientById(@RequestBody ClientUpdateRequestDTO clientUpdateRequestDTO) {
-        clientService.updateClientById(clientUpdateRequestDTO);
+    @PutMapping()
+    public ResponseEntity<Void> updateClientById(@RequestBody Client client) {
+        clientService.updateClientById(client);
 
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable UUID id) {
         clientService.deleteById(id);
 
