@@ -1,16 +1,15 @@
 package com.example.farmacia.controllers;
 
 import com.example.farmacia.dtos.request.ProductCreatRequestDTO;
+import com.example.farmacia.dtos.request.ProductFilterRequestDTO;
 import com.example.farmacia.dtos.response.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.services.StockService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -28,14 +27,10 @@ public class StockController {
         return ResponseEntity.ok().build();
     }
 
-    // Metodo de busca de estoque de produtos por nome
-    @GetMapping("/searchByName")
-    public ResponseEntity<Page<ProductResponseDTO>> searchProduct(@RequestParam String name,
-                                                                  @RequestParam(defaultValue = "0") int page,
-                                                                  @RequestParam(defaultValue = "10") int size,
-                                                                  @RequestParam(defaultValue = "name") String sortBy,
-                                                                  @RequestParam(defaultValue = "asc") String order) {
-        Page<ProductResponseDTO> products = stockService.findProductsByName(name, page, size, sortBy, order);
+    // Metodo de busca de estoque de produtos por id, nome e codigo de barras
+    @GetMapping()
+    public ResponseEntity<List<Product>> searchProduct(@ModelAttribute ProductFilterRequestDTO product) {
+        var products = stockService.findByFilter(product);
         return ResponseEntity.ok(products);
     }
 

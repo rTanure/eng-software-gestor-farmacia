@@ -1,18 +1,18 @@
 package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.request.ProductCreatRequestDTO;
+import com.example.farmacia.dtos.request.ProductFilterRequestDTO;
 import com.example.farmacia.dtos.response.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -31,11 +31,20 @@ public class StockService {
         productRepository.save(entity);
     }
 
-    public Page<ProductResponseDTO> findProductsByName(String name, int page, int size, String sortBy, String order) {
-        Sort.Direction direction = Sort.Direction.fromString(order);
-        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
-        Page<Product> products = productRepository.findByNameContainingIgnoreCase(name, pageable);
-        return products.map(ProductResponseDTO::fromProduct);
+    public List<Product> findByFilter(ProductFilterRequestDTO productFilterRequestDTO) {
+        Product p = new Product();
+
+        BeanUtils.copyProperties(productFilterRequestDTO, p); // Converte o DTO para a entidade
+
+        // Configura o matcher para ignorar case e null values
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIgnoreCase()
+                .withIgnoreNullValues()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+
+        // Cria o exemplo com o matcher
+        Example<Product> example = Example.of(p, matcher);
+        return productRepository.findAll(example);
     }
 
     // Metodo de ediçao de produto por id
