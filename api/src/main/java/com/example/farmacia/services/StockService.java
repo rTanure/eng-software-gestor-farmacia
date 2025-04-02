@@ -2,7 +2,6 @@ package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.request.ProductCreatRequestDTO;
 import com.example.farmacia.dtos.request.ProductFilterRequestDTO;
-import com.example.farmacia.dtos.response.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -48,23 +47,14 @@ public class StockService {
     }
 
     // Metodo de ediçao de produto por id
-    public ProductResponseDTO updateProduct(UUID id, ProductCreatRequestDTO product) {
-        // Busca o produto no banco de dados
-        Product productToUpdate = productRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado"));
+    public void updateProductById(Product product) {
+        var productExists = productRepository.existsById(product.getId());
 
-        // Atualiza os campos do produto(apenas os campos que foram passados no DTO)
-        if(product.getName() != null) productToUpdate.setName(product.getName());
-        if(product.getCode() != null) productToUpdate.setCode(product.getCode());
-        if(product.getBatch() != null) productToUpdate.setBatch(product.getBatch());
-        if(product.getExpirationDate() != null) productToUpdate.setExpirationDate(product.getExpirationDate());
-        if(product.getReceivedAmount() != 0) productToUpdate.setReceivedAmount(product.getReceivedAmount());
-        if(product.getPurchasePrice() != 0) productToUpdate.setPurchasePrice(product.getPurchasePrice());
-        if(product.getSupplierId() != null) productToUpdate.setSupplierId(product.getSupplierId());
-
-        // Salva a entidade no banco de dados
-        Product updatedProduct = productRepository.save(productToUpdate);
-        return ProductResponseDTO.fromProduct(updatedProduct); // Converte a entidade para DTO e retorna
+        if (productExists) {
+            productRepository.save(product);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
+        }
     }
 
     public void deleteProductById(UUID id) {

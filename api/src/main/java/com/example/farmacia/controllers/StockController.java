@@ -2,7 +2,6 @@ package com.example.farmacia.controllers;
 
 import com.example.farmacia.dtos.request.ProductCreatRequestDTO;
 import com.example.farmacia.dtos.request.ProductFilterRequestDTO;
-import com.example.farmacia.dtos.response.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.services.StockService;
 import lombok.RequiredArgsConstructor;
@@ -35,16 +34,16 @@ public class StockController {
     }
 
     // Metodo de ediçao de produto por id
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductCreatRequestDTO product) {
-        ProductResponseDTO productResponseDTO = stockService.updateProduct(id, product);
-        return ResponseEntity.ok(productResponseDTO);
+    @PutMapping()
+    public ResponseEntity<Void> updateProductById(@RequestBody Product product) {
+        stockService.updateProductById(product);
+        return ResponseEntity.ok().build();
     }
 
     // Metodo de remoção de produto por id
-    @DeleteMapping("/{id}")
+    @DeleteMapping()
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
         stockService.deleteProductById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
