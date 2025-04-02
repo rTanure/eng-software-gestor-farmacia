@@ -21,6 +21,20 @@ public class StockService {
 
     private final ProductRepository productRepository;
 
+    // Retorna quantidade de medicamentos no estoque
+    public Integer getQuantityMedicines() {
+        var products = productRepository.findAll();
+        return products.stream()
+                .mapToInt(Product::getReceivedAmount)
+                .sum();
+    }
+
+    // Retorna quantidade de estoques
+    public Integer getQuantityStock() {
+        var stocks = productRepository.findAll();
+        return stocks.size();
+    }
+
     // Metodo de criação de estoque de produto
     public void createProduct(ProductCreatRequestDTO product) {
         var entity = product.toModel(); // Converte o DTO para a entidade

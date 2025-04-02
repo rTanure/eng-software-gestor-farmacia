@@ -19,6 +19,20 @@ public class StockController {
 
     private final StockService stockService;
 
+    // Retorna quantidade de medicamentos no estoque
+    @GetMapping("/quantityMedicines")
+    public ResponseEntity<Integer> getQuantityMedicines() {
+        var quantity = stockService.getQuantityMedicines();
+        return ResponseEntity.ok(quantity);
+    }
+
+    // Retorna quantidade de estoques
+    @GetMapping("/quantityStock")
+    public ResponseEntity<Integer> getQuantityStock() {
+        var quantity = stockService.getQuantityStock();
+        return ResponseEntity.ok(quantity);
+    }
+
     // Metodo de criação de estoque de produto
     @PostMapping()
     public ResponseEntity<Void> createProduct(@RequestBody ProductCreatRequestDTO product) {
