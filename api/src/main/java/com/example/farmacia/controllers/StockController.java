@@ -33,6 +33,13 @@ public class StockController {
         return ResponseEntity.ok(products);
     }
 
+    // Recuperar produto por id
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable UUID id) {
+        var product = stockService.getProduct(id);
+        return ResponseEntity.ok(product);
+    }
+
     // Metodo de ediçao de produto por id
     @PutMapping()
     public ResponseEntity<Void> updateProductById(@RequestBody Product product) {

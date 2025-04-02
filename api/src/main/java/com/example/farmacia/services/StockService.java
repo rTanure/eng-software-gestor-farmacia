@@ -30,6 +30,7 @@ public class StockService {
         productRepository.save(entity);
     }
 
+    // Metodo de busca de produto por id, nome ou codigo
     public List<Product> findByFilter(ProductFilterRequestDTO productFilterRequestDTO) {
         Product p = new Product();
 
@@ -44,6 +45,12 @@ public class StockService {
         // Cria o exemplo com o matcher
         Example<Product> example = Example.of(p, matcher);
         return productRepository.findAll(example);
+    }
+
+    // Metodo para recuperar produto por id
+    public Product getProduct(UUID id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado."));
     }
 
     // Metodo de ediçao de produto por id
