@@ -20,18 +20,4 @@ public class ProductResponseDTO {
     private Integer receivedAmount;
     private Double purchasePrice;
     private UUID supplierId;
-
-    // Converte a entidade para DTO
-    public static ProductResponseDTO fromProduct(Product product) {
-        return ProductResponseDTO.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .code(product.getCode())
-                .batch(product.getBatch())
-                .expirationDate(product.getExpirationDate())
-                .receivedAmount(product.getReceivedAmount())
-                .purchasePrice(product.getPurchasePrice())
-                .supplierId(product.getSupplierId())
-                .build();
-    }
 }

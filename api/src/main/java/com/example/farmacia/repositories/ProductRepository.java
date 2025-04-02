@@ -12,9 +12,6 @@ import java.util.UUID;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, UUID> {
-    @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
-    Page<Product> findByNameContainingIgnoreCase(@Param("name") String name, Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.code = :code")
-    Product findByCode(@Param("code") String code);
+    Product findByCode(String code);
 }

@@ -1,6 +1,6 @@
 package com.example.farmacia.services;
 
-import com.example.farmacia.dtos.request.ProductRequestDTO;
+import com.example.farmacia.dtos.request.ProductCreatRequestDTO;
 import com.example.farmacia.dtos.response.ProductResponseDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
@@ -23,20 +23,12 @@ public class StockService {
     private final ProductRepository productRepository;
 
     // Metodo de criação de estoque de produto
-    public ProductResponseDTO createProduct(ProductRequestDTO product) {
-        // Cria uma nova entidade de produto
-        Product newProduct = Product.builder()
-                .name(product.getName())
-                .code(product.getCode())
-                .batch(product.getBatch())
-                .expirationDate(product.getExpirationDate())
-                .receivedAmount(product.getReceivedAmount())
-                .purchasePrice(product.getPurchasePrice())
-                .supplierId(product.getSupplierId())
-                .build();
-        // Salva a entidade no banco de dados
-        Product savedProduct = productRepository.save(newProduct);
-        return ProductResponseDTO.fromProduct(savedProduct); // Converte a entidade para DTO e retorna
+    public void createProduct(Product product) {
+        if(productRepository.findByCode(product.getCode()) != null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Produto já cadastrado");
+        }
+        product.setId(null); // Garante que o ID seja nulo para criar um novo produto
+        productRepository.save(product);
     }
 
     public Page<ProductResponseDTO> findProductsByName(String name, int page, int size, String sortBy, String order) {
@@ -47,7 +39,7 @@ public class StockService {
     }
 
     // Metodo de ediçao de produto por id
-    public ProductResponseDTO updateProduct(UUID id, ProductRequestDTO product) {
+    public ProductResponseDTO updateProduct(UUID id, ProductCreatRequestDTO product) {
         // Busca o produto no banco de dados
         Product productToUpdate = productRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado"));
