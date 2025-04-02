@@ -17,7 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class StockController {
 
-    private StockService stockService;
+    private final StockService stockService;
 
     // Metodo de criação de estoque de produto
     @PostMapping()
@@ -48,7 +48,7 @@ public class StockController {
     }
 
     // Metodo de remoção de produto por id
-    @DeleteMapping()
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
         stockService.deleteProductById(id);
         return ResponseEntity.ok().build();
