@@ -29,12 +29,6 @@ public class StockService {
                 .sum();
     }
 
-    // Retorna quantidade de estoques
-    public Integer getQuantityStock() {
-        var stocks = productRepository.findAll();
-        return stocks.size();
-    }
-
     // Metodo de criação de estoque de produto
     public void createProduct(ProductCreatRequestDTO product) {
         var entity = product.toModel(); // Converte o DTO para a entidade

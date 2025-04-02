@@ -26,13 +26,6 @@ public class StockController {
         return ResponseEntity.ok(quantity);
     }
 
-    // Retorna quantidade de estoques
-    @GetMapping("/quantityStock")
-    public ResponseEntity<Integer> getQuantityStock() {
-        var quantity = stockService.getQuantityStock();
-        return ResponseEntity.ok(quantity);
-    }
-
     // Metodo de criação de estoque de produto
     @PostMapping()
     public ResponseEntity<Void> createProduct(@RequestBody ProductCreatRequestDTO product) {
