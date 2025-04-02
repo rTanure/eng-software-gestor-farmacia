@@ -23,12 +23,12 @@ public class StockService {
     private final ProductRepository productRepository;
 
     // Metodo de criação de estoque de produto
-    public void createProduct(Product product) {
+    public void createProduct(ProductCreatRequestDTO product) {
+        var entity = product.toModel(); // Converte o DTO para a entidade
         if(productRepository.findByCode(product.getCode()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Produto já cadastrado");
         }
-        product.setId(null); // Garante que o ID seja nulo para criar um novo produto
-        productRepository.save(product);
+        productRepository.save(entity);
     }
 
     public Page<ProductResponseDTO> findProductsByName(String name, int page, int size, String sortBy, String order) {

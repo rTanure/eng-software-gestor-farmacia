@@ -23,7 +23,7 @@ public class StockController {
 
     // Metodo de criação de estoque de produto
     @PostMapping()
-    public ResponseEntity<Void> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Void> createProduct(@RequestBody ProductCreatRequestDTO product) {
         stockService.createProduct(product);
         return ResponseEntity.ok().build();
     }
