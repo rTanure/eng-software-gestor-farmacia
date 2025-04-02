@@ -64,12 +64,8 @@ public class StockService {
     // Metodo de ediçao de produto por id
     public void updateProductById(Product product) {
         var productExists = productRepository.existsById(product.getId());
-
-        if (productExists) {
-            productRepository.save(product);
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
-        }
+        if (!productExists) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
+        productRepository.save(product);
     }
 
     public void deleteProductById(UUID id) {
