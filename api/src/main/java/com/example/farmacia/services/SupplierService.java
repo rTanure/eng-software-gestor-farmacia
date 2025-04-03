@@ -48,4 +48,11 @@ public class SupplierService {
         // Retorna todos os fornecedores que correspondem ao exemplo
         return supplierRepository.findAll(example);
     }
+
+    // Metodo de ediçao de fornecedor
+    public void updateSupplier(Supplier supplier) {
+        var supplierExists = supplierRepository.existsById(supplier.getId());
+        if (!supplierExists) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado");
+        supplierRepository.save(supplier);
+    }
 }

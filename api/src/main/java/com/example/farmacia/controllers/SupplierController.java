@@ -33,4 +33,11 @@ public class SupplierController {
 
         return ResponseEntity.ok(suppliers);
     }
+
+    // Metodo de ediçao de fornecedor
+    @PutMapping()
+    public ResponseEntity<Void> updateSupplier(@RequestBody Supplier supplier) {
+        supplierService.updateSupplier(supplier);
+        return ResponseEntity.ok().build();
+    }
 }
