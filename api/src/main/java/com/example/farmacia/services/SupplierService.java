@@ -50,6 +50,12 @@ public class SupplierService {
         return supplierRepository.findAll(example);
     }
 
+    // Metodo para recuperar fornecedor por id
+    public Supplier getSupplier(UUID id) {
+        return supplierRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado"));
+    }
+
     // Metodo de ediçao de fornecedor
     public void updateSupplier(Supplier supplier) {
         var supplierExists = supplierRepository.existsById(supplier.getId());
