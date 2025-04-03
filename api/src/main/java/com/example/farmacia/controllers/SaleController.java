@@ -18,16 +18,24 @@ public class SaleController {
     private SaleService saleService;
 
     // Metodo para salvar uma venda
-    @PostMapping("/saveSale")
+    @PostMapping("/")
     public ResponseEntity<SaleResponseDTO> saveSale(@RequestBody SaleRequestDTO saleRequestDTO) {
         SaleResponseDTO saved = saleService.saveSale(saleRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     // Metodo para visualizar uma venda passando o id
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Sale> getSaleById(@PathVariable UUID id) {
         Sale sale = saleService.getSaleById(id);
         return ResponseEntity.ok(sale);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<SaleResponseDTO> updateSale(@RequestBody Sale newSale) {
+        saleService.updateSale(newSale);
+
+        return ResponseEntity.ok().build();
+    }
+
 }
