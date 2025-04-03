@@ -37,7 +37,7 @@ public class SupplierController {
 
     // Metodo para recuperar um fornecedor por id
     @GetMapping("/{id}")
-    public ResponseEntity<SupplierResponseDTO> getSupplier(@PathVariable UUID id) {
+    public ResponseEntity<Supplier> getSupplier(@PathVariable UUID id) {
         var supplier = supplierService.getSupplier(id);
         return ResponseEntity.ok(supplier);
     }
