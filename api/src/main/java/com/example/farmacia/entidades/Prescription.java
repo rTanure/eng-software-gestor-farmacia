@@ -21,5 +21,5 @@ public class Prescription {
     private String doctorCrm;
     private String description;
     private LocalDateTime expirationDate;
-    private UUID idClient;
+    private UUID clientId;
 }
