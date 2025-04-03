@@ -11,8 +11,10 @@ import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import SearchBar from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Venda from "./Venda";
+import { useNavigate } from "react-router";
 
-export default function Estoque() {
+export default function Vendas() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -287,6 +289,7 @@ export default function Estoque() {
             >
               <Button
                 sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                onClick={() => navigate("adicionarVenda")}
               >
                 <AddCircleOutlineIcon
                   sx={{

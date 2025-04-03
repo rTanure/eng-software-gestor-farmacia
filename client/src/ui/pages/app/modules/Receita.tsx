@@ -3,17 +3,19 @@ import React from "react";
 import { drawerWidth } from "../MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
-import PeopleIcon from "@mui/icons-material/People";
-import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import Produto from "./Produto";
 import SearchBar from "../SearchBar";
-import { useNavigate } from "react-router-dom";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import PeopleIcon from "@mui/icons-material/People";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import ArticleIcon from "@mui/icons-material/Article";
+import DescriptionIcon from "@mui/icons-material/Description";
+import ReceitaUni from "./ReceitaUni";
+import { useNavigate } from "react-router";
 
-export default function Estoque() {
+export default function Receita() {
   const navigate = useNavigate();
   return (
     <Box
@@ -62,16 +64,18 @@ export default function Estoque() {
               justifyContent: "center",
             }}
           >
-            <StorageIcon
+            <DescriptionIcon
               sx={{
                 width: "100%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            ></StorageIcon>
+            >
+              {" "}
+            </DescriptionIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
-            GESTÃO DE ESTOQUE
+            RECEITAS
           </Typography>
         </Box>
 
@@ -81,165 +85,15 @@ export default function Estoque() {
             flexDirection: "column",
             border: 3,
             width: "100%",
-            height: "30%",
-            borderRadius: 5,
-            borderColor: "#4C585B",
-            backgroundColor: "#D9D9D9",
-            mt: 2.5,
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
-          }}
-        >
-          <Box
-            className="Dashboard-primeira-linha"
-            sx={{
-              flexDirection: "row",
-              display: "flex",
-              alignItems: "center",
-              height: "28%",
-              width: "100%",
-              borderRadius: 4,
-              mt: 2,
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                width: "10%",
-                height: "100%",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <LeaderboardIcon
-                sx={{
-                  width: "100%",
-                  height: "60%",
-                  color: "#1B2C44",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              ></LeaderboardIcon>
-            </Box>
-            <Typography className="Titulo">DASHBOARD</Typography>
-          </Box>
-          <Box
-            sx={{
-              flexDirection: "row",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "72%",
-              width: "100%",
-              borderRadius: 4,
-            }}
-          >
-            <Box
-              className="MEDICAMENTOS"
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                bgcolor: "rgba(76, 88, 91, 1)",
-                borderRadius: 3,
-                width: "30%",
-                height: "50%",
-                mr: 2,
-              }}
-            >
-              <Typography
-                className="TextoB"
-                sx={{
-                  ml: 3,
-                  color: "white",
-                }}
-              >
-                MEDICAMENTOS
-              </Typography>
-              <Box
-                sx={{
-                  width: "20%",
-                  height: "70%",
-                  mr: 3,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  className="TextoB"
-                  sx={{
-                    color: "white",
-                  }}
-                >
-                  0
-                </Typography>
-              </Box>
-            </Box>
-            <Box
-              className="PRODUTOS"
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                bgcolor: "rgba(76, 88, 91, 1)",
-                borderRadius: 3,
-                width: "30%",
-                height: "50%",
-                ml: 2,
-              }}
-            >
-              <Typography
-                className="TextoB"
-                sx={{
-                  ml: 3,
-                  color: "white",
-                }}
-              >
-                PRODUTOS
-              </Typography>
-              <Box
-                sx={{
-                  width: "20%",
-                  height: "70%",
-                  mr: 3,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  className="TextoB"
-                  sx={{
-                    color: "white",
-                  }}
-                >
-                  0
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            border: 3,
-            width: "100%",
-            height: "57%",
+            height: "100%",
             borderRadius: 5,
             borderColor: "#4C585B",
             alignItems: "center",
             backgroundColor: "#D9D9D9",
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
-            justifyContent: "center",
-            flexShrink: 0,
           }}
         >
-          {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
           <Box
             sx={{
               display: "flex",
@@ -248,10 +102,8 @@ export default function Estoque() {
               bgcolor: "#D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "15%",
+              height: "10%",
               mt: 4,
-              border: 3,
-              flexShrink: 0,
             }}
           >
             {/* Barra de pesquisa */}
@@ -263,11 +115,11 @@ export default function Estoque() {
                 width: "78%",
                 height: "75%",
                 borderRadius: "50px",
-                flexShrink: 0,
               }}
             >
               <SearchBar />
             </Box>
+
             {/* Botão de adicionar */}
             <Box
               sx={{
@@ -292,7 +144,7 @@ export default function Estoque() {
             >
               <Button
                 sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
-                onClick={() => navigate("adicionar")}
+                onClick={() => navigate("adicionarReceita")}
               >
                 <AddCircleOutlineIcon
                   sx={{
@@ -306,17 +158,17 @@ export default function Estoque() {
               </Button>
             </Box>
           </Box>
-
           {/* Histórico */}
           <Box
-            className="Produtos"
+            className="Receitas"
             sx={{
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "30%",
+              height: "11%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
@@ -340,7 +192,7 @@ export default function Estoque() {
                   color: "white",
                 }}
               >
-                PRODUTOS
+                RECEITA
               </Box>
 
               <Box
@@ -353,18 +205,17 @@ export default function Estoque() {
               </Box>
             </Box>
           </Box>
-
           <Box
             sx={{
               width: "90%",
-              height: "50%",
+              height: "70%",
             }}
           >
             {/* Produtos */}
             <Box
               sx={{
                 width: "100%",
-                height: "35%",
+                height: "15%",
                 mt: 2,
               }}
             >
@@ -376,7 +227,7 @@ export default function Estoque() {
                   borderRadius: "10px",
                 }}
               >
-                <Produto />
+                <ReceitaUni />
               </Box>
             </Box>
           </Box>

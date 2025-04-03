@@ -8,7 +8,7 @@ interface SearchBarProps {
   value?: string;
 }
 
-export default function SearchBar({onChange, value}: SearchBarProps) {
+export default function SearchBar({ onChange, value }: SearchBarProps) {
   return (
     <Box className="input-wrapper">
       <SearchIcon
@@ -18,7 +18,11 @@ export default function SearchBar({onChange, value}: SearchBarProps) {
           mr: 3,
         }}
       ></SearchIcon>
-      <input onChange={onChange} value={value} placeholder="Digite aqui..."></input>
+      <input
+        onChange={onChange}
+        value={value}
+        placeholder="Digite aqui..."
+      ></input>
     </Box>
   );
-};
+}

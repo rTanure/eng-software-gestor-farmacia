@@ -1,6 +1,6 @@
 import { Box, TextField, Button } from "@mui/material";
 import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import { drawerWidth } from "./MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
 import PeopleIcon from "@mui/icons-material/People";
@@ -8,12 +8,11 @@ import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import SearchBar from "./SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import Produto from "./Produto";
-import SearchBar from "../SearchBar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Estoque() {
+export const VendaAdd = () => {
   const navigate = useNavigate();
   return (
     <Box
@@ -62,16 +61,16 @@ export default function Estoque() {
               justifyContent: "center",
             }}
           >
-            <StorageIcon
+            <SellIcon
               sx={{
                 width: "100%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            ></StorageIcon>
+            ></SellIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
-            GESTÃO DE ESTOQUE
+            GESTÃO DE VENDAS
           </Typography>
         </Box>
 
@@ -154,7 +153,7 @@ export default function Estoque() {
                   color: "white",
                 }}
               >
-                MEDICAMENTOS
+                LUCROS
               </Typography>
               <Box
                 sx={{
@@ -197,7 +196,7 @@ export default function Estoque() {
                   color: "white",
                 }}
               >
-                PRODUTOS
+                QUANTIDADE
               </Typography>
               <Box
                 sx={{
@@ -236,7 +235,6 @@ export default function Estoque() {
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
             justifyContent: "center",
-            flexShrink: 0,
           }}
         >
           {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
@@ -250,8 +248,6 @@ export default function Estoque() {
               width: "90%",
               height: "15%",
               mt: 4,
-              border: 3,
-              flexShrink: 0,
             }}
           >
             {/* Barra de pesquisa */}
@@ -263,11 +259,11 @@ export default function Estoque() {
                 width: "78%",
                 height: "75%",
                 borderRadius: "50px",
-                flexShrink: 0,
               }}
             >
               <SearchBar />
             </Box>
+
             {/* Botão de adicionar */}
             <Box
               sx={{
@@ -292,7 +288,7 @@ export default function Estoque() {
             >
               <Button
                 sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
-                onClick={() => navigate("adicionar")}
+                onClick={() => navigate("adicionarVenda")}
               >
                 <AddCircleOutlineIcon
                   sx={{
@@ -314,9 +310,11 @@ export default function Estoque() {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "90%",
               height: "30%",
+              border: 2,
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
@@ -340,7 +338,7 @@ export default function Estoque() {
                   color: "white",
                 }}
               >
-                PRODUTOS
+                PRODUTO
               </Box>
 
               <Box
@@ -353,35 +351,8 @@ export default function Estoque() {
               </Box>
             </Box>
           </Box>
-
-          <Box
-            sx={{
-              width: "90%",
-              height: "50%",
-            }}
-          >
-            {/* Produtos */}
-            <Box
-              sx={{
-                width: "100%",
-                height: "35%",
-                mt: 2,
-              }}
-            >
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  border: 2,
-                  borderRadius: "10px",
-                }}
-              >
-                <Produto />
-              </Box>
-            </Box>
-          </Box>
         </Box>
       </Box>
     </Box>
   );
-}
+};
