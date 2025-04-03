@@ -8,6 +8,8 @@ import {
   IconButton,
   Stack,
   Typography,
+  Select,
+  TextareaAutosize,
 } from "@mui/material"; // Adicionando Button, IconButton e Stack
 import React, { useState } from "react";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -17,7 +19,7 @@ import { IMaskInput } from "react-imask";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../../../../css/FormAdd.css";
+import "../../../../../css/FormAdd.css"
 import { styled } from "@mui/material/styles";
 import { drawerWidth } from "../../MenuLateral";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -29,6 +31,13 @@ import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { form } from "framer-motion/client";
 import { useNavigate } from "react-router";
+import DescriptionIcon from "@mui/icons-material/Description";
+import { useQuery } from "react-query";
+import { IPrescription, prescriptionMdl } from "../../../../../api/prescriptionMdl";
+
+
+
+
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -53,11 +62,12 @@ const Input = styled("input")({
   display: "none",
 });
 
-export const FormAdd = () => {
+export const ReceitaEditar = () => {
+  const idPrescription = window.location.pathname.split("/").pop();
+
   const [values, setValues] = useState({ textmask: "" });
-  const [birthdate, setBirthdate] = useState(null);
-  const [gender, setGender] = useState("");
-  const [formValues, setFormValues] = useState<ICliente>({} as ICliente);
+  const [expirationDate, setExpirationDate] = useState<Date | null>(null);
+  const [formValues, setFormValues] = useState<IPrescription>({} as IPrescription);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -67,17 +77,44 @@ export const FormAdd = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    clienteMdl
-      .createCliente({
-        id: null,
-        name: formValues.name,
-        email: formValues.email,
-        cpf: formValues.cpf,
-        dateOfBirth: formValues.dateOfBirth,
-        phoneNumber: values.textmask,
-      } as ICliente)
-      .then((r) => navigate("/app/clientes"));
-  };
+    const { clientId, doctorName, doctorCrm, description } = formValues;
+
+    prescriptionMdl.updatePrescription({
+        id: idPrescription,
+        doctorName,
+        doctorCrm,
+        description,
+        expirationDate: expirationDate?.toISOString() || "",
+        clientId,
+      } as IPrescription)
+        .then(r => navigate("/app/receitas"))
+  }
+
+  const {data: prescription} = useQuery(
+    ["prescription", idPrescription],
+    () => prescriptionMdl.getPrescriptionById(idPrescription || ""),
+    {
+      select: data => data.data,
+      enabled: !!idPrescription,
+      onSuccess: data => {
+        setFormValues(data)
+        setExpirationDate(new Date(data.expirationDate))
+        setValues({ ...values, doctorCrm: data.doctorCrm })
+      }
+    }
+  )
+
+  const {data: clientes, refetch: refetchClientes} = useQuery(
+    ["clientes"], 
+    () => clienteMdl.getAllClientes({name: ""}),
+    {
+      select: data => data.data,
+      onSuccess: data => {
+        console.log(data)
+      }
+    },
+    
+  )
 
   return (
     <Box
@@ -103,18 +140,19 @@ export const FormAdd = () => {
           border: "4px",
         }}
       >
+
         {/* Caixa para a barra fixa com nome da página */}
         <Box
           sx={{
-            display: "flex",
+            display: 'flex',
             flexDirection: "row",
             alignItems: "center",
-            bgcolor: "#D9D9D9",
-            width: "100%",
+            bgcolor: '#D9D9D9',
+            width: '100%',
             height: "10%",
-            borderRadius: "20px",
-            border: "3px solid #4C585B",
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+            borderRadius: '20px',
+            border: '3px solid #4C585B',
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
           }}
         >
           <Box
@@ -126,16 +164,16 @@ export const FormAdd = () => {
               justifyContent: "center",
             }}
           >
-            <PersonAddIcon
+            <DescriptionIcon
               sx={{
                 width: "80%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            ></PersonAddIcon>
+            ></DescriptionIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
-            CADASTRAR NOVO CLIENTE
+            CADASTRAR NOVA RECEITA
           </Typography>
         </Box>
 
@@ -143,25 +181,25 @@ export const FormAdd = () => {
         <Box
           className="Container-Principal"
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            bgcolor: "#D9D9D9",
-            width: "100%",
+            display: 'flex',
+            flexDirection: 'column',
+            bgcolor: '#D9D9D9',
+            width: '100%',
             // height: "90%",
-            border: "3px solid #4C585B",
-            borderRadius: "20px",
+            border: '3px solid #4C585B',
+            borderRadius: '20px',
             mt: 2.5,
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
           }}
         >
           {/* Formulário */}
           <Box
             className="Clients"
             sx={{
-              display: "flex",
+              display: 'flex',
               alignItems: "center",
-              flexDirection: "column",
-              bgcolor: " #D9D9D9",
+              flexDirection: 'column',
+              bgcolor: ' #D9D9D9',
               borderRadius: "20px",
               width: "100%",
               height: "85%",
@@ -172,8 +210,6 @@ export const FormAdd = () => {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                // alignItems: "center",
-                // height: "100%",
                 width: "100%",
               }}
             >
@@ -191,119 +227,43 @@ export const FormAdd = () => {
               >
                 <form onSubmit={handleSubmit}>
                   <Grid container spacing={2}>
-                    {/* Nome Completo */}
-                    <Grid item sm={6}>
-                      <TextField
+                    {/* Cliente */}
+                    <Grid item sm={9}>
+                      <Select 
                         fullWidth
-                        placeholder="Nome Completo"
+                        displayEmpty
                         variant="outlined"
-                        margin="normal"
-                        value={formValues.name}
-                        onChange={(e) =>
-                          setFormValues({ ...formValues, name: e.target.value })
-                        }
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <PersonOutlineIcon fontSize="small" />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
+                        value={formValues.clientId || ""}
+                        onChange={(e) => setFormValues({ ...formValues, clientId: e.target.value })}
+                        sx={{ marginTop: "16px" }}
+                      >
+                        <MenuItem value="" disabled>
+                          Selecione um cliente
+                        </MenuItem>
+                        {clientes?.map((cliente) => (
+                          <MenuItem key={cliente.id} value={cliente.id}>
+                            {cliente.name}
+                          </MenuItem>
+                        ))}
+                      </Select>
                     </Grid>
-                    {/* E-mail */}
-                    <Grid item sm={6}>
-                      <TextField
-                        fullWidth
-                        placeholder="E-mail"
-                        variant="outlined"
-                        margin="normal"
-                        value={formValues.email}
-                        onChange={(e) =>
-                          setFormValues({
-                            ...formValues,
-                            email: e.target.value,
-                          })
-                        }
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <AlternateEmailOutlineIcon fontSize="small" />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
-
-                    <Grid item sm={6}>
-                      <TextField
-                        fullWidth
-                        placeholder="Telefone"
-                        variant="outlined"
-                        margin="normal"
-                        value={values.textmask}
-                        onChange={handleChange}
-                        name="textmask"
-                        InputProps={{
-                          inputComponent: TextMaskCustom,
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <PhoneOutlineIcon fontSize="small" />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
-
-                    {/* CPF */}
-                    <Grid item sm={3}>
-                      <TextField
-                        fullWidth
-                        placeholder="CPF"
-                        variant="outlined"
-                        margin="normal"
-                        value={formValues.cpf}
-                        onChange={(e) =>
-                          setFormValues({ ...formValues, cpf: e.target.value })
-                        }
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <BadgeOutlinedIcon fontSize="small" />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
-
-                    {/* Data de Nascimento */}
                     <Grid item sm={3}>
                       <DatePicker
-                        selected={birthdate}
+                        selected={expirationDate}
                         onChange={(date) => {
-                          setBirthdate(date);
-                          setFormValues({
-                            ...formValues,
-                            dateOfBirth: date?.toISOString() || "",
-                          });
+                          setExpirationDate(date)
+                          setFormValues({ ...formValues, expirationDate: date?.toISOString() || "" })
                         }}
                         dateFormat="dd/MM/yyyy"
-                        placeholderText="Nascimento"
+                        placeholderText="Validade"
                         customInput={
                           <TextField
                             fullWidth
-                            placeholder="Nascimento"
+                            placeholder="Validade"
                             variant="outlined"
                             margin="normal"
-                            value={
-                              birthdate ? birthdate?.toLocaleDateString() : ""
-                            }
-                            onChange={(e) =>
-                              setFormValues({
-                                ...formValues,
-                                dateOfBirth: e.target.value,
-                              })
-                            }
+                            value={expirationDate ? expirationDate?.toLocaleDateString() : ""}
+                            onChange={(e) => setFormValues({ ...formValues, expirationDate: e.target.value })}
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position="start">
@@ -315,48 +275,99 @@ export const FormAdd = () => {
                         }
                       />
                     </Grid>
-                    <Grid item>
-                      {/* Botão de adicionar */}
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          // width: '6.2%',
-                          // height: '50%',
-                          borderRadius: "10px",
-                          bgcolor: "#4C585B",
-                          "&:hover": {
-                            backgroundColor: "#7E99A3",
-                            outline: "2px solid #FFFFFF",
-                            borderRadius: "8px",
-                          },
-                          "&:active": {
-                            backgroundColor: "#7E99A3",
-                            outline: "2px solid #FFFFFF",
-                            borderRadius: "8px",
-                          },
+                    {/* Validade */}
+                    <Grid item sm={9}>
+                      <TextField
+                        fullWidth
+                        placeholder="Nome do médico"
+                        variant="outlined"
+                        margin="normal"
+                        value={formValues.doctorName}
+                        onChange={(e) => setFormValues({ ...formValues, doctorName: e.target.value })}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AlternateEmailOutlineIcon fontSize="small" />
+                            </InputAdornment>
+                          ),
                         }}
-                      >
-                        <Button
-                          sx={{
-                            width: "100%",
-                            height: "100%",
-                            borderRadius: "20%",
-                            color: "#ffffff",
-                          }}
-                          type="submit"
-                        >
-                          Cadastrar Cliente
-                        </Button>
-                      </Box>
+                      />
                     </Grid>
+
+                    <Grid item sm={3}>
+                      <TextField
+                        fullWidth
+                        placeholder="CRM"
+                        variant="outlined"
+                        margin="normal"
+                        value={formValues.doctorCrm}
+                        onChange={(e) => setFormValues({ ...formValues, doctorCrm: e.target.value })}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <PhoneOutlineIcon fontSize="small" />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                    {/* Descrição */}
+                    <Grid item sm={12}>
+                      <TextField
+                        fullWidth
+                        placeholder="Descrição"
+                        variant="outlined"
+                        margin="normal"
+                        value={formValues.description}
+                        onChange={(e) => setFormValues({ ...formValues, description: e.target.value })}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <PictureAsPdfOutlineIcon fontSize="small" />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                    <Grid item>
+                    {/* Botão de adicionar */}
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        // width: '6.2%',
+                        // height: '50%',
+                        borderRadius: '10px',
+                        bgcolor: '#4C585B',
+                        '&:hover': {
+                          backgroundColor: '#7E99A3',
+                          outline: '2px solid #FFFFFF',
+                          borderRadius: '8px',
+                        },
+                        '&:active': {
+                          backgroundColor: '#7E99A3',
+                          outline: '2px solid #FFFFFF',
+                          borderRadius: '8px',
+                        }
+
+                      }}
+                    >
+                      <Button sx={{ width: '100%', height: '100%', borderRadius: '20%', color: "#ffffff" }} type="submit">
+                        Cadastrar Cliente
+                      </Button>
+                    </Box>
+                    </Grid>
+
+                    
                   </Grid>
                 </form>
               </Box>
             </Box>
+  
           </Box>
         </Box>
+
       </Box>
     </Box>
   );

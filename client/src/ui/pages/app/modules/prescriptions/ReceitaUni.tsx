@@ -3,18 +3,29 @@ import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import { IPrescription, prescriptionMdl } from "../../../../../api/prescriptionMdl";
+import { ICliente } from "../../../../../api/clienteMdl";
+import { useNavigate } from "react-router";
 
-export default function ReceitaUni() {
+interface ReceitaUniProps {
+  prescription: IPrescription;
+  cliente: ICliente | undefined;
+  refetch: () => void;
+}
+
+export default function ReceitaUni({prescription, refetch, cliente}:ReceitaUniProps) {
+  const navigate = useNavigate();
+  
   const handleVisualizar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`${prescription.id}`);
   };
 
   const handleEditar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`editar/${prescription.id}`);
   };
 
   const handleDeletar = () => {
-    //Coloque a função para navegar para a página
+    prescriptionMdl.deletePrescription(prescription.id as string).then(refetch)
   };
 
   return (
@@ -24,7 +35,7 @@ export default function ReceitaUni() {
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        height: "100%",
+        height: "70px",
         backgroundColor: "rgba(126, 153, 163, 0.6)",
         flexDirection: "row",
         borderRadius: 2,
@@ -33,7 +44,7 @@ export default function ReceitaUni() {
       <Box
         sx={{
           display: "center",
-          width: "18%",
+          // width: "18%",
           height: "60%",
           ml: 2,
           alignItems: "center",
@@ -41,8 +52,8 @@ export default function ReceitaUni() {
         }}
       >
         <Typography className="Titulo">
-          {/* Coloque o nome do fornecedor aqui, de acordo com o banco de dados */}
-          BAYER LTDA
+          {/* Coloque o nome do produto aqui, de acordo com o banco de dados */}
+          {new Date(prescription.expirationDate).toLocaleDateString("pt-BR", {})} - {cliente ? cliente.name : "Receita sem cliente associado"}
         </Typography>
       </Box>
 
@@ -70,6 +81,7 @@ export default function ReceitaUni() {
           }}
         >
           <IconButton
+            onClick={handleVisualizar}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -99,6 +111,7 @@ export default function ReceitaUni() {
           }}
         >
           <IconButton
+            onClick={handleDeletar}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -129,6 +142,7 @@ export default function ReceitaUni() {
           }}
         >
           <IconButton
+            onClick={handleEditar}
             sx={{
               display: "flex",
               alignItems: "center",

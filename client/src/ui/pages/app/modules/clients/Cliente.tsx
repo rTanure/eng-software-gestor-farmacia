@@ -11,7 +11,10 @@ interface IClienteListagemProps {
   refetch: () => void;
 }
 
-export default function ClienteListagem({cliente, refetch}: IClienteListagemProps) {
+export default function ClienteListagem({
+  cliente,
+  refetch,
+}: IClienteListagemProps) {
   const navigate = useNavigate();
 
   const handleVisualizar = () => {
@@ -23,7 +26,7 @@ export default function ClienteListagem({cliente, refetch}: IClienteListagemProp
   };
 
   const handleDeletar = () => {
-    clienteMdl.deleteCliente(cliente.id as string).then(refetch)
+    clienteMdl.deleteCliente(cliente.id as string).then(refetch);
   };
 
   return (
@@ -37,6 +40,7 @@ export default function ClienteListagem({cliente, refetch}: IClienteListagemProp
         backgroundColor: "rgba(126, 153, 163, 0.6)",
         flexDirection: "row",
         borderRadius: 2,
+        flexShrink: 0,
       }}
     >
       <Box
