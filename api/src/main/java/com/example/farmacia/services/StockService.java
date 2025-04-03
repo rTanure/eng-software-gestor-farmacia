@@ -35,6 +35,7 @@ public class StockService {
         if(productRepository.findByCode(product.getCode()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Produto já cadastrado");
         }
+        if(!productRepository.existsById(product.getSupplierId())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fornecedor não encontrado");
         productRepository.save(entity);
     }
 

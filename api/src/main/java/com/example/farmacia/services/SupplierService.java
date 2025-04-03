@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -47,5 +48,28 @@ public class SupplierService {
 
         // Retorna todos os fornecedores que correspondem ao exemplo
         return supplierRepository.findAll(example);
+    }
+
+    // Metodo para recuperar fornecedor por id
+    public Supplier getSupplier(UUID id) {
+        return supplierRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado"));
+    }
+
+    // Metodo de ediçao de fornecedor
+    public void updateSupplier(Supplier supplier) {
+        var supplierExists = supplierRepository.existsById(supplier.getId());
+        if (!supplierExists) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado");
+        supplierRepository.save(supplier);
+    }
+
+    // Metodo para deletar fornecedor
+    public void deleteSupplier(UUID id) {
+        var supplierExists = supplierRepository.existsById(id);
+        if (supplierExists) {
+            supplierRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fornecedor não encontrado");
+        }
     }
 }

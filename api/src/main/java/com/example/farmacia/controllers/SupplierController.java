@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/supplier")
@@ -32,5 +33,26 @@ public class SupplierController {
         var suppliers = supplierService.findByFilter(filter); // Busca os fornecedores com base no filtro
 
         return ResponseEntity.ok(suppliers);
+    }
+
+    // Metodo para recuperar um fornecedor por id
+    @GetMapping("/{id}")
+    public ResponseEntity<Supplier> getSupplier(@PathVariable UUID id) {
+        var supplier = supplierService.getSupplier(id);
+        return ResponseEntity.ok(supplier);
+    }
+
+    // Metodo de ediçao de fornecedor
+    @PutMapping()
+    public ResponseEntity<Void> updateSupplier(@RequestBody Supplier supplier) {
+        supplierService.updateSupplier(supplier);
+        return ResponseEntity.ok().build();
+    }
+
+    // Metodo para deletar um fornecedor
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSupplier(@PathVariable UUID id) {
+        supplierService.deleteSupplier(id);
+        return ResponseEntity.ok().build();
     }
 }
