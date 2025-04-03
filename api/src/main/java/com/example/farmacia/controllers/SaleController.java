@@ -34,7 +34,7 @@ public class SaleController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Sale>> listSalesByFilter(SaleFilterRequestDTO saleFilterRequestDTO) {
+    public ResponseEntity<List<Sale>> getSalesByFilter(@RequestBody SaleFilterRequestDTO saleFilterRequestDTO) {
         var sales = saleService.getByFilter( saleFilterRequestDTO);
 
         return ResponseEntity.ok(sales);
@@ -43,6 +43,13 @@ public class SaleController {
     @PutMapping("/update")
     public ResponseEntity<SaleResponseDTO> updateSale(@RequestBody Sale newSale) {
         saleService.updateSale(newSale);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable UUID id) {
+        saleService.deleteById(id);
 
         return ResponseEntity.ok().build();
     }

@@ -90,4 +90,12 @@ public class SaleService {
         }
         saleRepository.save(newSale);
     }
+
+    public void deleteById(UUID id) {
+        var userExists = saleRepository.existsById(id);
+
+        if (userExists) {
+            saleRepository.deleteById(id);
+        }
+    }
 }
