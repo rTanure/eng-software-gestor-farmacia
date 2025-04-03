@@ -1,5 +1,6 @@
 package com.example.farmacia.controllers;
 
+import com.example.farmacia.dtos.request.SaleFilterRequestDTO;
 import com.example.farmacia.dtos.request.SaleRequestDTO;
 import com.example.farmacia.dtos.response.SaleResponseDTO;
 import com.example.farmacia.entidades.Sale;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -18,16 +20,38 @@ public class SaleController {
     private SaleService saleService;
 
     // Metodo para salvar uma venda
-    @PostMapping("/saveSale")
+    @PostMapping("/")
     public ResponseEntity<SaleResponseDTO> saveSale(@RequestBody SaleRequestDTO saleRequestDTO) {
         SaleResponseDTO saved = saleService.saveSale(saleRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     // Metodo para visualizar uma venda passando o id
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Sale> getSaleById(@PathVariable UUID id) {
         Sale sale = saleService.getSaleById(id);
         return ResponseEntity.ok(sale);
     }
+
+    @GetMapping()
+    public ResponseEntity<List<Sale>> getSalesByFilter(@RequestBody SaleFilterRequestDTO saleFilterRequestDTO) {
+        var sales = saleService.getByFilter( saleFilterRequestDTO);
+
+        return ResponseEntity.ok(sales);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<SaleResponseDTO> updateSale(@RequestBody Sale newSale) {
+        saleService.updateSale(newSale);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable UUID id) {
+        saleService.deleteById(id);
+
+        return ResponseEntity.ok().build();
+    }
+
 }

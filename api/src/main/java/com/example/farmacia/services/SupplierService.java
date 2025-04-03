@@ -20,16 +20,14 @@ public class SupplierService {
     private final SupplierRepository supplierRepository;
 
     // Metodo para criar um fornecedor
-    public void createSupplier(SupplierCreatRequestDTO supplier) {
-        var entity = supplier.toModel(); // Converte o DTO para a entidade
-
+    public void createSupplier(Supplier supplier) {
         // Verifica se o CNPJ já está cadastrado
         if (supplierRepository.findByCnpj(supplier.getCnpj()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fornecedor já cadastrado");
         }
 
         // Salva o fornecedor no banco de dados
-        supplierRepository.save(entity);
+        supplierRepository.save(supplier);
     }
 
     // Metodo para buscar um fornecedor
