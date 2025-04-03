@@ -8,10 +8,10 @@ import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import { SearchBar } from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Produto from "./Produto";
-import { useNavigate } from "react-router";
+import SearchBar from "../SearchBar";
+import { useNavigate } from "react-router-dom";
 
 export default function Estoque() {
   const navigate = useNavigate();
@@ -236,6 +236,7 @@ export default function Estoque() {
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
             justifyContent: "center",
+            flexShrink: 0,
           }}
         >
           {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
@@ -250,6 +251,7 @@ export default function Estoque() {
               height: "15%",
               mt: 4,
               border: 3,
+              flexShrink: 0,
             }}
           >
             {/* Barra de pesquisa */}
@@ -261,6 +263,7 @@ export default function Estoque() {
                 width: "78%",
                 height: "75%",
                 borderRadius: "50px",
+                flexShrink: 0,
               }}
             >
               <SearchBar />

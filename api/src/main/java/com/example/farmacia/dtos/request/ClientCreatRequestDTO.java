@@ -1,4 +1,4 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.request;
 
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.enums.EnumGender;
@@ -24,7 +24,6 @@ public class ClientCreatRequestDTO {
                 .phoneNumber(this.phoneNumber)
                 .dateOfBirth(this.dateOfBirth)
                 .cpf(this.cpf)
-                .gender(this.gender)
                 .build();
     }
 }

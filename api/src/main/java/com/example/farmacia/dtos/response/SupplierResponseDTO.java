@@ -1,22 +1,16 @@
-package com.example.farmacia.entidades;
+package com.example.farmacia.dtos.response;
 
-import jakarta.persistence.*;
+import com.example.farmacia.entidades.Supplier;
 import lombok.*;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "suppliers")
-@Setter
 @Getter
-@Builder
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Supplier {
-    @Id
-    @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
+public class SupplierResponseDTO {
     private UUID id;
-
     private String companyName; // nome da empresa
     private String cnpj; // CNPJ
     private String address; // endereço

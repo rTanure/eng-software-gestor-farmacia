@@ -8,7 +8,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import { SearchBar } from "./SearchBar";
+import SearchBar from "./SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Link, useNavigate } from "react-router-dom";
 

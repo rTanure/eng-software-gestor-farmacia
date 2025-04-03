@@ -1,8 +1,8 @@
 package com.example.farmacia.services;
 
-import com.example.farmacia.dtos.ClientFilterRequestDTO;
-import com.example.farmacia.dtos.ClientCreatRequestDTO;
-import com.example.farmacia.dtos.ClientUpdateDTO;
+import com.example.farmacia.dtos.request.ClientFilterRequestDTO;
+import com.example.farmacia.dtos.request.ClientCreatRequestDTO;
+import com.example.farmacia.dtos.request.ClientUpdateRequestDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.List;
@@ -24,25 +23,22 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
-    public void save(ClientCreatRequestDTO clientCreatRequestDTO) {
-
-        var entity = clientCreatRequestDTO.toModel();
-
-        if (clientRepository.findByCpf(clientCreatRequestDTO.getCpf()) != null) {
+    public void createClient(Client client) {
+        if (clientRepository.findByCpf(client.getCpf()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente já cadastrado");
         }
-
-        clientRepository.save(entity);
+        client.setId(null);
+        clientRepository.save(client);
     }
 
-    public List<Client> listClients() {
-        return clientRepository.findAll();
+    public Client getClient(UUID id) {
+        return clientRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
     }
 
     public List<Client> findByFilter(ClientFilterRequestDTO clientFilterRequestDTO) {
         Client c = new Client();
 
-        BeanUtils.copyProperties(c, clientFilterRequestDTO);
+        BeanUtils.copyProperties(clientFilterRequestDTO, c);
 
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withIgnoreCase()
@@ -62,36 +58,11 @@ public class ClientService {
         }
     }
 
-    public void updateClientById(String userId, ClientUpdateDTO clientUpdateDTO) {
-        var id = UUID.fromString(userId);
-
-        var client = clientRepository.findById(id);
-
-        if (client.isEmpty()) {
+    public void updateClientById(Client client) {
+        if (clientRepository.findById(client.getId()).isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado");
         }
-
-        var c = client.get();
-
-        if (clientUpdateDTO.getName() != null) {
-            c.setName(clientUpdateDTO.getName());
-        }
-
-        if (clientUpdateDTO.getPhoneNumber() != null) {
-            c.setPhoneNumber(clientUpdateDTO.getPhoneNumber());
-        }
-
-        if (clientUpdateDTO.getDateOfBirth() != null) {
-            c.setDateOfBirth(clientUpdateDTO.getDateOfBirth());
-        }
-
-        if (clientUpdateDTO.getGender() != null) {
-            c.setGender(clientUpdateDTO.getGender());
-        }
-
-        c.setUpdateDate(LocalDateTime.now());
-
-        clientRepository.save(c);
+        clientRepository.save(client);
     }
 
 }

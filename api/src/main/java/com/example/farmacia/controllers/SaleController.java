@@ -1,7 +1,7 @@
 package com.example.farmacia.controllers;
 
-import com.example.farmacia.dtos.SaleRequestDTO;
-import com.example.farmacia.dtos.SaleResponseDTO;
+import com.example.farmacia.dtos.request.SaleRequestDTO;
+import com.example.farmacia.dtos.response.SaleResponseDTO;
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.services.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;

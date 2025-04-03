@@ -18,7 +18,6 @@ import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import { SearchBar } from "./SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Link, useNavigate } from "react-router-dom";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";

@@ -1,7 +1,6 @@
-package com.example.farmacia.dtos;
+package com.example.farmacia.dtos.request;
 
 import com.example.farmacia.enums.EnumPaymenthMethod;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,9 +10,9 @@ import java.util.UUID;
 @Getter
 @Setter
 public class SaleRequestDTO {
-    private String nameClient; // nome do cliente
-    private String nameProduct; // nome do produto
-    private String codeProduct; // código de barras
+    private UUID idClient; // nome do cliente
+    private UUID idPrescription; // nome do produto
+    private UUID idProduct; // código de barras
     private EnumPaymenthMethod paymenthMethod; // metodo de pagamento
     private LocalDate paymenthDate;
     private Integer amount; // quantidade vendida

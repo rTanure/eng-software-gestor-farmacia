@@ -1,19 +1,28 @@
-import { Box, TextField, Button } from "@mui/material";
-import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import { Box, Button } from "@mui/material";
+import React, { useEffect } from "react";
+import { drawerWidth } from "../../MenuLateral";
 import Typography from "@mui/material/Typography";
-import StorageIcon from "@mui/icons-material/Storage";
-import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import SearchBar from "../SearchBar";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PeopleIcon from "@mui/icons-material/People";
-import Fornecedor from "./Fornecedor";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useNavigate } from "react-router";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useQuery } from "react-query";
+import { clienteMdl } from "../../../../../api/clienteMdl";
+import ClienteListagem from "./Cliente";
+import SearchBar from "../../SearchBar";
 
-export default function Fornecedores() {
+export default function Clientes() {
   const navigate = useNavigate();
+  const [nome, setNome] = React.useState<string>("");
+
+  const { data: clientes, refetch } = useQuery(
+    ["clientes", nome],
+    () => clienteMdl.getAllClientes({ name: nome }),
+    {
+      select: (data) => data.data,
+    }
+  );
+
   return (
     <Box
       sx={{
@@ -38,17 +47,17 @@ export default function Fornecedores() {
           border: "4px",
         }}
       >
+        {/* Caixa para a barra fixa com nome da página */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
-            border: 3,
+            alignItems: "center",
+            bgcolor: "#D9D9D9",
             width: "100%",
             height: "10%",
-            borderRadius: 5,
-            borderColor: "#4C585B",
-            alignItems: "center",
-            backgroundColor: "#D9D9D9",
+            borderRadius: "20px",
+            border: "3px solid #4C585B",
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
@@ -61,60 +70,64 @@ export default function Fornecedores() {
               justifyContent: "center",
             }}
           >
-            <PeopleIcon
+            <PersonAddIcon
               sx={{
-                width: "100%",
+                width: "80%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            >
-              {" "}
-            </PeopleIcon>
+            ></PersonAddIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
-            FORNECEDORES
+            CLIENTES
           </Typography>
         </Box>
 
+        {/* Box com as infos (posicionada abaixo do container superior) */}
         <Box
+          className="Container-Principal"
           sx={{
             display: "flex",
             flexDirection: "column",
-            border: 3,
+            bgcolor: "#D9D9D9",
             width: "100%",
-            height: "100%",
-            borderRadius: 5,
-            borderColor: "#4C585B",
-            alignItems: "center",
-            backgroundColor: "#D9D9D9",
+            height: "90%",
+            border: "3px solid #4C585B",
+            borderRadius: "20px",
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
+          {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
               alignItems: "center",
               bgcolor: "#D9D9D9",
               borderRadius: "20px",
-              width: "90%",
-              height: "10%",
-              mt: 4,
+              width: "100.025%",
+              height: "15%",
+              mt: 2.3,
+              flexShrink: 0,
             }}
           >
             {/* Barra de pesquisa */}
             <Box
-              className="BarraPesquisa"
+              className="Search Bar"
               sx={{
                 bgcolor: " #D9D9D9",
                 border: "3px solid #1B2C44",
-                width: "78%",
-                height: "75%",
+                width: "74%",
+                height: "52%",
                 borderRadius: "50px",
+                flexShrink: 0,
               }}
             >
-              <SearchBar />
+              <SearchBar
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
             </Box>
 
             {/* Botão de adicionar */}
@@ -123,30 +136,30 @@ export default function Fornecedores() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "7%",
-                height: "75%",
+                width: "6.2%",
+                height: "50%",
                 borderRadius: "10px",
                 bgcolor: "#4C585B",
                 "&:hover": {
                   backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
+                  outline: "2px solid #FFFFFF",
                   borderRadius: "8px",
                 },
                 "&:active": {
                   backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
+                  outline: "2px solid #FFFFFF",
                   borderRadius: "8px",
                 },
               }}
             >
               <Button
                 sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
-                onClick={() => navigate("adicionarFornecedor")}
+                onClick={() => navigate("cadastro")}
               >
                 <AddCircleOutlineIcon
                   sx={{
                     width: "100%",
-                    height: "90%",
+                    height: "100%",
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",
@@ -158,75 +171,72 @@ export default function Fornecedores() {
 
           {/* Histórico */}
           <Box
-            className="Fornecedores"
+            className="Clients"
             sx={{
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              bgcolor: " #D9D9D9",
               borderRadius: "20px",
-              width: "90%",
-              height: "11%",
+              width: "100%",
+              height: "85%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
-                width: "100%",
-                height: "100%",
-                border: "2px",
+                width: "90%",
+                height: "10%",
+                outline: "2px",
                 borderRadius: "10px",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
                 padding: "0 20px",
                 bgcolor: "#4C585B",
-                mt: 2,
+                mt: 0.5,
               }}
             >
               <Box
-                className="TextoB"
                 sx={{
-                  color: "white",
+                  color: "#FFFFFF",
+                  fontSize: "17px",
+                  fontWeight: "SemiBold",
                 }}
               >
-                FORNECEDOR
+                CLIENTE
               </Box>
 
               <Box
-                className="TextoB"
                 sx={{
-                  color: "white",
+                  color: "#FFFFFF",
+                  fontSize: "17px",
+                  fontWeight: "SemiBold",
                 }}
               >
                 AÇÕES
               </Box>
             </Box>
-          </Box>
-
-          <Box
-            sx={{
-              width: "90%",
-              height: "70%",
-            }}
-          >
-            {/* Produtos */}
             <Box
               sx={{
-                width: "100%",
-                height: "15%",
+                width: "90%",
+                height: "auto",
+                display: "flex",
+                flexDirection: "column",
                 mt: 2,
+                gap: 2,
+                overflowY: "scroll",
+                mb: 7,
               }}
             >
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  border: 2,
-                  borderRadius: "10px",
-                }}
-              >
-                <Fornecedor />
-              </Box>
+              {/* Produtos */}
+              {clientes?.map((cliente) => (
+                <ClienteListagem
+                  cliente={cliente}
+                  refetch={refetch}
+                  key={cliente.id}
+                />
+              ))}
             </Box>
           </Box>
         </Box>

@@ -87,12 +87,12 @@ export default function PermanentDrawerLeft() {
               sx={{
                   '&:hover': {
                     backgroundColor: '#7E99A3',
-                    border: '2px solid #FFFFFF',
+                    outline: '2px solid #FFFFFF',
                     borderRadius: '8px',
                   },
                   '&:active': {
                     backgroundColor: '#7E99A3',
-                    border: '2px solid #FFFFFF',
+                    outline: '2px solid #FFFFFF',
                     borderRadius: '8px',
                   }
                 }}>

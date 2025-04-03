@@ -1,28 +1,25 @@
 package com.example.farmacia.entidades;
 
-import com.example.farmacia.enums.EnumPaymenthMethod;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "sales")
+@Table(name = "prescriptions")
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Sale {
+@Builder
+public class Prescription {
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     private UUID id;
-
+    private String doctorName;
+    private String doctorCrm;
+    private String description;
+    private LocalDateTime expirationDate;
     private UUID idClient;
-    private UUID idPrescription;
-    private UUID idProduct;
-    private LocalDate date;
-    private Integer amount;
-    private Double salePrice;
 }

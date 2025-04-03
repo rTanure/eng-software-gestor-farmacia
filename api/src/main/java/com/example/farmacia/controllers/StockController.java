@@ -1,52 +1,63 @@
 package com.example.farmacia.controllers;
 
-import com.example.farmacia.dtos.ProductRequestDTO;
-import com.example.farmacia.dtos.ProductResponseDTO;
+import com.example.farmacia.dtos.request.ProductCreatRequestDTO;
+import com.example.farmacia.dtos.request.ProductFilterRequestDTO;
+import com.example.farmacia.entidades.Product;
 import com.example.farmacia.services.StockService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/stock")
+@CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class StockController {
 
-    @Autowired
-    private StockService stockService;
+    private final StockService stockService;
 
-    // Metodo de criação de estoque de produto
-    @PostMapping("/createProduct")
-    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductRequestDTO product) {
-        ProductResponseDTO productResponseDTO = stockService.createProduct(product);
-        return ResponseEntity.status(HttpStatus.CREATED).body(productResponseDTO);
+    // Retorna quantidade de medicamentos no estoque
+    @GetMapping("/quantityMedicines")
+    public ResponseEntity<Integer> getQuantityMedicines() {
+        var quantity = stockService.getQuantityMedicines();
+        return ResponseEntity.ok(quantity);
     }
 
-    // Metodo de busca de estoque de produtos por nome
-    @GetMapping("/searchByName")
-    public ResponseEntity<Page<ProductResponseDTO>> searchProduct(@RequestParam String name,
-                                                                  @RequestParam(defaultValue = "0") int page,
-                                                                  @RequestParam(defaultValue = "10") int size,
-                                                                  @RequestParam(defaultValue = "name") String sortBy,
-                                                                  @RequestParam(defaultValue = "asc") String order) {
-        Page<ProductResponseDTO> products = stockService.findProductsByName(name, page, size, sortBy, order);
+    // Metodo de criação de estoque de produto
+    @PostMapping()
+    public ResponseEntity<Void> createProduct(@RequestBody ProductCreatRequestDTO product) {
+        stockService.createProduct(product);
+        return ResponseEntity.ok().build();
+    }
+
+    // Metodo de busca de estoque de produtos por id, nome e codigo de barras
+    @GetMapping()
+    public ResponseEntity<List<Product>> searchProduct(@ModelAttribute ProductFilterRequestDTO product) {
+        var products = stockService.findByFilter(product);
         return ResponseEntity.ok(products);
     }
 
+    // Recuperar produto por id
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable UUID id) {
+        var product = stockService.getProduct(id);
+        return ResponseEntity.ok(product);
+    }
+
     // Metodo de ediçao de produto por id
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductRequestDTO product) {
-        ProductResponseDTO productResponseDTO = stockService.updateProduct(id, product);
-        return ResponseEntity.ok(productResponseDTO);
+    @PutMapping()
+    public ResponseEntity<Void> updateProductById(@RequestBody Product product) {
+        stockService.updateProductById(product);
+        return ResponseEntity.ok().build();
     }
 
     // Metodo de remoção de produto por id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
         stockService.deleteProductById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
