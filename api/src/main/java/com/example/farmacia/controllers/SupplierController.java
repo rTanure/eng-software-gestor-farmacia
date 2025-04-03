@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/supplier")
@@ -38,6 +39,13 @@ public class SupplierController {
     @PutMapping()
     public ResponseEntity<Void> updateSupplier(@RequestBody Supplier supplier) {
         supplierService.updateSupplier(supplier);
+        return ResponseEntity.ok().build();
+    }
+
+    // Metodo para deletar um fornecedor
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSupplier(@PathVariable UUID id) {
+        supplierService.deleteSupplier(id);
         return ResponseEntity.ok().build();
     }
 }
