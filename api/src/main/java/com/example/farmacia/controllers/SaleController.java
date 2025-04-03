@@ -1,5 +1,6 @@
 package com.example.farmacia.controllers;
 
+import com.example.farmacia.dtos.request.SaleFilterRequestDTO;
 import com.example.farmacia.dtos.request.SaleRequestDTO;
 import com.example.farmacia.dtos.response.SaleResponseDTO;
 import com.example.farmacia.entidades.Sale;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -29,6 +31,13 @@ public class SaleController {
     public ResponseEntity<Sale> getSaleById(@PathVariable UUID id) {
         Sale sale = saleService.getSaleById(id);
         return ResponseEntity.ok(sale);
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<Sale>> listSalesByFilter(SaleFilterRequestDTO saleFilterRequestDTO) {
+        var sales = saleService.getByFilter( saleFilterRequestDTO);
+
+        return ResponseEntity.ok(sales);
     }
 
     @PutMapping("/update")
