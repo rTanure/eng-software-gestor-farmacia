@@ -17,7 +17,7 @@ import { IMaskInput } from "react-imask";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../../../../css/FormAdd.css"
+import "../../../../../css/FormAdd.css";
 import { styled } from "@mui/material/styles";
 import { drawerWidth } from "../../MenuLateral";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -29,9 +29,6 @@ import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { form } from "framer-motion/client";
 import { useNavigate } from "react-router";
-
-
-
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -70,16 +67,17 @@ export const FormAdd = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    clienteMdl.createCliente({
-      id: null,
-      name: formValues.name,
-      email: formValues.email,
-      cpf: formValues.cpf,
-      dateOfBirth: formValues.dateOfBirth,
-      phoneNumber: values.textmask,
-    } as ICliente)
-      .then(r => navigate("/app/clientes"))
-  }
+    clienteMdl
+      .createCliente({
+        id: null,
+        name: formValues.name,
+        email: formValues.email,
+        cpf: formValues.cpf,
+        dateOfBirth: formValues.dateOfBirth,
+        phoneNumber: values.textmask,
+      } as ICliente)
+      .then((r) => navigate("/app/clientes"));
+  };
 
   return (
     <Box
@@ -105,19 +103,18 @@ export const FormAdd = () => {
           border: "4px",
         }}
       >
-
         {/* Caixa para a barra fixa com nome da página */}
         <Box
           sx={{
-            display: 'flex',
+            display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            bgcolor: '#D9D9D9',
-            width: '100%',
+            bgcolor: "#D9D9D9",
+            width: "100%",
             height: "10%",
-            borderRadius: '20px',
-            border: '3px solid #4C585B',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            borderRadius: "20px",
+            border: "3px solid #4C585B",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
           <Box
@@ -146,25 +143,25 @@ export const FormAdd = () => {
         <Box
           className="Container-Principal"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            bgcolor: '#D9D9D9',
-            width: '100%',
+            display: "flex",
+            flexDirection: "column",
+            bgcolor: "#D9D9D9",
+            width: "100%",
             // height: "90%",
-            border: '3px solid #4C585B',
-            borderRadius: '20px',
+            border: "3px solid #4C585B",
+            borderRadius: "20px",
             mt: 2.5,
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
           {/* Formulário */}
           <Box
             className="Clients"
             sx={{
-              display: 'flex',
+              display: "flex",
               alignItems: "center",
-              flexDirection: 'column',
-              bgcolor: ' #D9D9D9',
+              flexDirection: "column",
+              bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "100%",
               height: "85%",
@@ -202,7 +199,9 @@ export const FormAdd = () => {
                         variant="outlined"
                         margin="normal"
                         value={formValues.name}
-                        onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
+                        onChange={(e) =>
+                          setFormValues({ ...formValues, name: e.target.value })
+                        }
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -220,7 +219,12 @@ export const FormAdd = () => {
                         variant="outlined"
                         margin="normal"
                         value={formValues.email}
-                        onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            email: e.target.value,
+                          })
+                        }
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -259,7 +263,9 @@ export const FormAdd = () => {
                         variant="outlined"
                         margin="normal"
                         value={formValues.cpf}
-                        onChange={(e) => setFormValues({ ...formValues, cpf: e.target.value })}
+                        onChange={(e) =>
+                          setFormValues({ ...formValues, cpf: e.target.value })
+                        }
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -275,8 +281,11 @@ export const FormAdd = () => {
                       <DatePicker
                         selected={birthdate}
                         onChange={(date) => {
-                          setBirthdate(date)
-                          setFormValues({ ...formValues, dateOfBirth: date?.toISOString() || "" })
+                          setBirthdate(date);
+                          setFormValues({
+                            ...formValues,
+                            dateOfBirth: date?.toISOString() || "",
+                          });
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Nascimento"
@@ -286,8 +295,15 @@ export const FormAdd = () => {
                             placeholder="Nascimento"
                             variant="outlined"
                             margin="normal"
-                            value={birthdate ? birthdate?.toLocaleDateString() : ""}
-                            onChange={(e) => setFormValues({ ...formValues, dateOfBirth: e.target.value })}
+                            value={
+                              birthdate ? birthdate?.toLocaleDateString() : ""
+                            }
+                            onChange={(e) =>
+                              setFormValues({
+                                ...formValues,
+                                dateOfBirth: e.target.value,
+                              })
+                            }
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position="start">
@@ -300,44 +316,47 @@ export const FormAdd = () => {
                       />
                     </Grid>
                     <Grid item>
-                    {/* Botão de adicionar */}
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        // width: '6.2%',
-                        // height: '50%',
-                        borderRadius: '10px',
-                        bgcolor: '#4C585B',
-                        '&:hover': {
-                          backgroundColor: '#7E99A3',
-                          outline: '2px solid #FFFFFF',
-                          borderRadius: '8px',
-                        },
-                        '&:active': {
-                          backgroundColor: '#7E99A3',
-                          outline: '2px solid #FFFFFF',
-                          borderRadius: '8px',
-                        }
-
-                      }}
-                    >
-                      <Button sx={{ width: '100%', height: '100%', borderRadius: '20%', color: "#ffffff" }} type="submit">
-                        Cadastrar Cliente
-                      </Button>
-                    </Box>
+                      {/* Botão de adicionar */}
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          // width: '6.2%',
+                          // height: '50%',
+                          borderRadius: "10px",
+                          bgcolor: "#4C585B",
+                          "&:hover": {
+                            backgroundColor: "#7E99A3",
+                            outline: "2px solid #FFFFFF",
+                            borderRadius: "8px",
+                          },
+                          "&:active": {
+                            backgroundColor: "#7E99A3",
+                            outline: "2px solid #FFFFFF",
+                            borderRadius: "8px",
+                          },
+                        }}
+                      >
+                        <Button
+                          sx={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "20%",
+                            color: "#ffffff",
+                          }}
+                          type="submit"
+                        >
+                          Cadastrar Cliente
+                        </Button>
+                      </Box>
                     </Grid>
-
-                    
                   </Grid>
                 </form>
               </Box>
             </Box>
-  
           </Box>
         </Box>
-
       </Box>
     </Box>
   );

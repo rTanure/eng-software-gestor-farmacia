@@ -2,18 +2,20 @@ import StorageIcon from "@mui/icons-material/Storage";
 import PeopleIcon from "@mui/icons-material/People";
 import SellIcon from "@mui/icons-material/Sell";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import DescriptionIcon from '@mui/icons-material/Description';
+import DescriptionIcon from "@mui/icons-material/Description";
 import Estoque from "./modules/Estoque";
 import Fornecedores from "./modules/Fornecedores";
 import Vendas from "./modules/Vendas";
 import Receita from "./modules/Receita";
 import Clientes from "./modules/clients/Clientes";
-import EstoqueAdd from "./modules/EstoqueAdd";
+import { EstoqueAdd } from "./EstoqueAdd";
 import { FormAdd } from "./modules/clients/FormAddClientes";
 import { path } from "framer-motion/client";
 import { DetalhesCliente } from "./modules/clients/DetalhesCliente";
 import { ClientUpdate } from "./modules/clients/ClientUpdate";
-
+import { VendaAdd } from "./VendaAdd";
+import { ReceitaAdd } from "./ReceitaAdd";
+import { FornecedorAdd } from "./FornecedorAdd";
 
 export const modules = [
   {
@@ -61,5 +63,17 @@ export const modules = [
   {
     path: "/estoque/adicionar",
     component: EstoqueAdd,
+  },
+  {
+    path: "/vendas/adicionarVenda",
+    component: VendaAdd,
+  },
+  {
+    path: "/fornecedores/adicionarFornecedor",
+    component: FornecedorAdd,
+  },
+  {
+    path: "receitas/adicionarReceita",
+    component: ReceitaAdd,
   },
 ];

@@ -13,8 +13,10 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import ArticleIcon from "@mui/icons-material/Article";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ReceitaUni from "./ReceitaUni";
+import { useNavigate } from "react-router";
 
 export default function Receita() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -142,6 +144,7 @@ export default function Receita() {
             >
               <Button
                 sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                onClick={() => navigate("adicionarReceita")}
               >
                 <AddCircleOutlineIcon
                   sx={{
