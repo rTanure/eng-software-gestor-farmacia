@@ -164,7 +164,7 @@ export default function Receita() {
                 options={
                   clientes?.map((cliente) => ({
                     label: cliente.name,
-                    value: cliente.id,
+                    value: cliente.id || "",
                   })) || []
                 }
               />

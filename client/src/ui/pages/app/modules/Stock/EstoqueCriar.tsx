@@ -9,7 +9,6 @@ import {
   Stack,
   Typography,
   Select,
-  TextareaAutosize,
 } from "@mui/material"; // Adicionando Button, IconButton e Stack
 import React, { useState } from "react";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -29,45 +28,24 @@ import PhoneOutlineIcon from "@mui/icons-material/PhoneOutlined";
 import WcOutlineIcon from "@mui/icons-material/WcOutlined";
 import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
-import { form } from "framer-motion/client";
+import { form, sup } from "framer-motion/client";
 import { useNavigate } from "react-router";
-import DescriptionIcon from "@mui/icons-material/Description";
-import { useQuery } from "react-query";
-import {
-  IPrescription,
-  prescriptionMdl,
-} from "../../../../../api/prescriptionMdl";
 import SaveIcon from "@mui/icons-material/Save";
+import { IStock, stockMdl } from "../../../../../api/stockMdl";
+import { useQuery } from "react-query";
+import { supplierMdl } from "../../../../../api/supplierMdl";
 
-const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
-  return (
-    <IMaskInput
-      {...other}
-      mask="(#0) 0 0000-0000"
-      definitions={{ "#": /[1-9]/ }}
-      inputRef={ref}
-      onAccept={(value) => onChange({ target: { name: props.name, value } })}
-      overwrite
-    />
-  );
-});
 
-TextMaskCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 const Input = styled("input")({
   display: "none",
 });
 
-export const ReceitaCadastrar = () => {
+export const EstoqueCriar = () => {
   const [values, setValues] = useState({ textmask: "" });
-  const [expirationDate, setExpirationDate] = useState(null);
-  const [formValues, setFormValues] = useState<IPrescription>(
-    {} as IPrescription
-  );
+  const [birthdate, setBirthdate] = useState(null);
+  const [gender, setGender] = useState("");
+  const [formValues, setFormValues] = useState<IStock>({} as IStock);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -75,32 +53,32 @@ export const ReceitaCadastrar = () => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
+  const {data: suppliers} = useQuery(
+    "suppliers", 
+    () => supplierMdl.getAll(),
+    {
+      select: (data) => data.data.map((supplier) => ({ id: supplier.id, name: supplier.companyName })) || [],
+    }
+  )
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { clientId, doctorName, doctorCrm, description } = formValues;
 
-    prescriptionMdl
-      .createPrescription({
+    const { batch, code, expirationDate, name, purchasePrice,receivedAmount, supplierId } = formValues
+
+    stockMdl
+      .create({
         id: null,
-        doctorName,
-        doctorCrm,
-        description,
-        expirationDate: expirationDate?.toISOString() || "",
-        clientId,
-      } as IPrescription)
-      .then((r) => navigate("/app/receitas"));
+        batch, 
+        code, 
+        expirationDate, 
+        name, 
+        purchasePrice,
+        receivedAmount, 
+        supplierId
+      })
+      .then((r) => navigate("/app/estoque"));
   };
-
-  const { data: clientes, refetch: refetchClientes } = useQuery(
-    ["clientes"],
-    () => clienteMdl.getAllClientes({ name: "" }),
-    {
-      select: (data) => data.data,
-      onSuccess: (data) => {
-        console.log(data);
-      },
-    }
-  );
 
   return (
     <Box
@@ -149,16 +127,16 @@ export const ReceitaCadastrar = () => {
               justifyContent: "center",
             }}
           >
-            <DescriptionIcon
+            <PersonAddIcon
               sx={{
                 width: "80%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            ></DescriptionIcon>
+            ></PersonAddIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
-            CADASTRAR RECEITA
+            ADICIONAR ENTRADA DE ESTOQUE
           </Typography>
         </Box>
 
@@ -175,6 +153,8 @@ export const ReceitaCadastrar = () => {
             borderRadius: "20px",
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           {/* Formulário */}
@@ -202,7 +182,6 @@ export const ReceitaCadastrar = () => {
                 className="main"
                 sx={{
                   display: "flex",
-                  // height: "95%",
                   width: "90%",
                   flexDirection: "row",
                   overflow: "auto",
@@ -212,54 +191,129 @@ export const ReceitaCadastrar = () => {
               >
                 <form onSubmit={handleSubmit}>
                   <Grid container spacing={2}>
-                    {/* Cliente */}
-                    <Grid item sm={9}>
+
+                  <Grid item sm={6}>
                       <Select
                         fullWidth
                         displayEmpty
+                        name="supplierId"
+                        autoComplete="off"
                         variant="outlined"
-                        value={formValues.clientId || ""}
+                        value={formValues.supplierId || ""}
                         onChange={(e) =>
                           setFormValues({
                             ...formValues,
-                            clientId: e.target.value,
+                            supplierId: e.target.value,
                           })
                         }
                         sx={{ marginTop: "16px" }}
                       >
                         <MenuItem value="" disabled>
-                          Selecione um cliente
+                          Selecione o fornecedor
                         </MenuItem>
-                        {clientes?.map((cliente) => (
-                          <MenuItem key={cliente.id} value={cliente.id}>
-                            {cliente.name}
+                        {suppliers?.map((supplier) => (
+                          <MenuItem key={supplier.id} value={supplier.id}>
+                            {supplier.name}
                           </MenuItem>
                         ))}
                       </Select>
                     </Grid>
+
+                    {/* Nome Completo */}
+                    <Grid item sm={6}>
+                      <TextField
+                        fullWidth
+                        placeholder="Nome do medicamento"
+                        autoComplete="off"
+                        name="name"
+                        variant="outlined"
+                        margin="normal"
+                        value={formValues.name}
+                        onChange={(e) =>
+                          setFormValues({ ...formValues, name: e.target.value })
+                        }
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <PersonOutlineIcon fontSize="small" />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                    {/* E-mail */}
+                    <Grid item sm={6}>
+                      <TextField
+                        fullWidth
+                        placeholder="Código"
+                        name="code"
+                        variant="outlined"
+                        autoComplete="off"
+                        margin="normal"
+                        value={formValues.code}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            code: e.target.value,
+                          })
+                        }
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AlternateEmailOutlineIcon fontSize="small" />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                    {/* E-mail */}
+                    <Grid item sm={6}>
+                      <TextField
+                        fullWidth
+                        placeholder="Lote"
+                        variant="outlined"
+                        name="batch"
+                        autoComplete="off"
+                        margin="normal"
+                        value={formValues.batch}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            batch: e.target.value,
+                          })
+                        }
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AlternateEmailOutlineIcon fontSize="small" />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                  
+
+                    
+
                     <Grid item sm={3}>
                       <DatePicker
-                        selected={expirationDate}
+                        selected={formValues.expirationDate ? new Date(formValues.expirationDate) : null}
+                        name="expirationDate"
+                        autoComplete="off"
                         onChange={(date) => {
-                          setExpirationDate(date);
                           setFormValues({
                             ...formValues,
                             expirationDate: date?.toISOString() || "",
                           });
                         }}
                         dateFormat="dd/MM/yyyy"
-                        placeholderText="Validade"
+                        placeholderText="Nascimento"
                         customInput={
                           <TextField
-                            fullWidth
-                            placeholder="Validade"
+                            placeholder="Nascimento"
                             variant="outlined"
                             margin="normal"
-                            value={
-                              expirationDate
-                                ? new Date(expirationDate).toLocaleDateString()
-                                : ""
-                            }
+                            value={formValues.expirationDate}
                             onChange={(e) =>
                               setFormValues({
                                 ...formValues,
@@ -277,18 +331,45 @@ export const ReceitaCadastrar = () => {
                         }
                       />
                     </Grid>
-                    {/* Validade */}
-                    <Grid item sm={9}>
+
+                    <Grid item sm={3}>
                       <TextField
                         fullWidth
-                        placeholder="Nome do médico"
+                        placeholder="Quantidade recebida"
+                        name="receivedAmount"
                         variant="outlined"
+                        autoComplete="off"
                         margin="normal"
-                        value={formValues.doctorName}
+                        type="number"
+                        value={formValues.receivedAmount}
                         onChange={(e) =>
                           setFormValues({
                             ...formValues,
-                            doctorName: e.target.value,
+                            receivedAmount: isNaN(Number(e.target.value)) ? 0 : Number(e.target.value),
+                          })
+                        }
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <AlternateEmailOutlineIcon fontSize="small" />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                    <Grid item sm={6}>
+                      <TextField
+                        fullWidth
+                        placeholder="Preço de compra"
+                        variant="outlined"
+                        autoComplete="off"
+                        margin="normal"
+                        type="number"
+                        value={formValues.purchasePrice}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            purchasePrice: isNaN(Number(e.target.value)) ? 0 : Number(e.target.value),
                           })
                         }
                         InputProps={{
@@ -301,51 +382,6 @@ export const ReceitaCadastrar = () => {
                       />
                     </Grid>
 
-                    <Grid item sm={3}>
-                      <TextField
-                        fullWidth
-                        placeholder="CRM"
-                        variant="outlined"
-                        margin="normal"
-                        value={formValues.doctorCrm}
-                        onChange={(e) =>
-                          setFormValues({
-                            ...formValues,
-                            doctorCrm: e.target.value,
-                          })
-                        }
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <PhoneOutlineIcon fontSize="small" />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
-                    {/* Descrição */}
-                    <Grid item sm={12}>
-                      <TextField
-                        fullWidth
-                        placeholder="Descrição"
-                        variant="outlined"
-                        margin="normal"
-                        value={formValues.description}
-                        onChange={(e) =>
-                          setFormValues({
-                            ...formValues,
-                            description: e.target.value,
-                          })
-                        }
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <PictureAsPdfOutlineIcon fontSize="small" />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
                     <Grid item>
                       {/* Botão de adicionar */}
                       <Box
@@ -357,8 +393,8 @@ export const ReceitaCadastrar = () => {
                           height: "45px",
                           borderRadius: "30px",
                           bgcolor: "#4C585B",
-                          mt: 6,
-                          ml: 67,
+                          // mt: 6,
+                          // ml: 66,
                           "&:hover": {
                             backgroundColor: "#7E99A3",
                             outline: "2px solid #FFFFFF",

@@ -4,6 +4,7 @@ import com.example.farmacia.dtos.request.ProductCreatRequestDTO;
 import com.example.farmacia.dtos.request.ProductFilterRequestDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.repositories.ProductRepository;
+import com.example.farmacia.repositories.SupplierRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.*;
@@ -20,6 +21,7 @@ import java.util.UUID;
 public class StockService {
 
     private final ProductRepository productRepository;
+    private final SupplierRepository supplierRepository;
 
     // Retorna quantidade de medicamentos no estoque
     public Integer getQuantityMedicines() {
@@ -35,7 +37,7 @@ public class StockService {
         if(productRepository.findByCode(product.getCode()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Produto já cadastrado");
         }
-        if(!productRepository.existsById(product.getSupplierId())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fornecedor não encontrado");
+        if(!supplierRepository.existsById(product.getSupplierId())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fornecedor não encontrado");
         productRepository.save(entity);
     }
 

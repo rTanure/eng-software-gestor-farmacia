@@ -1,6 +1,6 @@
 import { Box, TextField, Button } from "@mui/material";
 import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import { drawerWidth } from "../../MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
 import PeopleIcon from "@mui/icons-material/People";
@@ -10,11 +10,35 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Produto from "./Produto";
-import SearchBar from "../SearchBar";
+import SearchBar from "../../SearchBar";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
+import { stockMdl } from "../../../../../api/stockMdl";
 
 export default function Estoque() {
   const navigate = useNavigate();
+
+  const {data: quantidadeMedicamentos, refetch: refetchQtc} = useQuery(
+    ["quantidadeMedicamentos"],
+    () => stockMdl.getStockSize(),
+    {
+      select: (data) => data.data,
+    }
+  )
+
+  const {data: produtos, refetch: refetchProdutos} = useQuery(
+    ["produtos"],
+    () => stockMdl.getAll(),
+    {
+      select: (data) => data.data,
+    }
+  )
+
+  const refetch = () => {
+    refetchQtc()
+    refetchProdutos()
+  }
+
   return (
     <Box
       sx={{
@@ -134,49 +158,6 @@ export default function Estoque() {
             }}
           >
             <Box
-              className="MEDICAMENTOS"
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                bgcolor: "rgba(76, 88, 91, 1)",
-                borderRadius: 3,
-                width: "30%",
-                height: "50%",
-                mr: 2,
-              }}
-            >
-              <Typography
-                className="TextoB"
-                sx={{
-                  ml: 3,
-                  color: "white",
-                }}
-              >
-                MEDICAMENTOS
-              </Typography>
-              <Box
-                sx={{
-                  width: "20%",
-                  height: "70%",
-                  mr: 3,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  className="TextoB"
-                  sx={{
-                    color: "white",
-                  }}
-                >
-                  0
-                </Typography>
-              </Box>
-            </Box>
-            <Box
               className="PRODUTOS"
               sx={{
                 display: "flex",
@@ -215,7 +196,7 @@ export default function Estoque() {
                     color: "white",
                   }}
                 >
-                  0
+                  {quantidadeMedicamentos}
                 </Typography>
               </Box>
             </Box>
@@ -258,14 +239,14 @@ export default function Estoque() {
               className="BarraPesquisa"
               sx={{
                 bgcolor: " #D9D9D9",
-                border: "3px solid #1B2C44",
+                // border: "3px solid #1B2C44",
                 width: "78%",
                 height: "75%",
                 borderRadius: "50px",
                 flexShrink: 0,
               }}
             >
-              <SearchBar />
+              {/* <SearchBar /> */}
             </Box>
             {/* Botão de adicionar */}
             <Box
@@ -340,7 +321,7 @@ export default function Estoque() {
                   color: "white",
                 }}
               >
-                PRODUTOS
+                QTD - PRODUTOS
               </Box>
 
               <Box
@@ -359,7 +340,7 @@ export default function Estoque() {
                 height: "80%",
                 mt: 2,
                 gap: 2,
-                overflowY: "scroll",
+                overflowY: "auto",
               }}
             >
               {/* Produtos */}
@@ -372,12 +353,19 @@ export default function Estoque() {
                 <Box
                   sx={{
                     width: "100%",
-                    height: "100%",
-                    border: 2,
+                    // height: "100%",
+                    display: "flex",
+                    gap: 2,
+                    flexDirection: "column",
+                    // border: 2,
                     borderRadius: "10px",
                   }}
                 >
-                  <Produto />
+                  {
+                    produtos?.map((produto, index) => (
+                      <Produto refetch={refetch} key={index} product={produto} />
+                    ))
+                  }
                 </Box>
               </Box>
             </Box>
