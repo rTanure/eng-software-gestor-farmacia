@@ -35,8 +35,6 @@ import { IStock, stockMdl } from "../../../../../api/stockMdl";
 import { useQuery } from "react-query";
 import { supplierMdl } from "../../../../../api/supplierMdl";
 
-
-
 const Input = styled("input")({
   display: "none",
 });
@@ -53,29 +51,41 @@ export const EstoqueCriar = () => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
-  const {data: suppliers} = useQuery(
-    "suppliers", 
+  const { data: suppliers } = useQuery(
+    "suppliers",
     () => supplierMdl.getAll(),
     {
-      select: (data) => data.data.map((supplier) => ({ id: supplier.id, name: supplier.companyName })) || [],
+      select: (data) =>
+        data.data.map((supplier) => ({
+          id: supplier.id,
+          name: supplier.companyName,
+        })) || [],
     }
-  )
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const { batch, code, expirationDate, name, purchasePrice,receivedAmount, supplierId } = formValues
+    const {
+      batch,
+      code,
+      expirationDate,
+      name,
+      purchasePrice,
+      receivedAmount,
+      supplierId,
+    } = formValues;
 
     stockMdl
       .create({
         id: null,
-        batch, 
-        code, 
-        expirationDate, 
-        name, 
+        batch,
+        code,
+        expirationDate,
+        name,
         purchasePrice,
-        receivedAmount, 
-        supplierId
+        receivedAmount,
+        supplierId,
       })
       .then((r) => navigate("/app/estoque"));
   };
@@ -191,8 +201,7 @@ export const EstoqueCriar = () => {
               >
                 <form onSubmit={handleSubmit}>
                   <Grid container spacing={2}>
-
-                  <Grid item sm={6}>
+                    <Grid item sm={6}>
                       <Select
                         fullWidth
                         displayEmpty
@@ -291,13 +300,14 @@ export const EstoqueCriar = () => {
                         }}
                       />
                     </Grid>
-                  
-
-                    
 
                     <Grid item sm={3}>
                       <DatePicker
-                        selected={formValues.expirationDate ? new Date(formValues.expirationDate) : null}
+                        selected={
+                          formValues.expirationDate
+                            ? new Date(formValues.expirationDate)
+                            : null
+                        }
                         name="expirationDate"
                         autoComplete="off"
                         onChange={(date) => {
@@ -307,10 +317,10 @@ export const EstoqueCriar = () => {
                           });
                         }}
                         dateFormat="dd/MM/yyyy"
-                        placeholderText="Nascimento"
+                        placeholderText="Data"
                         customInput={
                           <TextField
-                            placeholder="Nascimento"
+                            placeholder="Data"
                             variant="outlined"
                             margin="normal"
                             value={formValues.expirationDate}
@@ -345,7 +355,9 @@ export const EstoqueCriar = () => {
                         onChange={(e) =>
                           setFormValues({
                             ...formValues,
-                            receivedAmount: isNaN(Number(e.target.value)) ? 0 : Number(e.target.value),
+                            receivedAmount: isNaN(Number(e.target.value))
+                              ? 0
+                              : Number(e.target.value),
                           })
                         }
                         InputProps={{
@@ -369,7 +381,9 @@ export const EstoqueCriar = () => {
                         onChange={(e) =>
                           setFormValues({
                             ...formValues,
-                            purchasePrice: isNaN(Number(e.target.value)) ? 0 : Number(e.target.value),
+                            purchasePrice: isNaN(Number(e.target.value))
+                              ? 0
+                              : Number(e.target.value),
                           })
                         }
                         InputProps={{

@@ -188,7 +188,7 @@ export default function Clientes() {
             <Box
               sx={{
                 width: "90%",
-                height: "10%",
+                height: "13%",
                 outline: "2px",
                 borderRadius: "10px",
                 display: "flex",

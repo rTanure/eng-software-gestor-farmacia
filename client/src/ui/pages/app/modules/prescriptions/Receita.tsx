@@ -226,7 +226,7 @@ export default function Receita() {
             <Box
               sx={{
                 width: "90%",
-                height: "10%",
+                height: "13%",
                 outline: "2px",
                 borderRadius: "10px",
                 display: "flex",
@@ -243,7 +243,7 @@ export default function Receita() {
                   color: "white",
                 }}
               >
-                VALIDADE - CLIENTE
+                RECEITAS
               </Box>
 
               <Box

@@ -18,26 +18,26 @@ import { stockMdl } from "../../../../../api/stockMdl";
 export default function Estoque() {
   const navigate = useNavigate();
 
-  const {data: quantidadeMedicamentos, refetch: refetchQtc} = useQuery(
+  const { data: quantidadeMedicamentos, refetch: refetchQtc } = useQuery(
     ["quantidadeMedicamentos"],
     () => stockMdl.getStockSize(),
     {
       select: (data) => data.data,
     }
-  )
+  );
 
-  const {data: produtos, refetch: refetchProdutos} = useQuery(
+  const { data: produtos, refetch: refetchProdutos } = useQuery(
     ["produtos"],
     () => stockMdl.getAll(),
     {
       select: (data) => data.data,
     }
-  )
+  );
 
   const refetch = () => {
-    refetchQtc()
-    refetchProdutos()
-  }
+    refetchQtc();
+    refetchProdutos();
+  };
 
   return (
     <Box
@@ -220,73 +220,6 @@ export default function Estoque() {
             flexShrink: 0,
           }}
         >
-          {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              bgcolor: "#D9D9D9",
-              borderRadius: "20px",
-              width: "90%",
-              height: "15%",
-              mt: 4,
-              flexShrink: 0,
-            }}
-          >
-            {/* Barra de pesquisa */}
-            <Box
-              className="BarraPesquisa"
-              sx={{
-                bgcolor: " #D9D9D9",
-                // border: "3px solid #1B2C44",
-                width: "78%",
-                height: "75%",
-                borderRadius: "50px",
-                flexShrink: 0,
-              }}
-            >
-              {/* <SearchBar /> */}
-            </Box>
-            {/* Botão de adicionar */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "7%",
-                height: "75%",
-                borderRadius: "10px",
-                bgcolor: "#4C585B",
-                "&:hover": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
-                },
-                "&:active": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
-                },
-              }}
-            >
-              <Button
-                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
-                onClick={() => navigate("adicionar")}
-              >
-                <AddCircleOutlineIcon
-                  sx={{
-                    width: "100%",
-                    height: "90%",
-                    color: "#D9D9D9",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                ></AddCircleOutlineIcon>
-              </Button>
-            </Box>
-          </Box>
-
           {/* Histórico */}
           <Box
             className="Produtos"
@@ -339,7 +272,6 @@ export default function Estoque() {
                 width: "100%",
                 height: "80%",
                 mt: 2,
-                gap: 2,
                 overflowY: "auto",
               }}
             >
@@ -361,15 +293,68 @@ export default function Estoque() {
                     borderRadius: "10px",
                   }}
                 >
-                  {
-                    produtos?.map((produto, index) => (
-                      <Produto refetch={refetch} key={index} product={produto} />
-                    ))
-                  }
+                  {produtos?.map((produto, index) => (
+                    <Produto refetch={refetch} key={index} product={produto} />
+                  ))}
                 </Box>
               </Box>
             </Box>
           </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              width: "90%",
+              height: "15%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "7%",
+                height: "80%",
+                borderRadius: "10px",
+                bgcolor: "#4C585B",
+                "&:hover": {
+                  backgroundColor: "#7E99A3",
+                  border: "2px solid #FFFFFF",
+                  borderRadius: "8px",
+                },
+                "&:active": {
+                  backgroundColor: "#7E99A3",
+                  border: "2px solid #FFFFFF",
+                  borderRadius: "8px",
+                },
+              }}
+            >
+              <Button
+                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                onClick={() => navigate("adicionar")}
+              >
+                <AddCircleOutlineIcon
+                  sx={{
+                    width: "100%",
+                    height: "90%",
+                    color: "#D9D9D9",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                ></AddCircleOutlineIcon>
+              </Button>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              width: "90%",
+              height: "5%",
+            }}
+          ></Box>
         </Box>
       </Box>
     </Box>

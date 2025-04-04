@@ -38,6 +38,7 @@ import {
   prescriptionMdl,
 } from "../../../../../api/prescriptionMdl";
 import SaveIcon from "@mui/icons-material/Save";
+import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -294,7 +295,7 @@ export const ReceitaCadastrar = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <AlternateEmailOutlineIcon fontSize="small" />
+                              <MedicalServicesIcon fontSize="small" />
                             </InputAdornment>
                           ),
                         }}

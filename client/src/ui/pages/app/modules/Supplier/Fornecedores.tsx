@@ -16,13 +16,13 @@ import { supplierMdl } from "../../../../../api/supplierMdl";
 export default function Fornecedores() {
   const navigate = useNavigate();
 
-  const {data: suppliers, refetch} = useQuery(
+  const { data: suppliers, refetch } = useQuery(
     "suppliers",
     () => supplierMdl.getAll(),
     {
-      select: data => data.data
+      select: (data) => data.data,
     }
-  )
+  );
 
   return (
     <Box
@@ -66,7 +66,7 @@ export default function Fornecedores() {
             sx={{
               display: "flex",
               width: "10%",
-              height: "60%",
+              height: "75%",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -101,71 +101,6 @@ export default function Fornecedores() {
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              bgcolor: "#D9D9D9",
-              borderRadius: "20px",
-              width: "90%",
-              height: "10%",
-              mt: 4,
-            }}
-          >
-            {/* Barra de pesquisa */}
-            <Box
-              className="BarraPesquisa"
-              sx={{
-                bgcolor: " #D9D9D9",
-                // border: "3px solid #1B2C44",
-                width: "78%",
-                height: "75%",
-                borderRadius: "50px",
-              }}
-            >
-              {/* <SearchBar /> */}
-            </Box>
-
-            {/* Botão de adicionar */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "7%",
-                height: "75%",
-                borderRadius: "10px",
-                bgcolor: "#4C585B",
-                "&:hover": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
-                },
-                "&:active": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
-                },
-              }}
-            >
-              <Button
-                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
-                onClick={() => navigate("adicionarFornecedor")}
-              >
-                <AddCircleOutlineIcon
-                  sx={{
-                    width: "100%",
-                    height: "90%",
-                    color: "#D9D9D9",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                ></AddCircleOutlineIcon>
-              </Button>
-            </Box>
-          </Box>
-
           {/* Histórico */}
           <Box
             className="Fornecedores"
@@ -175,7 +110,7 @@ export default function Fornecedores() {
               flexDirection: "column",
               borderRadius: "20px",
               width: "90%",
-              height: "11%",
+              height: "13%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
@@ -227,28 +162,75 @@ export default function Fornecedores() {
                 mt: 2,
               }}
             > */}
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "70%",
-                  display: "flex",
-                  flexDirection: "column",
-                  mt: 2,
-                  gap: 2,
-                }}
-              >
-                {
-                  suppliers && suppliers.length > 0 && suppliers?.map((supplier) => (
-                    <Fornecedor
-                      key={supplier.id}
-                      supplier={supplier}
-                      refetch={refetch}
-                    />
-                  ))
-                }
-              </Box>
+            <Box
+              sx={{
+                width: "100%",
+                height: "90%",
+                display: "flex",
+                flexDirection: "column",
+                mt: 2,
+                gap: 2,
+              }}
+            >
+              {suppliers &&
+                suppliers.length > 0 &&
+                suppliers?.map((supplier) => (
+                  <Fornecedor
+                    key={supplier.id}
+                    supplier={supplier}
+                    refetch={refetch}
+                  />
+                ))}
             </Box>
+          </Box>
           {/* </Box> */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "flex-end",
+              width: "90%",
+              height: "10%",
+              mb: 5,
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "7%",
+                height: "80%",
+                borderRadius: "10px",
+                bgcolor: "#4C585B",
+                "&:hover": {
+                  backgroundColor: "#7E99A3",
+                  border: "2px solid #FFFFFF",
+                  borderRadius: "8px",
+                },
+                "&:active": {
+                  backgroundColor: "#7E99A3",
+                  border: "2px solid #FFFFFF",
+                  borderRadius: "8px",
+                },
+              }}
+            >
+              <Button
+                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                onClick={() => navigate("adicionarFornecedor")}
+              >
+                <AddCircleOutlineIcon
+                  sx={{
+                    width: "100%",
+                    height: "90%",
+                    color: "#D9D9D9",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                ></AddCircleOutlineIcon>
+              </Button>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>
