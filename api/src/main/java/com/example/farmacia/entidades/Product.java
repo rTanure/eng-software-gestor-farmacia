@@ -29,15 +29,7 @@ public class Product {
     private Double purchasePrice; // preço de compra
 
     // Controle de quantidade em estoque
-    // Metodos para adicionar e remover quantidade do estoque
-    public void addAmount(int amount) {
-        if(amount > receivedAmount) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade a ser adicionada é maior que a quantidade recebida.");
-        } else {
-            receivedAmount += amount;
-        }
-    }
-    public void removeAmount(int amount) {
+    public void removeAmount(Integer amount) {
         if(amount > receivedAmount) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade a ser removida é maior que a quantidade atual.");
         } else {
