@@ -5,7 +5,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import DescriptionIcon from "@mui/icons-material/Description";
 import Estoque from "./modules/Stock/Estoque";
 import Fornecedores from "./modules/Supplier/Fornecedores";
-import Vendas from "./modules/Vendas";
+import Vendas from "./modules/sales/Vendas";
 import Receita from "./modules/prescriptions/Receita";
 import Clientes from "./modules/clients/Clientes";
 import { EstoqueAdd } from "./EstoqueAdd";

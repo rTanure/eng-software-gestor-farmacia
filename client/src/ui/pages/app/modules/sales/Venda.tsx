@@ -33,7 +33,7 @@ export default function Venda() {
       <Box
         sx={{
           display: "center",
-          width: "18%",
+          // width: "18%",
           height: "60%",
           ml: 2,
           alignItems: "center",
@@ -42,7 +42,7 @@ export default function Venda() {
       >
         <Typography className="Titulo">
           {/* Coloque o nome do produto aqui, de acordo com o banco de dados */}
-          DIPIRONA
+          R$23.90 - 2x DIPIRONA (Carlos Roberto dos Santos)
         </Typography>
       </Box>
 

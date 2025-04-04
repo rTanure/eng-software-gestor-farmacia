@@ -1,6 +1,6 @@
 import { Box, TextField, Button } from "@mui/material";
 import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import { drawerWidth } from "../../MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
 import PeopleIcon from "@mui/icons-material/People";
@@ -8,7 +8,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import SearchBar from "../SearchBar";
+import SearchBar from "../../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Venda from "./Venda";
 import { useNavigate } from "react-router";
