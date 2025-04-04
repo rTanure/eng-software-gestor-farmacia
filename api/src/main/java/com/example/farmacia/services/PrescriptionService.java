@@ -46,4 +46,8 @@ public class PrescriptionService {
         if(prescriptionOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Receita não encontrada");
         prescriptionRepository.deleteById(id);
     }
+
+    public List<Prescription> getPrescriptionsByClientId(UUID id) {
+        return prescriptionRepository.findAllByClientId(id);
+    }
 }
