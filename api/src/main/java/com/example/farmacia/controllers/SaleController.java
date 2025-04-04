@@ -37,7 +37,7 @@ public class SaleController {
         return ResponseEntity.ok(sales);
     }
 
-    @GetMapping
+    @GetMapping("/totalVendas")
     public ResponseEntity<Double> getInvoicingSales() {
         var invoicing = saleService.getInvoicing();
         return ResponseEntity.ok(invoicing);
