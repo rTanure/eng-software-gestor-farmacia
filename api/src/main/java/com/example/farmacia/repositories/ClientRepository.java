@@ -10,5 +10,6 @@ import java.util.UUID;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, UUID>, QueryByExampleExecutor<Client> {
     Client findByCpf(String cpf);
-    Client findByName(String name);
+
+    void deleteAllByIdContaining(UUID id);
 }
