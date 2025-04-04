@@ -2,16 +2,15 @@ import { Box, TextField, Button } from "@mui/material";
 import React from "react";
 import { drawerWidth } from "../MenuLateral";
 import Typography from "@mui/material/Typography";
-import StorageIcon from "@mui/icons-material/Storage";
-import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import SearchBar from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PeopleIcon from "@mui/icons-material/People";
 import Fornecedor from "./Fornecedor";
+import { useNavigate } from "react-router";
 
 export default function Fornecedores() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -121,29 +120,26 @@ export default function Fornecedores() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "7%",
+                width: "8%",
                 height: "75%",
                 borderRadius: "10px",
                 bgcolor: "#4C585B",
                 "&:hover": {
                   backgroundColor: "#7E99A3",
                   border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
                 },
-                "&:active": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
+                '& .MuiTouchRipple-root': {
+                  color: '#FFFFFF'
                 },
               }}
             >
               <Button
-                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                sx={{ width: "100%", height: "100%", borderRadius: "20%" }} onClick={() => navigate("cadastro")}
               >
                 <AddCircleOutlineIcon
                   sx={{
                     width: "100%",
-                    height: "90%",
+                    height: "100%",
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",

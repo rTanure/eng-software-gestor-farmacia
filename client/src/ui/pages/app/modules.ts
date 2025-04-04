@@ -13,7 +13,10 @@ import { FormAdd } from "./modules/clients/FormAddClientes";
 import { path } from "framer-motion/client";
 import { DetalhesCliente } from "./modules/clients/DetalhesCliente";
 import { ClientUpdate } from "./modules/clients/ClientUpdate";
-
+import AddFornecedor from "./modules/AddFornecedor";
+import AddReceita from "./modules/AddReceita";
+import AddEstoque from "./modules/AddEstoque";
+import AddVenda from "./modules/AddVenda";
 
 export const modules = [
   {
@@ -61,5 +64,21 @@ export const modules = [
   {
     path: "/estoque/adicionar",
     component: EstoqueAdd,
+  },
+  {
+    path: "/fornecedores/cadastro",
+    component: AddFornecedor,
+  },
+  {
+    path: "/receitas/cadastro",
+    component: AddReceita,
+  },
+  {
+    path: "/estoque/cadastro",
+    component: AddEstoque,
+  },
+  {
+    path: "vendas/cadastro",
+    component: AddVenda,
   },
 ];

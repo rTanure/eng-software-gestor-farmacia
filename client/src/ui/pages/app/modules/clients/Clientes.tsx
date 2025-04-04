@@ -15,9 +15,9 @@ export default function Clientes() {
   const navigate = useNavigate();
   const [nome, setNome] = React.useState<string>("");
 
-  const {data: clientes, refetch} = useQuery(
-    ["clientes", nome], 
-    () => clienteMdl.getAllClientes({name: nome}),
+  const { data: clientes, refetch } = useQuery(
+    ["clientes", nome],
+    () => clienteMdl.getAllClientes({ name: nome }),
     {
       select: data => data.data,
     }
@@ -73,11 +73,13 @@ export default function Clientes() {
           >
             <PersonAddIcon
               sx={{
-                width: "80%",
+                width: "100%",
                 height: "80%",
                 color: "#1B2C44",
               }}
-            ></PersonAddIcon>
+            >
+              {""}
+            </PersonAddIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
             CLIENTES
@@ -88,28 +90,30 @@ export default function Clientes() {
         <Box
           className="Container-Principal"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            bgcolor: '#D9D9D9',
-            width: '100%',
-            height: "90%",
-            border: '3px solid #4C585B',
-            borderRadius: '20px',
+            display: "flex",
+            flexDirection: "column",
+            border: 3,
+            width: "100%",
+            height: "100%",
+            borderRadius: 5,
+            borderColor: "#4C585B",
+            alignItems: "center",
+            backgroundColor: "#D9D9D9",
             mt: 2.5,
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
           {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
           <Box
             sx={{
               display: 'flex',
-              justifyContent: 'space-around',
+              justifyContent: 'space-between',
               alignItems: 'center',
               bgcolor: '#D9D9D9',
               borderRadius: '20px',
-              width: '100.025%',
-              height: "15%",
-              mt: 2.3,
+              width: '90%',
+              height: "10%",
+              mt: 4,
             }}
           >
             {/* Barra de pesquisa */}
@@ -118,8 +122,8 @@ export default function Clientes() {
               sx={{
                 bgcolor: ' #D9D9D9',
                 border: '3px solid #1B2C44',
-                width: "74%",
-                height: "52%",
+                width: "78%",
+                height: "75%",
                 borderRadius: '50px',
               }}
             >
@@ -132,24 +136,21 @@ export default function Clientes() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: '6.2%',
-                height: '50%',
+                width: '8%',
+                height: '75%',
                 borderRadius: '10px',
                 bgcolor: '#4C585B',
                 '&:hover': {
                   backgroundColor: '#7E99A3',
                   outline: '2px solid #FFFFFF',
-                  borderRadius: '8px',
                 },
-                '&:active': {
-                  backgroundColor: '#7E99A3',
-                  outline: '2px solid #FFFFFF',
-                  borderRadius: '8px',
-                }
-
+                '& .MuiTouchRipple-root': {
+                  color: '#FFFFFF'
+                },
               }}
             >
-              <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }} onClick={() => navigate("cadastro")}>
+              <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }} onClick={() => navigate("cadastro")}
+              >
                 <AddCircleOutlineIcon
                   sx={{
                     width: '100%',
@@ -157,10 +158,10 @@ export default function Clientes() {
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",
-                  }}></AddCircleOutlineIcon>
+                  }}
+                ></AddCircleOutlineIcon>
               </Button>
             </Box>
-
           </Box>
 
           {/* Histórico */}
@@ -172,15 +173,15 @@ export default function Clientes() {
               flexDirection: 'column',
               bgcolor: ' #D9D9D9',
               borderRadius: "20px",
-              width: "100%",
-              height: "85%",
+              width: "90%",
+              height: "11%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
-                width: "90%",
-                height: "10%",
+                width: "100%",
+                height: "100%",
                 outline: '2px',
                 borderRadius: '10px',
                 display: 'flex',
@@ -188,40 +189,45 @@ export default function Clientes() {
                 alignItems: 'center',
                 padding: '0 20px',
                 bgcolor: '#4C585B',
-                mt: .5,
+                mt: 2,
 
               }}
             >
-              <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
-                CLIENTE
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
+                RECEITA
               </Box>
 
-              <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
                 AÇÕES
               </Box>
+            </Box>
             </Box>
             <Box
               sx={{
                 width: "90%",
                 height: "70%",
                 display: "flex",
-                flexDirection: "column",
-                mt: 2,
-                gap: 2,
               }}
             >
               {/* Produtos */}
-                {
-                  clientes?.map((cliente) => (
-                    <ClienteListagem cliente={cliente} refetch={refetch} key={cliente.id}/>
-                  ))
-                }
+              {
+                clientes?.map((cliente) => (
+                  <ClienteListagem cliente={cliente} refetch={refetch} key={cliente.id} />
+                ))
+              }
             </Box>
-  
           </Box>
         </Box>
-
       </Box>
-    </Box>
   );
 }

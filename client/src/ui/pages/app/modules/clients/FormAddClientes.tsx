@@ -30,9 +30,6 @@ import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutline
 import { form } from "framer-motion/client";
 import { useNavigate } from "react-router";
 
-
-
-
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
   return (

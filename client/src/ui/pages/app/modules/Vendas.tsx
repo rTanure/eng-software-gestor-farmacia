@@ -2,17 +2,16 @@ import { Box, TextField, Button } from "@mui/material";
 import React from "react";
 import { drawerWidth } from "../MenuLateral";
 import Typography from "@mui/material/Typography";
-import StorageIcon from "@mui/icons-material/Storage";
-import PeopleIcon from "@mui/icons-material/People";
 import SellIcon from "@mui/icons-material/Sell";
-import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import SearchBar from "../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Venda from "./Venda";
+import { useNavigate } from "react-router";
 
 export default function Estoque() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -224,29 +223,28 @@ export default function Estoque() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
             border: 3,
             width: "100%",
             height: "57%",
             borderRadius: 5,
             borderColor: "#4C585B",
-            alignItems: "center",
             backgroundColor: "#D9D9D9",
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
-            justifyContent: "center",
           }}
         >
           {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-evenly",
               alignItems: "center",
               bgcolor: "#D9D9D9",
-              borderRadius: "20px",
-              width: "90%",
+              borderRadius: 10,
+              width: "100%",
               height: "15%",
-              mt: 4,
             }}
           >
             {/* Barra de pesquisa */}
@@ -255,7 +253,7 @@ export default function Estoque() {
               sx={{
                 bgcolor: " #D9D9D9",
                 border: "3px solid #1B2C44",
-                width: "78%",
+                width: "77%",
                 height: "75%",
                 borderRadius: "50px",
               }}
@@ -269,7 +267,7 @@ export default function Estoque() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "7%",
+                width: "8%",
                 height: "75%",
                 borderRadius: "10px",
                 bgcolor: "#4C585B",
@@ -278,20 +276,18 @@ export default function Estoque() {
                   border: "2px solid #FFFFFF",
                   borderRadius: "8px",
                 },
-                "&:active": {
-                  backgroundColor: "#7E99A3",
-                  border: "2px solid #FFFFFF",
-                  borderRadius: "8px",
+                '& .MuiTouchRipple-root': {
+                  color: '#FFFFFF'
                 },
               }}
             >
               <Button
-                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                sx={{ width: "100%", height: "100%", borderRadius: "20%" }} onClick={() => navigate("cadastro")}
               >
                 <AddCircleOutlineIcon
                   sx={{
                     width: "100%",
-                    height: "90%",
+                    height: "100%",
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",
@@ -307,19 +303,16 @@ export default function Estoque() {
             sx={{
               display: "flex",
               alignItems: "center",
-              flexDirection: "column",
-              bgcolor: " #D9D9D9",
-              borderRadius: "20px",
-              width: "90%",
-              height: "30%",
-              border: 2,
+              justifyContent: "center",
+              width: "100%",
+              height: "14%",
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
-                width: "100%",
-                height: "100%",
+                width: "90%",
+                height: "90%",
                 border: "2px",
                 borderRadius: "10px",
                 display: "flex",
@@ -327,7 +320,6 @@ export default function Estoque() {
                 alignItems: "center",
                 padding: "0 20px",
                 bgcolor: "#4C585B",
-                mt: 2,
               }}
             >
               <Box
@@ -336,7 +328,7 @@ export default function Estoque() {
                   color: "white",
                 }}
               >
-                PRODUTO
+                PRODUTOS
               </Box>
 
               <Box
@@ -352,17 +344,18 @@ export default function Estoque() {
 
           <Box
             sx={{
-              width: "90%",
-              height: "50%",
-              border: 2,
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              height: "70%",
             }}
           >
-            {/* Venda */}
+            {/* Produtos */}
             <Box
               sx={{
-                width: "100%",
-                height: "35%",
-                mt: 2,
+                width: "90%",
+                height: "22%",
+                mt: 1,
               }}
             >
               <Box
