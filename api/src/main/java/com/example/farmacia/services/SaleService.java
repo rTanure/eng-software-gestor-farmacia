@@ -1,7 +1,6 @@
 package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.request.SaleFilterRequestDTO;
-import com.example.farmacia.dtos.request.SaleRequestDTO;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.repositories.ProductRepository;
@@ -26,11 +25,12 @@ public class SaleService {
     private final ProductRepository productRepository;
 
     // Metodo para salvar uma venda
-    public void saveSale(SaleRequestDTO saleRequestDTO) {
-        var entity = saleRequestDTO.toModel(); // Converte o DTO para a entidade
-        if(saleRepository.findById(entity.getId()) != null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Venda já cadastrada");
+    public void saveSale(Sale sale) {
+        if(saleRepository.findById(sale.getId()).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Venda já cadastrada");
+        }
 
-        Optional<Product> productOptional = productRepository.findById(saleRequestDTO.getProductId());
+        Optional<Product> productOptional = productRepository.findById(sale.getProductId());
 
         if(productOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
@@ -38,10 +38,10 @@ public class SaleService {
 
         Product products = productOptional.get();
 
-        if(products.getReceivedAmount() < saleRequestDTO.getAmount()) {
+        if(products.getReceivedAmount() < sale.getAmount()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade insuficiente em estoque");
         } else {
-            products.removeAmount(saleRequestDTO.getAmount());
+            products.removeAmount(sale.getAmount());
         }
 
         if(products.getReceivedAmount() == 0) {
@@ -50,7 +50,8 @@ public class SaleService {
             productRepository.save(products);
         }
 
-        saleRepository.save(entity);
+        sale.setId(null);
+        saleRepository.save(sale);
     }
 
     // Metodo para visualizar uma venda passando o id

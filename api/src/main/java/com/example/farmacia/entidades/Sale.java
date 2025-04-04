@@ -19,10 +19,13 @@ public class Sale {
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(name = "client_id")
     private UUID clientId;
+    @Column(name = "prescription_id")
+    private UUID prescriptionId;
+    @Column(name = "product_id")
     private UUID productId;
-    private String codeBar;
-    private EnumPaymenthMethod paymentMethod;
-    private LocalDate paymentDate;
+    private LocalDate date;
     private Integer amount;
+    private Double salePrice;
 }
