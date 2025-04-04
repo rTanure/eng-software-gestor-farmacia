@@ -55,6 +55,7 @@ export const VendaCriar = () => {
         data.data.map((product) => ({
           id: product.id,
           name: product.description,
+          cliente: product.clientId,
         })) || [],
       enabled: !!formValues.clientId,
     }
@@ -233,7 +234,7 @@ export const VendaCriar = () => {
                         onChange={handleChange}
                       >
                         <MenuItem value="">Sem receitas</MenuItem>
-                        {prescriptions?.map((prescription) => (
+                        {prescriptions?.filter(e => e.cliente === formValues.clientId).map((prescription) => (
                           <MenuItem
                             key={prescription.id}
                             value={prescription.id}
