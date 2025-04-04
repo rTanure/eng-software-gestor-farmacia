@@ -1,13 +1,4 @@
-import {
-  Box,
-  TextField,
-  InputAdornment,
-  Grid,
-  MenuItem,
-  Button,
-  Typography,
-  Select
-} from "@mui/material";
+import { Box, TextField, InputAdornment, Grid, MenuItem, Button, Typography, Select } from "@mui/material";
 import React, { useState } from "react";
 import BusinessIcon from "@mui/icons-material/Business";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
@@ -18,6 +9,7 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { supplierMdl, ISupplier } from "../../../../../api/supplierMdl";
 import { drawerWidth } from "../../MenuLateral";
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
 export const FornecedorAdd = () => {
   const [formValues, setFormValues] = useState<ISupplier>({} as ISupplier);
@@ -139,7 +131,7 @@ export const FornecedorAdd = () => {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <BusinessIcon fontSize="small" />
+                          <LocationOnOutlinedIcon fontSize="small" />
                         </InputAdornment>
                       ),
                     }}

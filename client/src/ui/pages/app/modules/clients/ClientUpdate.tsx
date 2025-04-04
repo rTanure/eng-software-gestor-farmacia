@@ -1,14 +1,4 @@
-import {
-  Box,
-  TextField,
-  InputAdornment,
-  Grid,
-  MenuItem,
-  Button,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material"; // Adicionando Button, IconButton e Stack
+import { Box, TextField, InputAdornment, Grid, MenuItem,Button, IconButton, Stack, Typography, } from "@mui/material"; 
 import React, { useState } from "react";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
@@ -24,14 +14,10 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { set, useForm } from "react-hook-form";
 import { clienteMdl, ICliente } from "../../../../../api/clienteMdl";
 import PhoneOutlineIcon from "@mui/icons-material/PhoneOutlined";
-import WcOutlineIcon from "@mui/icons-material/WcOutlined";
-import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { form } from "framer-motion/client";
 import { useNavigate } from "react-router";
 import { useQuery } from "react-query";
-
-
 
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {

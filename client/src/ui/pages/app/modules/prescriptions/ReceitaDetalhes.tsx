@@ -1,19 +1,5 @@
-import {
-  Box,
-  TextField,
-  InputAdornment,
-  Grid,
-  MenuItem,
-  Button,
-  IconButton,
-  Stack,
-  Typography,
-  Grid2,
-} from "@mui/material"; // Adicionando Button, IconButton e Stack
+import { Box, TextField, InputAdornment, Grid, MenuItem, Button, IconButton, Stack, Typography, Grid2, } from "@mui/material"; 
 import React, { useState } from "react";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import { IMaskInput } from "react-imask";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
@@ -24,10 +10,6 @@ import { drawerWidth } from "../../MenuLateral";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { set, useForm } from "react-hook-form";
 import { clienteMdl, ICliente } from "../../../../../api/clienteMdl";
-import PhoneOutlineIcon from "@mui/icons-material/PhoneOutlined";
-import WcOutlineIcon from "@mui/icons-material/WcOutlined";
-import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
-import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { form } from "framer-motion/client";
 import { useNavigate } from "react-router";
 import { useQuery } from "react-query";

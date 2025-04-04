@@ -1,18 +1,5 @@
-import {
-  Box,
-  TextField,
-  InputAdornment,
-  Grid,
-  MenuItem,
-  Button,
-  IconButton,
-  Stack,
-  Typography,
-  Select,
-} from "@mui/material"; // Adicionando Button, IconButton e Stack
+import { Box, TextField, InputAdornment, Grid, MenuItem, Button, IconButton, Stack, Typography, Select, } from "@mui/material"; 
 import React, { useState } from "react";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import { IMaskInput } from "react-imask";
 import PropTypes from "prop-types";
@@ -24,18 +11,17 @@ import { drawerWidth } from "../../MenuLateral";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { set, useForm } from "react-hook-form";
 import { clienteMdl, ICliente } from "../../../../../api/clienteMdl";
-import PhoneOutlineIcon from "@mui/icons-material/PhoneOutlined";
-import WcOutlineIcon from "@mui/icons-material/WcOutlined";
-import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
-import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { form, sup } from "framer-motion/client";
 import { useNavigate } from "react-router";
 import SaveIcon from "@mui/icons-material/Save";
 import { IStock, stockMdl } from "../../../../../api/stockMdl";
 import { useQuery } from "react-query";
 import { supplierMdl } from "../../../../../api/supplierMdl";
-
-
+import QrCode2Icon from '@mui/icons-material/QrCode2';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Input = styled("input")({
   display: "none",
@@ -219,11 +205,11 @@ export const EstoqueCriar = () => {
                       </Select>
                     </Grid>
 
-                    {/* Nome Completo */}
+                    {/* Nome do remedio */}
                     <Grid item sm={6}>
                       <TextField
                         fullWidth
-                        placeholder="Nome do medicamento"
+                        placeholder="Medicamento"
                         autoComplete="off"
                         name="name"
                         variant="outlined"
@@ -235,7 +221,7 @@ export const EstoqueCriar = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <PersonOutlineIcon fontSize="small" />
+                              <MedicationOutlinedIcon fontSize="small" />
                             </InputAdornment>
                           ),
                         }}
@@ -260,12 +246,13 @@ export const EstoqueCriar = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <AlternateEmailOutlineIcon fontSize="small" />
+                              <QrCode2Icon fontSize="small" />
                             </InputAdornment>
                           ),
                         }}
                       />
                     </Grid>
+
                     {/* E-mail */}
                     <Grid item sm={6}>
                       <TextField
@@ -285,15 +272,12 @@ export const EstoqueCriar = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <AlternateEmailOutlineIcon fontSize="small" />
+                              <Inventory2OutlinedIcon fontSize="small" />
                             </InputAdornment>
                           ),
                         }}
                       />
                     </Grid>
-                  
-
-                    
 
                     <Grid item sm={3}>
                       <DatePicker
@@ -307,10 +291,10 @@ export const EstoqueCriar = () => {
                           });
                         }}
                         dateFormat="dd/MM/yyyy"
-                        placeholderText="Nascimento"
+                        placeholderText="Data"
                         customInput={
                           <TextField
-                            placeholder="Nascimento"
+                            placeholder="Data"
                             variant="outlined"
                             margin="normal"
                             value={formValues.expirationDate}
@@ -335,7 +319,7 @@ export const EstoqueCriar = () => {
                     <Grid item sm={3}>
                       <TextField
                         fullWidth
-                        placeholder="Quantidade recebida"
+                        placeholder="Quantidade"
                         name="receivedAmount"
                         variant="outlined"
                         autoComplete="off"
@@ -351,16 +335,17 @@ export const EstoqueCriar = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <AlternateEmailOutlineIcon fontSize="small" />
+                              <ShoppingCartOutlinedIcon fontSize="small" />
                             </InputAdornment>
                           ),
                         }}
                       />
                     </Grid>
+
                     <Grid item sm={6}>
                       <TextField
                         fullWidth
-                        placeholder="Preço de compra"
+                        placeholder="Valor"
                         variant="outlined"
                         autoComplete="off"
                         margin="normal"
@@ -375,7 +360,7 @@ export const EstoqueCriar = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <AlternateEmailOutlineIcon fontSize="small" />
+                              <AttachMoneyIcon fontSize="small" />
                             </InputAdornment>
                           ),
                         }}
