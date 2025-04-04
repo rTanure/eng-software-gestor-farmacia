@@ -6,7 +6,7 @@ import {
   MenuItem,
   Button,
   Typography,
-  Select
+  Select,
 } from "@mui/material";
 import React, { useState } from "react";
 import BusinessIcon from "@mui/icons-material/Business";
@@ -14,6 +14,7 @@ import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import CategoryIcon from "@mui/icons-material/Category";
+import SaveIcon from "@mui/icons-material/Save";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { supplierMdl, ISupplier } from "../../../../../api/supplierMdl";
@@ -32,15 +33,17 @@ export const FornecedorAdd = () => {
     const { companyName, cnpj, address, phone, email, category } = formValues;
 
     // console.log("Form Values:", formValues);
-    supplierMdl.create({
-      id: null,
-      companyName,
-      cnpj,
-      address,
-      phone,
-      email,
-      category,
-    } as ISupplier).then(() => navigate("/app/fornecedores"));
+    supplierMdl
+      .create({
+        id: null,
+        companyName,
+        cnpj,
+        address,
+        phone,
+        email,
+        category,
+      } as ISupplier)
+      .then(() => navigate("/app/fornecedores"));
   };
 
   return (
@@ -57,19 +60,28 @@ export const FornecedorAdd = () => {
         height: "100%",
       }}
     >
-      <Box className="wrapper" sx={{ display: "flex", flexDirection: "column", height: "100%", width: "70%", padding: 2 }}>
+      <Box
+        className="wrapper"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          width: "70%",
+          padding: 2,
+        }}
+      >
         <Box
           sx={{
-            display: 'flex',
+            display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            bgcolor: '#D9D9D9',
-            width: '100%',
+            bgcolor: "#D9D9D9",
+            width: "100%",
             height: "10%",
-            borderRadius: '20px',
-            border: '3px solid #4C585B',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
-            pl: 6
+            borderRadius: "20px",
+            border: "3px solid #4C585B",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+            pl: 6,
           }}
         >
           <Typography variant="h6" className="Titulo">
@@ -80,18 +92,27 @@ export const FornecedorAdd = () => {
         <Box
           className="Container-Principal"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            bgcolor: '#D9D9D9',
-            width: '100%',
-            border: '3px solid #4C585B',
-            borderRadius: '20px',
+            display: "flex",
+            flexDirection: "column",
+            bgcolor: "#D9D9D9",
+            width: "100%",
+            border: "3px solid #4C585B",
+            borderRadius: "20px",
             padding: 6,
             mt: 2.5,
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
-          <Box className="Clients" sx={{ display: 'flex', flexDirection: 'column', alignItems: "center", width: "100%", height: "85%" }}>
+          <Box
+            className="Clients"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+              height: "85%",
+            }}
+          >
             <form onSubmit={handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item sm={6}>
@@ -198,9 +219,51 @@ export const FornecedorAdd = () => {
                   />
                 </Grid>
                 <Grid item sm={12}>
-                  <Button variant="contained" type="submit">
-                    Cadastrar Fornecedor
-                  </Button>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "180px",
+                      height: "45px",
+                      borderRadius: "30px",
+                      bgcolor: "#4C585B",
+                      // mt: 6,
+                      // ml: 66,
+                      "&:hover": {
+                        backgroundColor: "#7E99A3",
+                        outline: "2px solid #FFFFFF",
+                        borderRadius: "45px",
+                      },
+                      "&:active": {
+                        backgroundColor: "#7E99A3",
+                        outline: "2px solid #FFFFFF",
+                        borderRadius: "45px",
+                      },
+                    }}
+                  >
+                    <Button
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "20%",
+                        color: "#ffffff",
+                        alignItems: "center",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                      type="submit"
+                    >
+                      <SaveIcon></SaveIcon>
+                      <Box
+                        sx={{
+                          ml: 2,
+                        }}
+                      >
+                        SALVAR
+                      </Box>
+                    </Button>
+                  </Box>
                 </Grid>
               </Grid>
             </form>

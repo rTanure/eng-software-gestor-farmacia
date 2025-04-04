@@ -21,34 +21,34 @@ export default function Vendas() {
 
   const navigate = useNavigate();
 
-  const {data: faturamento, refetch: refetchFaturamento} = useQuery(
+  const { data: faturamento, refetch: refetchFaturamento } = useQuery(
     ["faturamento"],
     () => saleMdl.getFaturamento(),
     {
-      select: data => data.data
+      select: (data) => data.data,
     }
-  )
-  const {data: vendas, refetch: refetchVendas} = useQuery(
+  );
+  const { data: vendas, refetch: refetchVendas } = useQuery(
     ["vendas"],
     () => saleMdl.getTotalVendido(),
     {
-      select: data => data.data
+      select: (data) => data.data,
     }
-  )
+  );
 
-  const {data: vendasList, refetch: refetchVendasList} = useQuery(
+  const { data: vendasList, refetch: refetchVendasList } = useQuery(
     ["vendasList"],
     () => saleMdl.getAll(),
     {
-      select: data => data.data
+      select: (data) => data.data,
     }
-  )
+  );
 
   const refetch = () => {
-    refetchFaturamento()
-    refetchVendas()
-    refetchVendasList()
-  }
+    refetchFaturamento();
+    refetchVendas();
+    refetchVendasList();
+  };
 
   return (
     <Box
@@ -273,41 +273,102 @@ export default function Vendas() {
             justifyContent: "center",
           }}
         >
-          {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
+          {/* Histórico */}
+          <Box
+            className="Produtos"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              borderRadius: "20px",
+              width: "90%",
+              height: "80%",
+              mb: 3,
+            }}
+          >
+            {/* Barra com nome do fornecedor e ações */}
+            <Box
+              sx={{
+                width: "100%",
+                height: "23%",
+                border: "2px",
+                borderRadius: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "0 20px",
+                bgcolor: "#4C585B",
+                mt: 3,
+              }}
+            >
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
+                PRODUTO
+              </Box>
+
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
+                AÇÕES
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                height: "80%",
+                overflowY: "auto",
+              }}
+            >
+              {/* Venda */}
+              <Box
+                sx={{
+                  width: "100%",
+                  // height: "35%",
+                  mt: 2,
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    // border: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                    borderRadius: "10px",
+                  }}
+                >
+                  {vendasList?.map((venda, index) => (
+                    <Venda venda={venda} refetch={refetch} />
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          </Box>
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "flex-end",
               alignItems: "center",
-              bgcolor: "#D9D9D9",
-              borderRadius: "20px",
               width: "90%",
               height: "15%",
-              mt: 4,
+              bb: 10,
             }}
           >
-            {/* Barra de pesquisa */}
-            <Box
-              className="BarraPesquisa"
-              sx={{
-                bgcolor: " #D9D9D9",
-                // border: "3px solid #1B2C44",
-                width: "78%",
-                height: "75%",
-                borderRadius: "50px",
-              }}
-            >
-              {/* <SearchBar /> */}
-            </Box>
-
-            {/* Botão de adicionar */}
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 width: "7%",
-                height: "75%",
+                height: "80%",
                 borderRadius: "10px",
                 bgcolor: "#4C585B",
                 "&:hover": {
@@ -336,89 +397,6 @@ export default function Vendas() {
                   }}
                 ></AddCircleOutlineIcon>
               </Button>
-            </Box>
-          </Box>
-
-          {/* Histórico */}
-          <Box
-            className="Produtos"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-              borderRadius: "20px",
-              width: "90%",
-              height: "80%",
-              mb: 3,
-            }}
-          >
-            {/* Barra com nome do fornecedor e ações */}
-            <Box
-              sx={{
-                width: "100%",
-                height: "25%",
-                border: "2px",
-                borderRadius: "10px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "0 20px",
-                bgcolor: "#4C585B",
-                mt: 2,
-              }}
-            >
-              <Box
-                className="TextoB"
-                sx={{
-                  color: "white",
-                }}
-              >
-                PRODUTO
-              </Box>
-
-              <Box
-                className="TextoB"
-                sx={{
-                  color: "white",
-                }}
-              >
-                AÇÕES
-              </Box>
-            </Box>
-            <Box
-              sx={{
-                width: "100%",
-                height: "80%",
-                overflowY: "auto",
-
-              }}
-            >
-              {/* Venda */}
-              <Box
-                sx={{
-                  width: "100%",
-                  // height: "35%",
-                  mt: 2,
-                }}
-              >
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    // border: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 2,
-                    borderRadius: "10px",
-                  }}
-                >
-                  {
-                    vendasList?.map((venda, index) => (
-                      <Venda venda={venda} refetch={refetch}/>
-                    ))
-                  }
-                </Box>
-              </Box>
             </Box>
           </Box>
         </Box>
