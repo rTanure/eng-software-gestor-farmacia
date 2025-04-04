@@ -37,6 +37,12 @@ public class SaleController {
         return ResponseEntity.ok(sales);
     }
 
+    @GetMapping("/totalVendas")
+    public ResponseEntity<Double> getInvoicingSales() {
+        var invoicing = saleService.getInvoicing();
+        return ResponseEntity.ok(invoicing);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<Void> updateSale(@RequestBody Sale newSale) {
         saleService.updateSale(newSale);

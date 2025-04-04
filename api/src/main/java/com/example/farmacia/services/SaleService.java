@@ -90,4 +90,16 @@ public class SaleService {
             saleRepository.deleteById(id);
         }
     }
+
+    public double getInvoicing(){
+        var sales = saleRepository.findAll();
+
+        double total = 0;
+
+        for (Sale sale : sales) {
+            total += sale.getSalePrice();
+        }
+
+        return total;
+    }
 }
