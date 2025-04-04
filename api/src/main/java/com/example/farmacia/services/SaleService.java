@@ -26,9 +26,7 @@ public class SaleService {
 
     // Metodo para salvar uma venda
     public void saveSale(Sale sale) {
-        if(saleRepository.findById(sale.getId()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Venda já cadastrada");
-        }
+        sale.setId(null);
 
         Optional<Product> productOptional = productRepository.findById(sale.getProductId());
 
