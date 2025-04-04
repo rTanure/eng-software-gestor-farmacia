@@ -1,19 +1,29 @@
 import { Box, TextField, Button } from "@mui/material";
 import React from "react";
-import { drawerWidth } from "../MenuLateral";
+import { drawerWidth } from "../../MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import SearchBar from "../SearchBar";
+import SearchBar from "../../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PeopleIcon from "@mui/icons-material/People";
 import Fornecedor from "./Fornecedor";
 import { useNavigate } from "react-router";
-
+import { useQuery } from "react-query";
+import { supplierMdl } from "../../../../../api/supplierMdl";
 export default function Fornecedores() {
   const navigate = useNavigate();
+
+  const {data: suppliers, refetch} = useQuery(
+    "suppliers",
+    () => supplierMdl.getAll(),
+    {
+      select: data => data.data
+    }
+  )
+
   return (
     <Box
       sx={{
@@ -108,13 +118,13 @@ export default function Fornecedores() {
               className="BarraPesquisa"
               sx={{
                 bgcolor: " #D9D9D9",
-                border: "3px solid #1B2C44",
+                // border: "3px solid #1B2C44",
                 width: "78%",
                 height: "75%",
                 borderRadius: "50px",
               }}
             >
-              <SearchBar />
+              {/* <SearchBar /> */}
             </Box>
 
             {/* Botão de adicionar */}
@@ -209,26 +219,36 @@ export default function Fornecedores() {
               height: "70%",
             }}
           >
-            {/* Produtos */}
+            {/* Produtos
             <Box
               sx={{
                 width: "100%",
                 height: "15%",
                 mt: 2,
               }}
-            >
+            > */}
               <Box
                 sx={{
                   width: "100%",
-                  height: "100%",
-                  border: 2,
-                  borderRadius: "10px",
+                  height: "70%",
+                  display: "flex",
+                  flexDirection: "column",
+                  mt: 2,
+                  gap: 2,
                 }}
               >
-                <Fornecedor />
+                {
+                  suppliers && suppliers.length > 0 && suppliers?.map((supplier) => (
+                    <Fornecedor
+                      key={supplier.id}
+                      supplier={supplier}
+                      refetch={refetch}
+                    />
+                  ))
+                }
               </Box>
             </Box>
-          </Box>
+          {/* </Box> */}
         </Box>
       </Box>
     </Box>

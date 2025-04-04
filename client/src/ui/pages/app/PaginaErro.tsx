@@ -22,7 +22,7 @@ export const PaginaErro = () => {
         alignItems: "center",
         flexGrow: 1,
         padding: 3,
-        transition: "margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms",
+        width: "100%",
         height: "100%",
       }}
     >

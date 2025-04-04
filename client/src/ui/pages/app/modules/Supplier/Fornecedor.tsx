@@ -3,18 +3,30 @@ import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import { IPrescription, prescriptionMdl } from "../../../../../api/prescriptionMdl";
+import { ICliente } from "../../../../../api/clienteMdl";
+import { useNavigate } from "react-router";
+import { ISupplier, supplierMdl } from "../../../../../api/supplierMdl";
+import { sup } from "framer-motion/client";
 
-export default function Fornecedor() {
+interface FornecedorProps {
+  supplier: ISupplier;
+  refetch: () => void;
+}
+
+export default function Fornecedor({supplier, refetch}:FornecedorProps) {
+  const navigate = useNavigate();
+  
   const handleVisualizar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`${supplier.id}`);
   };
 
   const handleEditar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`editar/${supplier.id}`);
   };
 
   const handleDeletar = () => {
-    //Coloque a função para navegar para a página
+    supplierMdl.delete(supplier.id as string).then(refetch)
   };
 
   return (
@@ -24,7 +36,7 @@ export default function Fornecedor() {
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        height: "100%",
+        height: "70px",
         backgroundColor: "rgba(126, 153, 163, 0.6)",
         flexDirection: "row",
         borderRadius: 2,
@@ -33,7 +45,7 @@ export default function Fornecedor() {
       <Box
         sx={{
           display: "center",
-          width: "18%",
+          // width: "18%",
           height: "60%",
           ml: 2,
           alignItems: "center",
@@ -41,8 +53,8 @@ export default function Fornecedor() {
         }}
       >
         <Typography className="Titulo">
-          {/* Coloque o nome do fornecedor aqui, de acordo com o banco de dados */}
-          BAYER LTDA
+          {/* Coloque o nome do produto aqui, de acordo com o banco de dados */}
+          {supplier.companyName}
         </Typography>
       </Box>
 
