@@ -31,7 +31,7 @@ public class SaleController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Sale>> getSalesByFilter(@RequestBody SaleFilterRequestDTO saleFilterRequestDTO) {
+    public ResponseEntity<List<Sale>> getSalesByFilter(@ModelAttribute SaleFilterRequestDTO saleFilterRequestDTO) {
         var sales = saleService.getByFilter( saleFilterRequestDTO);
 
         return ResponseEntity.ok(sales);
