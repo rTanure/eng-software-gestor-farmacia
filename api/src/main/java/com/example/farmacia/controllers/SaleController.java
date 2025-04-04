@@ -43,6 +43,13 @@ public class SaleController {
         return ResponseEntity.ok(invoicing);
     }
 
+    @GetMapping("/totalVendidos")
+    public ResponseEntity<Double> getTotalAmountSales() {
+        var totalAmount = saleService.getTotalAmount();
+
+        return ResponseEntity.ok(totalAmount);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<Void> updateSale(@RequestBody Sale newSale) {
         saleService.updateSale(newSale);
