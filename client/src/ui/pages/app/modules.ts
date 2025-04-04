@@ -22,6 +22,8 @@ import { FornecedorAdd } from "./modules/Supplier/FornecedorAdd";
 import FornecedorDetalhes from "./modules/Supplier/FornecedorDetalhes";
 import { FornecedorEdit } from "./modules/Supplier/FornecedorEditar";
 import { EstoqueCriar } from "./modules/Stock/EstoqueCriar";
+import { EstoqueVisualizar } from "./modules/Stock/EstoqueVisualizar";
+import { EstoqueEditar } from "./modules/Stock/EstoqueEditar";
 
 export const modules = [
   {
@@ -29,6 +31,14 @@ export const modules = [
     path: "/estoque",
     component: Estoque,
     icon: StorageIcon,
+  },
+  {
+    path: "/estoque/:id",
+    component: EstoqueVisualizar,
+  },
+  {
+    path: "/estoque/editar/:id",
+    component: EstoqueEditar,
   },
   {
     label: "Fornecedores",

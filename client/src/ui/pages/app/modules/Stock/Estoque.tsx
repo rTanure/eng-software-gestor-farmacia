@@ -18,7 +18,7 @@ import { stockMdl } from "../../../../../api/stockMdl";
 export default function Estoque() {
   const navigate = useNavigate();
 
-  const {data: quantidadeMedicamentos} = useQuery(
+  const {data: quantidadeMedicamentos, refetch: refetchQtc} = useQuery(
     ["quantidadeMedicamentos"],
     () => stockMdl.getStockSize(),
     {
@@ -26,13 +26,18 @@ export default function Estoque() {
     }
   )
 
-  const {data: produtos, refetch} = useQuery(
+  const {data: produtos, refetch: refetchProdutos} = useQuery(
     ["produtos"],
     () => stockMdl.getAll(),
     {
       select: (data) => data.data,
     }
   )
+
+  const refetch = () => {
+    refetchQtc()
+    refetchProdutos()
+  }
 
   return (
     <Box
@@ -234,14 +239,14 @@ export default function Estoque() {
               className="BarraPesquisa"
               sx={{
                 bgcolor: " #D9D9D9",
-                border: "3px solid #1B2C44",
+                // border: "3px solid #1B2C44",
                 width: "78%",
                 height: "75%",
                 borderRadius: "50px",
                 flexShrink: 0,
               }}
             >
-              <SearchBar />
+              {/* <SearchBar /> */}
             </Box>
             {/* Botão de adicionar */}
             <Box
