@@ -54,7 +54,7 @@ public class ClientService {
         var userExists = clientRepository.existsById(id);
 
         if (userExists) {
-            clientRepository.deleteById(id);
+            clientRepository.deleteAllByIdContaining(id);
         }
     }
 
