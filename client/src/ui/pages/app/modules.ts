@@ -3,7 +3,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import SellIcon from "@mui/icons-material/Sell";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import DescriptionIcon from "@mui/icons-material/Description";
-import Estoque from "./modules/Estoque";
+import Estoque from "./modules/Stock/Estoque";
 import Fornecedores from "./modules/Supplier/Fornecedores";
 import Vendas from "./modules/Vendas";
 import Receita from "./modules/prescriptions/Receita";
@@ -21,6 +21,7 @@ import { ReceitaAdd } from "./ReceitaAdd";
 import { FornecedorAdd } from "./modules/Supplier/FornecedorAdd";
 import FornecedorDetalhes from "./modules/Supplier/FornecedorDetalhes";
 import { FornecedorEdit } from "./modules/Supplier/FornecedorEditar";
+import { EstoqueCriar } from "./modules/Stock/EstoqueCriar";
 
 export const modules = [
   {
@@ -79,7 +80,7 @@ export const modules = [
   },
   {
     path: "/estoque/adicionar",
-    component: EstoqueAdd,
+    component: EstoqueCriar,
   },
   {
     path: "/vendas/adicionarVenda",

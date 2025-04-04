@@ -15,7 +15,7 @@ interface IPrescriptionListagemFiltros {
   name?: string;
 }
 
-class SupplierMdl extends ModeloBase {
+class StockMdl extends ModeloBase {
   constructor() {
     super('/stock');
   }
@@ -39,6 +39,10 @@ class SupplierMdl extends ModeloBase {
   async delete(id: string) {
     return this.defaultDeleteRequest<null>(`/${id}`)
   }
+
+  async getStockSize() {
+    return this.defaultGetRequest<number>("/quantityMedicines")
+  }
 }
 
-export const supplierMdl = new SupplierMdl();
+export const stockMdl = new StockMdl();
