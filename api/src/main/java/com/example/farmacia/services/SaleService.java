@@ -1,9 +1,6 @@
 package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.request.SaleFilterRequestDTO;
-import com.example.farmacia.dtos.request.SaleRequestDTO;
-import com.example.farmacia.dtos.response.SaleResponseDTO;
-import com.example.farmacia.entidades.Client;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.repositories.ProductRepository;
@@ -28,8 +25,12 @@ public class SaleService {
     private final ProductRepository productRepository;
 
     // Metodo para salvar uma venda
-    public SaleResponseDTO saveSale(SaleRequestDTO saleRequestDTO) {
-        Optional<Product> productOptional = productRepository.findById(saleRequestDTO.getIdProduct());
+    public void saveSale(Sale sale) {
+        if(saleRepository.findById(sale.getId()).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Venda já cadastrada");
+        }
+
+        Optional<Product> productOptional = productRepository.findById(sale.getProductId());
 
         if(productOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
@@ -37,10 +38,10 @@ public class SaleService {
 
         Product products = productOptional.get();
 
-        if(products.getReceivedAmount() < saleRequestDTO.getAmount()) {
+        if(products.getReceivedAmount() < sale.getAmount()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade insuficiente em estoque");
         } else {
-            products.removeAmount(saleRequestDTO.getAmount());
+            products.removeAmount(sale.getAmount());
         }
 
         if(products.getReceivedAmount() == 0) {
@@ -49,17 +50,8 @@ public class SaleService {
             productRepository.save(products);
         }
 
-        // Salva a venda no banco de dados
-        Sale newSale = Sale.builder()
-                .idClient(saleRequestDTO.getIdClient())
-                .idPrescription(saleRequestDTO.getIdPrescription())
-                .idProduct(saleRequestDTO.getIdProduct())
-                .date(saleRequestDTO.getPaymenthDate())
-                .amount(saleRequestDTO.getAmount())
-                .build();
-
-        Sale savedSale = saleRepository.save(newSale);
-        return SaleResponseDTO.fromSale(savedSale);
+        sale.setId(null);
+        saleRepository.save(sale);
     }
 
     // Metodo para visualizar uma venda passando o id

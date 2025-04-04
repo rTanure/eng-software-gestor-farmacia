@@ -19,9 +19,12 @@ public class Sale {
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     private UUID id;
 
-    private UUID idClient;
-    private UUID idPrescription;
-    private UUID idProduct;
+    @Column(name = "client_id")
+    private UUID clientId;
+    @Column(name = "prescription_id")
+    private UUID prescriptionId;
+    @Column(name = "product_id")
+    private UUID productId;
     private LocalDate date;
     private Integer amount;
     private Double salePrice;
