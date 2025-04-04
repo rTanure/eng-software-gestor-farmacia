@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form";
 import { supplierMdl, ISupplier } from "../../../../../api/supplierMdl";
 import { drawerWidth } from "../../MenuLateral";
 import { useQuery } from "react-query";
+import SaveIcon from "@mui/icons-material/Save";
 
 export const FornecedorEdit = () => {
   const id = window.location.pathname.split("/").pop();
@@ -212,9 +213,54 @@ export const FornecedorEdit = () => {
                   />
                 </Grid>
                 <Grid item sm={12}>
-                  <Button variant="contained" type="submit">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      // width: "180px",
+                      width: "fit-content",
+                      px: 2,
+                      textWrapping: "none",
+                      height: "45px",
+                      borderRadius: "30px",
+                      bgcolor: "#4C585B",
+                      // mt: 6,
+                      // ml: 66,
+                      "&:hover": {
+                        backgroundColor: "#7E99A3",
+                        outline: "2px solid #FFFFFF",
+                        borderRadius: "45px",
+                      },
+                      "&:active": {
+                        backgroundColor: "#7E99A3",
+                        outline: "2px solid #FFFFFF",
+                        borderRadius: "45px",
+                      },
+                    }}
+                  >
+                <Button
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "20%",
+                        color: "#ffffff",
+                        alignItems: "center",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                      type="submit"
+                    >
+                      <SaveIcon></SaveIcon>
+                      <Box
+                        sx={{
+                          ml: 2,
+                        }}
+                      >
                     Editar Fornecedor
+                    </Box>
                   </Button>
+                  </Box>
                 </Grid>
               </Grid>
             </form>
