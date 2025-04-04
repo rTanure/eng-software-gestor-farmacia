@@ -2,7 +2,6 @@ package com.example.farmacia.controllers;
 
 import com.example.farmacia.dtos.request.SaleFilterRequestDTO;
 import com.example.farmacia.dtos.request.SaleRequestDTO;
-import com.example.farmacia.dtos.response.SaleResponseDTO;
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.services.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,9 @@ public class SaleController {
 
     // Metodo para salvar uma venda
     @PostMapping("/")
-    public ResponseEntity<SaleResponseDTO> saveSale(@RequestBody SaleRequestDTO saleRequestDTO) {
-        SaleResponseDTO saved = saleService.saveSale(saleRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    public ResponseEntity<Void> saveSale(@RequestBody SaleRequestDTO saleRequestDTO) {
+        saleService.saveSale(saleRequestDTO);
+        return ResponseEntity.ok().build();
     }
 
     // Metodo para visualizar uma venda passando o id
@@ -41,7 +40,7 @@ public class SaleController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<SaleResponseDTO> updateSale(@RequestBody Sale newSale) {
+    public ResponseEntity<Void> updateSale(@RequestBody Sale newSale) {
         saleService.updateSale(newSale);
 
         return ResponseEntity.ok().build();
