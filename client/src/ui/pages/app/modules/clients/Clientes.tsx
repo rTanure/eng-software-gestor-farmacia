@@ -225,7 +225,7 @@ export default function Clientes() {
                 flexDirection: "column",
                 mt: 2,
                 gap: 2,
-                overflowY: "scroll",
+                overflowY: "auto",
                 mb: 7,
               }}
             >
