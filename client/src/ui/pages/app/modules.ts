@@ -4,7 +4,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import DescriptionIcon from "@mui/icons-material/Description";
 import Estoque from "./modules/Estoque";
-import Fornecedores from "./modules/Fornecedores";
+import Fornecedores from "./modules/Supplier/Fornecedores";
 import Vendas from "./modules/Vendas";
 import Receita from "./modules/prescriptions/Receita";
 import Clientes from "./modules/clients/Clientes";
@@ -18,7 +18,9 @@ import { ReceitaDetalhes } from "./modules/prescriptions/ReceitaDetalhes";
 import { ReceitaEditar } from "./modules/prescriptions/ReceitaEditar";
 import { VendaAdd } from "./VendaAdd";
 import { ReceitaAdd } from "./ReceitaAdd";
-import { FornecedorAdd } from "./FornecedorAdd";
+import { FornecedorAdd } from "./modules/Supplier/FornecedorAdd";
+import FornecedorDetalhes from "./modules/Supplier/FornecedorDetalhes";
+import { FornecedorEdit } from "./modules/Supplier/FornecedorEditar";
 
 export const modules = [
   {
@@ -87,6 +89,19 @@ export const modules = [
     path: "/fornecedores/adicionarFornecedor",
     component: FornecedorAdd,
   },
+  {
+    path: "/fornecedores/:id",
+    component: FornecedorDetalhes,
+  },
+  {
+    path: "/fornecedores/editar/:id",
+    component: FornecedorEdit,
+  },
+  {
+    path: "/fornecedores/:id",
+    component: FornecedorDetalhes,
+  },
+  
   {
     path: "receitas/adicionarReceita",
     component: ReceitaAdd,
