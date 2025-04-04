@@ -8,8 +8,9 @@ Sistema criado durante a disciplina de Engenharia de Software, ministrada pelo P
 
 ## Sumário
 
-1. [Funcionalidades do Produto](#funcionalidades-do-produto)
-2. [Protótipo de Telas.](#protótipo-de-telas)
+
+1. [Protótipo de Telas.](#protótipo-de-telas)
+2. [Funcionalidades do Produto](#funcionalidades-do-produto)
 3. [Diagramas](#diagramas)
 4. [Backlog do Produto](#backlog-do-produto)
 5. [Backlog da Sprint](#backlog-da-sprint)
