@@ -1,13 +1,9 @@
 package com.example.farmacia.controllers;
 
-import com.example.farmacia.dtos.request.ClientCreatRequestDTO;
 import com.example.farmacia.dtos.request.ClientFilterRequestDTO;
-import com.example.farmacia.dtos.request.ClientUpdateRequestDTO;
-import com.example.farmacia.dtos.response.ClientResponseDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.services.ClientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

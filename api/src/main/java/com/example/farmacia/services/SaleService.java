@@ -26,9 +26,7 @@ public class SaleService {
 
     // Metodo para salvar uma venda
     public void saveSale(Sale sale) {
-        if(saleRepository.findById(sale.getId()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Venda já cadastrada");
-        }
+        sale.setId(null);
 
         Optional<Product> productOptional = productRepository.findById(sale.getProductId());
 
@@ -98,6 +96,18 @@ public class SaleService {
 
         for (Sale sale : sales) {
             total += sale.getSalePrice();
+        }
+
+        return total;
+    }
+
+    public double getTotalAmount(){
+        var sales = saleRepository.findAll();
+
+        double total = 0;
+
+        for (Sale sale : sales) {
+            total += sale.getAmount();
         }
 
         return total;

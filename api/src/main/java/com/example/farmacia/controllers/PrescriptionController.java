@@ -32,6 +32,13 @@ public class PrescriptionController {
         return ResponseEntity.ok(prescriptionService.getPrescriptionById(id));
     }
 
+    @GetMapping("/receitas{id}")
+    public ResponseEntity<List<Prescription>> listPrescriptionClients(@PathVariable UUID id){
+        var prescriptions = prescriptionService.getPrescriptionsByClientId(id);
+
+        return ResponseEntity.ok(prescriptions);
+    }
+
     @PutMapping
     public ResponseEntity<Void> updatePrescription(@RequestBody Prescription prescription) {
         prescriptionService.updatePrescription(prescription);
