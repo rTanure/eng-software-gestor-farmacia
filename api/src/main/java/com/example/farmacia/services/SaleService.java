@@ -2,8 +2,6 @@ package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.request.SaleFilterRequestDTO;
 import com.example.farmacia.dtos.request.SaleRequestDTO;
-import com.example.farmacia.dtos.response.SaleResponseDTO;
-import com.example.farmacia.entidades.Client;
 import com.example.farmacia.entidades.Product;
 import com.example.farmacia.entidades.Sale;
 import com.example.farmacia.repositories.ProductRepository;
@@ -28,8 +26,11 @@ public class SaleService {
     private final ProductRepository productRepository;
 
     // Metodo para salvar uma venda
-    public SaleResponseDTO saveSale(SaleRequestDTO saleRequestDTO) {
-        Optional<Product> productOptional = productRepository.findById(saleRequestDTO.getIdProduct());
+    public void saveSale(SaleRequestDTO saleRequestDTO) {
+        var entity = saleRequestDTO.toModel(); // Converte o DTO para a entidade
+        if(saleRepository.findById(entity.getId()) != null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Venda já cadastrada");
+
+        Optional<Product> productOptional = productRepository.findById(saleRequestDTO.getProductId());
 
         if(productOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
@@ -49,17 +50,7 @@ public class SaleService {
             productRepository.save(products);
         }
 
-        // Salva a venda no banco de dados
-        Sale newSale = Sale.builder()
-                .idClient(saleRequestDTO.getIdClient())
-                .idPrescription(saleRequestDTO.getIdPrescription())
-                .idProduct(saleRequestDTO.getIdProduct())
-                .date(saleRequestDTO.getPaymenthDate())
-                .amount(saleRequestDTO.getAmount())
-                .build();
-
-        Sale savedSale = saleRepository.save(newSale);
-        return SaleResponseDTO.fromSale(savedSale);
+        saleRepository.save(entity);
     }
 
     // Metodo para visualizar uma venda passando o id
