@@ -70,6 +70,7 @@ export default function Venda() {
           }}
         >
           <IconButton
+            onClick={handleVisualizar}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -99,6 +100,7 @@ export default function Venda() {
           }}
         >
           <IconButton
+            onClick={handleDeletar}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -129,6 +131,7 @@ export default function Venda() {
           }}
         >
           <IconButton
+            onClick={handleEditar}
             sx={{
               display: "flex",
               alignItems: "center",

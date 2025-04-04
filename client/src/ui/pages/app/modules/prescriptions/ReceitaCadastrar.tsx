@@ -19,7 +19,7 @@ import { IMaskInput } from "react-imask";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../../../../css/FormAdd.css"
+import "../../../../../css/FormAdd.css";
 import { styled } from "@mui/material/styles";
 import { drawerWidth } from "../../MenuLateral";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -33,11 +33,11 @@ import { form } from "framer-motion/client";
 import { useNavigate } from "react-router";
 import DescriptionIcon from "@mui/icons-material/Description";
 import { useQuery } from "react-query";
-import { IPrescription, prescriptionMdl } from "../../../../../api/prescriptionMdl";
-
-
-
-
+import {
+  IPrescription,
+  prescriptionMdl,
+} from "../../../../../api/prescriptionMdl";
+import SaveIcon from "@mui/icons-material/Save";
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -65,7 +65,9 @@ const Input = styled("input")({
 export const ReceitaCadastrar = () => {
   const [values, setValues] = useState({ textmask: "" });
   const [expirationDate, setExpirationDate] = useState(null);
-  const [formValues, setFormValues] = useState<IPrescription>({} as IPrescription);
+  const [formValues, setFormValues] = useState<IPrescription>(
+    {} as IPrescription
+  );
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -77,7 +79,8 @@ export const ReceitaCadastrar = () => {
     event.preventDefault();
     const { clientId, doctorName, doctorCrm, description } = formValues;
 
-    prescriptionMdl.createPrescription({
+    prescriptionMdl
+      .createPrescription({
         id: null,
         doctorName,
         doctorCrm,
@@ -85,20 +88,19 @@ export const ReceitaCadastrar = () => {
         expirationDate: expirationDate?.toISOString() || "",
         clientId,
       } as IPrescription)
-        .then(r => navigate("/app/receitas"))
-  }
+      .then((r) => navigate("/app/receitas"));
+  };
 
-  const {data: clientes, refetch: refetchClientes} = useQuery(
-    ["clientes"], 
-    () => clienteMdl.getAllClientes({name: ""}),
+  const { data: clientes, refetch: refetchClientes } = useQuery(
+    ["clientes"],
+    () => clienteMdl.getAllClientes({ name: "" }),
     {
-      select: data => data.data,
-      onSuccess: data => {
-        console.log(data)
-      }
-    },
-    
-  )
+      select: (data) => data.data,
+      onSuccess: (data) => {
+        console.log(data);
+      },
+    }
+  );
 
   return (
     <Box
@@ -124,19 +126,18 @@ export const ReceitaCadastrar = () => {
           border: "4px",
         }}
       >
-
         {/* Caixa para a barra fixa com nome da página */}
         <Box
           sx={{
-            display: 'flex',
+            display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            bgcolor: '#D9D9D9',
-            width: '100%',
+            bgcolor: "#D9D9D9",
+            width: "100%",
             height: "10%",
-            borderRadius: '20px',
-            border: '3px solid #4C585B',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            borderRadius: "20px",
+            border: "3px solid #4C585B",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
           <Box
@@ -157,7 +158,7 @@ export const ReceitaCadastrar = () => {
             ></DescriptionIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
-            CADASTRAR NOVA RECEITA
+            CADASTRAR RECEITA
           </Typography>
         </Box>
 
@@ -165,25 +166,25 @@ export const ReceitaCadastrar = () => {
         <Box
           className="Container-Principal"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            bgcolor: '#D9D9D9',
-            width: '100%',
-            // height: "90%",
-            border: '3px solid #4C585B',
-            borderRadius: '20px',
+            display: "flex",
+            flexDirection: "column",
+            bgcolor: "#D9D9D9",
+            width: "100%",
+            height: "60%",
+            border: "3px solid #4C585B",
+            borderRadius: "20px",
             mt: 2.5,
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
           {/* Formulário */}
           <Box
             className="Clients"
             sx={{
-              display: 'flex',
+              display: "flex",
               alignItems: "center",
-              flexDirection: 'column',
-              bgcolor: ' #D9D9D9',
+              flexDirection: "column",
+              bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "100%",
               height: "85%",
@@ -213,12 +214,17 @@ export const ReceitaCadastrar = () => {
                   <Grid container spacing={2}>
                     {/* Cliente */}
                     <Grid item sm={9}>
-                      <Select 
+                      <Select
                         fullWidth
                         displayEmpty
                         variant="outlined"
                         value={formValues.clientId || ""}
-                        onChange={(e) => setFormValues({ ...formValues, clientId: e.target.value })}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            clientId: e.target.value,
+                          })
+                        }
                         sx={{ marginTop: "16px" }}
                       >
                         <MenuItem value="" disabled>
@@ -235,8 +241,11 @@ export const ReceitaCadastrar = () => {
                       <DatePicker
                         selected={expirationDate}
                         onChange={(date) => {
-                          setExpirationDate(date)
-                          setFormValues({ ...formValues, expirationDate: date?.toISOString() || "" })
+                          setExpirationDate(date);
+                          setFormValues({
+                            ...formValues,
+                            expirationDate: date?.toISOString() || "",
+                          });
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Validade"
@@ -246,8 +255,17 @@ export const ReceitaCadastrar = () => {
                             placeholder="Validade"
                             variant="outlined"
                             margin="normal"
-                            value={expirationDate ? expirationDate?.toLocaleDateString() : ""}
-                            onChange={(e) => setFormValues({ ...formValues, expirationDate: e.target.value })}
+                            value={
+                              expirationDate
+                                ? expirationDate?.toLocaleDateString()
+                                : ""
+                            }
+                            onChange={(e) =>
+                              setFormValues({
+                                ...formValues,
+                                expirationDate: e.target.value,
+                              })
+                            }
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position="start">
@@ -267,7 +285,12 @@ export const ReceitaCadastrar = () => {
                         variant="outlined"
                         margin="normal"
                         value={formValues.doctorName}
-                        onChange={(e) => setFormValues({ ...formValues, doctorName: e.target.value })}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            doctorName: e.target.value,
+                          })
+                        }
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -285,7 +308,12 @@ export const ReceitaCadastrar = () => {
                         variant="outlined"
                         margin="normal"
                         value={formValues.doctorCrm}
-                        onChange={(e) => setFormValues({ ...formValues, doctorCrm: e.target.value })}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            doctorCrm: e.target.value,
+                          })
+                        }
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -303,7 +331,12 @@ export const ReceitaCadastrar = () => {
                         variant="outlined"
                         margin="normal"
                         value={formValues.description}
-                        onChange={(e) => setFormValues({ ...formValues, description: e.target.value })}
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            description: e.target.value,
+                          })
+                        }
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -314,44 +347,59 @@ export const ReceitaCadastrar = () => {
                       />
                     </Grid>
                     <Grid item>
-                    {/* Botão de adicionar */}
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        // width: '6.2%',
-                        // height: '50%',
-                        borderRadius: '10px',
-                        bgcolor: '#4C585B',
-                        '&:hover': {
-                          backgroundColor: '#7E99A3',
-                          outline: '2px solid #FFFFFF',
-                          borderRadius: '8px',
-                        },
-                        '&:active': {
-                          backgroundColor: '#7E99A3',
-                          outline: '2px solid #FFFFFF',
-                          borderRadius: '8px',
-                        }
-
-                      }}
-                    >
-                      <Button sx={{ width: '100%', height: '100%', borderRadius: '20%', color: "#ffffff" }} type="submit">
-                        Cadastrar Cliente
-                      </Button>
-                    </Box>
+                      {/* Botão de adicionar */}
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: "180px",
+                          height: "45px",
+                          borderRadius: "30px",
+                          bgcolor: "#4C585B",
+                          mt: 6,
+                          ml: 67,
+                          "&:hover": {
+                            backgroundColor: "#7E99A3",
+                            outline: "2px solid #FFFFFF",
+                            borderRadius: "45px",
+                          },
+                          "&:active": {
+                            backgroundColor: "#7E99A3",
+                            outline: "2px solid #FFFFFF",
+                            borderRadius: "45px",
+                          },
+                        }}
+                      >
+                        <Button
+                          sx={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "20%",
+                            color: "#ffffff",
+                            alignItems: "center",
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                          type="submit"
+                        >
+                          <SaveIcon></SaveIcon>
+                          <Box
+                            sx={{
+                              ml: 2,
+                            }}
+                          >
+                            SALVAR
+                          </Box>
+                        </Button>
+                      </Box>
                     </Grid>
-
-                    
                   </Grid>
                 </form>
               </Box>
             </Box>
-  
           </Box>
         </Box>
-
       </Box>
     </Box>
   );

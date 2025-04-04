@@ -21,42 +21,40 @@ import Clientes from "../clients/Clientes";
 import SearchBar from "../../SearchBar";
 import SelectBar from "../../SelectBar";
 
-
 export default function Receita() {
   const navigate = useNavigate();
   const [clienteSelecionado, setClienteSelecionado] = React.useState("");
 
-  const {data: prescriptions, refetch: refetchPrescriptions} = useQuery(
+  const { data: prescriptions, refetch: refetchPrescriptions } = useQuery(
     "prescriptions",
     () => prescriptionMdl.getAllPrescriptions(),
     {
-      select: data => data.data,
-      onSuccess: data => {
-        console.log(data)
+      select: (data) => data.data,
+      onSuccess: (data) => {
+        console.log(data);
       },
     }
-  )
+  );
 
-  const {data: clientes, refetch: refetchClientes} = useQuery(
-    ["clientes"], 
-    () => clienteMdl.getAllClientes({name: ""}),
+  const { data: clientes, refetch: refetchClientes } = useQuery(
+    ["clientes"],
+    () => clienteMdl.getAllClientes({ name: "" }),
     {
-      select: data => data.data,
-      onSuccess: data => {
-        console.log(data)
-      }
-    },
-    
-  )
+      select: (data) => data.data,
+      onSuccess: (data) => {
+        console.log(data);
+      },
+    }
+  );
 
   useEffect(() => {
-    console.log(clienteSelecionado)
-  }, [clienteSelecionado])
+    console.log(clienteSelecionado);
+  }, [clienteSelecionado]);
 
   const refetch = () => {
-    refetchPrescriptions()
-    refetchClientes()
-  }
+    refetchPrescriptions();
+    refetchClientes();
+  };
 
   return (
     <Box
@@ -82,19 +80,18 @@ export default function Receita() {
           border: "4px",
         }}
       >
-
         {/* Caixa para a barra fixa com nome da página */}
         <Box
           sx={{
-            display: 'flex',
+            display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            bgcolor: '#D9D9D9',
-            width: '100%',
+            bgcolor: "#D9D9D9",
+            width: "100%",
             height: "10%",
-            borderRadius: '20px',
-            border: '3px solid #4C585B',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            borderRadius: "20px",
+            border: "3px solid #4C585B",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
           }}
         >
           <Box
@@ -123,94 +120,103 @@ export default function Receita() {
         <Box
           className="Container-Principal"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            bgcolor: '#D9D9D9',
-            width: '100%',
+            display: "flex",
+            flexDirection: "column",
+            bgcolor: "#D9D9D9",
+            width: "100%",
             height: "90%",
-            border: '3px solid #4C585B',
-            borderRadius: '20px',
+            border: "3px solid #4C585B",
+            borderRadius: "20px",
             mt: 2.5,
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.9)',
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {/* Box que configura a posição da barra de pesquisa e botão adicionar */}
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-              bgcolor: '#D9D9D9',
-              borderRadius: '20px',
-              width: '100.025%',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              bgcolor: "#D9D9D9",
+              borderRadius: "20px",
+              width: "90%",
               height: "15%",
               mt: 2.3,
+              flexShrink: 0,
             }}
           >
             {/* Barra de pesquisa */}
             <Box
               className="Search Bar"
               sx={{
-                bgcolor: ' #D9D9D9',
+                bgcolor: " #D9D9D9",
                 // border: '3px solid #1B2C44',
-                width: "74%",
+                width: "60%",
                 height: "52%",
-                borderRadius: '50px',
+                borderRadius: "50px",
               }}
             >
-              <SelectBar 
-                value={clienteSelecionado} 
-                onChange={setClienteSelecionado} 
-                
-                options={clientes?.map(cliente => ({label: cliente.name, value: cliente.id})) || []}
+              <SelectBar
+                value={clienteSelecionado}
+                onChange={setClienteSelecionado}
+                options={
+                  clientes?.map((cliente) => ({
+                    label: cliente.name,
+                    value: cliente.id,
+                  })) || []
+                }
               />
             </Box>
 
             {/* Botão de adicionar */}
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '6.2%',
-                height: '50%',
-                borderRadius: '10px',
-                bgcolor: '#4C585B',
-                '&:hover': {
-                  backgroundColor: '#7E99A3',
-                  outline: '2px solid #FFFFFF',
-                  borderRadius: '8px',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "6.2%",
+                height: "50%",
+                borderRadius: "10px",
+                bgcolor: "#4C585B",
+                "&:hover": {
+                  backgroundColor: "#7E99A3",
+                  outline: "2px solid #FFFFFF",
+                  borderRadius: "8px",
                 },
-                '&:active': {
-                  backgroundColor: '#7E99A3',
-                  outline: '2px solid #FFFFFF',
-                  borderRadius: '8px',
-                }
-
+                "&:active": {
+                  backgroundColor: "#7E99A3",
+                  outline: "2px solid #FFFFFF",
+                  borderRadius: "8px",
+                },
               }}
             >
-              <Button sx={{ width: '100%', height: '100%', borderRadius: '20%' }} onClick={() => navigate("cadastro")}>
+              <Button
+                sx={{ width: "100%", height: "100%", borderRadius: "20%" }}
+                onClick={() => navigate("cadastro")}
+              >
                 <AddCircleOutlineIcon
                   sx={{
-                    width: '100%',
-                    height: '100%',
+                    width: "100%",
+                    height: "100%",
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",
-                  }}></AddCircleOutlineIcon>
+                  }}
+                ></AddCircleOutlineIcon>
               </Button>
             </Box>
-
           </Box>
 
           {/* Histórico */}
           <Box
             className="Clients"
             sx={{
-              display: 'flex',
+              display: "flex",
               alignItems: "center",
-              flexDirection: 'column',
-              bgcolor: ' #D9D9D9',
+              flexDirection: "column",
+              bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "100%",
               height: "85%",
@@ -221,22 +227,31 @@ export default function Receita() {
               sx={{
                 width: "90%",
                 height: "10%",
-                outline: '2px',
-                borderRadius: '10px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '0 20px',
-                bgcolor: '#4C585B',
-                mt: .5,
-
+                outline: "2px",
+                borderRadius: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "0 20px",
+                bgcolor: "#4C585B",
+                mt: 0.5,
               }}
             >
-              <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
                 VALIDADE - CLIENTE
               </Box>
 
-              <Box sx={{ color: '#FFFFFF', fontSize: '17px', fontWeight: 'SemiBold' }}>
+              <Box
+                className="TextoB"
+                sx={{
+                  color: "white",
+                }}
+              >
                 AÇÕES
               </Box>
             </Box>
@@ -251,16 +266,24 @@ export default function Receita() {
               }}
             >
               {/* Produtos */}
-                {
-                  prescriptions?.filter(p => !clienteSelecionado || p.clientId === clienteSelecionado)?.map((prescription) => (
-                    <ReceitaUni prescription={prescription} refetch={refetch} cliente={clientes?.find(c => c.id === prescription.clientId)} key={prescription.id}/>
-                  ))
-                }
+              {prescriptions
+                ?.filter(
+                  (p) =>
+                    !clienteSelecionado || p.clientId === clienteSelecionado
+                )
+                ?.map((prescription) => (
+                  <ReceitaUni
+                    prescription={prescription}
+                    refetch={refetch}
+                    cliente={clientes?.find(
+                      (c) => c.id === prescription.clientId
+                    )}
+                    key={prescription.id}
+                  />
+                ))}
             </Box>
-  
           </Box>
         </Box>
-
       </Box>
     </Box>
   );

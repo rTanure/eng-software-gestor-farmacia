@@ -311,18 +311,17 @@ export default function Vendas() {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
-              bgcolor: " #D9D9D9",
               borderRadius: "20px",
               width: "90%",
-              height: "30%",
-              border: 2,
+              height: "80%",
+              mb: 3,
             }}
           >
             {/* Barra com nome do fornecedor e ações */}
             <Box
               sx={{
                 width: "100%",
-                height: "100%",
+                height: "25%",
                 border: "2px",
                 borderRadius: "10px",
                 display: "flex",
@@ -351,32 +350,30 @@ export default function Vendas() {
                 AÇÕES
               </Box>
             </Box>
-          </Box>
-
-          <Box
-            sx={{
-              width: "90%",
-              height: "50%",
-              border: 2,
-            }}
-          >
-            {/* Venda */}
             <Box
               sx={{
                 width: "100%",
-                height: "35%",
-                mt: 2,
+                height: "80%",
               }}
             >
+              {/* Venda */}
               <Box
                 sx={{
                   width: "100%",
-                  height: "100%",
-                  border: 2,
-                  borderRadius: "10px",
+                  height: "35%",
+                  mt: 2,
                 }}
               >
-                <Venda />
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    border: 2,
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Venda />
+                </Box>
               </Box>
             </Box>
           </Box>
