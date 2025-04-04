@@ -1,21 +1,18 @@
 package com.example.farmacia.services;
 
 import com.example.farmacia.dtos.request.ClientFilterRequestDTO;
-import com.example.farmacia.dtos.request.ClientCreatRequestDTO;
-import com.example.farmacia.dtos.request.ClientUpdateRequestDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -64,5 +61,4 @@ public class ClientService {
         }
         clientRepository.save(client);
     }
-
 }
