@@ -3,12 +3,14 @@ package com.example.farmacia.services;
 import com.example.farmacia.dtos.request.ClientFilterRequestDTO;
 import com.example.farmacia.entidades.Client;
 import com.example.farmacia.repositories.ClientRepository;
+import com.example.farmacia.repositories.PrescriptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.UUID;
 public class ClientService {
 
     private final ClientRepository clientRepository;
+    private final PrescriptionRepository prescriptionRepository;
 
     public void createClient(Client client) {
         if (clientRepository.findByCpf(client.getCpf()) != null) {
@@ -47,11 +50,13 @@ public class ClientService {
         return clientRepository.findAll(example);
     }
 
+    @Transactional
     public void deleteById(UUID id) {
         var userExists = clientRepository.existsById(id);
+        prescriptionRepository.deleteAllByClientId(id);
 
         if (userExists) {
-            clientRepository.deleteAllByIdContaining(id);
+            clientRepository.deleteById(id);
         }
     }
 

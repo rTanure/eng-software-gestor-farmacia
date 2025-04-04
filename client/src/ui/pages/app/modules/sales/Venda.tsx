@@ -3,18 +3,35 @@ import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ClearIcon from "@mui/icons-material/Clear";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import { IPrescription, prescriptionMdl } from "../../../../../api/prescriptionMdl";
+import { clienteMdl, ICliente } from "../../../../../api/clienteMdl";
+import { useNavigate } from "react-router";
+import { ISale, saleMdl } from "../../../../../api/salesMdl";
+import { select } from "framer-motion/client";
+import { useQuery } from "react-query";
+import { stockMdl } from "../../../../../api/stockMdl";
 
-export default function Venda() {
+interface VendaProps {
+  venda: ISale;
+  refetch: () => void;
+}
+
+export default function Venda({refetch, venda}:VendaProps) {
+  const navigate = useNavigate();
+
+  const {data: cliente} = useQuery(["cliente", venda.clientId], () => clienteMdl.getClienteById(venda.clientId), {select: (data) => data.data})
+  const {data: produto} = useQuery(["produto", venda.clientId], () => stockMdl.getById(venda.productId), {select: (data) => data.data})
+  
   const handleVisualizar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`${venda.id}`);
   };
 
   const handleEditar = () => {
-    //Coloque a função para navegar para a página
+    navigate(`vendas/${venda.id}`);
   };
 
   const handleDeletar = () => {
-    //Coloque a função para navegar para a página
+    saleMdl.delete(venda.id as string).then(refetch)
   };
 
   return (
@@ -24,7 +41,7 @@ export default function Venda() {
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        height: "100%",
+        height: "70px",
         backgroundColor: "rgba(126, 153, 163, 0.6)",
         flexDirection: "row",
         borderRadius: 2,
@@ -33,7 +50,7 @@ export default function Venda() {
       <Box
         sx={{
           display: "center",
-          width: "18%",
+          // width: "18%",
           height: "60%",
           ml: 2,
           alignItems: "center",
@@ -42,7 +59,7 @@ export default function Venda() {
       >
         <Typography className="Titulo">
           {/* Coloque o nome do produto aqui, de acordo com o banco de dados */}
-          DIPIRONA
+          {venda.amount}x {produto?.name} - R$ {venda.salePrice.toFixed(2)} ({cliente ? cliente.name : "sem cliente associado"})
         </Typography>
       </Box>
 

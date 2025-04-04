@@ -5,7 +5,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import DescriptionIcon from "@mui/icons-material/Description";
 import Estoque from "./modules/Stock/Estoque";
 import Fornecedores from "./modules/Supplier/Fornecedores";
-import Vendas from "./modules/Vendas";
+import Vendas from "./modules/sales/Vendas";
 import Receita from "./modules/prescriptions/Receita";
 import Clientes from "./modules/clients/Clientes";
 import { EstoqueAdd } from "./EstoqueAdd";
@@ -24,6 +24,9 @@ import { FornecedorEdit } from "./modules/Supplier/FornecedorEditar";
 import { EstoqueCriar } from "./modules/Stock/EstoqueCriar";
 import { EstoqueVisualizar } from "./modules/Stock/EstoqueVisualizar";
 import { EstoqueEditar } from "./modules/Stock/EstoqueEditar";
+import { VendaCriar } from "./modules/sales/VendaCriar";
+import { VendaEditar } from "./modules/sales/VendaEditar";
+import { VendaVisualizar } from "./modules/sales/VendaVisualizar";
 
 export const modules = [
   {
@@ -51,6 +54,18 @@ export const modules = [
     path: "/vendas",
     component: Vendas,
     icon: SellIcon,
+  },
+  {
+    path: "/vendas/adicionarVenda",
+    component: VendaCriar
+  },
+  {
+    path: "/vendas/vendas/:id",
+    component: VendaEditar
+  },
+  {
+    path: "/vendas/:id",
+    component: VendaVisualizar
   },
   {
     label: "Receitas",
