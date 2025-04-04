@@ -250,7 +250,6 @@ export default function Estoque() {
               width: "90%",
               height: "15%",
               mt: 4,
-              border: 3,
               flexShrink: 0,
             }}
           >
@@ -316,14 +315,15 @@ export default function Estoque() {
               flexDirection: "column",
               borderRadius: "20px",
               width: "90%",
-              height: "30%",
+              height: "80%",
+              mb: 3,
             }}
           >
-            {/* Barra com nome do fornecedor e ações */}
+            {/* Barra com nome do produto e ações */}
             <Box
               sx={{
                 width: "100%",
-                height: "100%",
+                height: "25%",
                 border: "2px",
                 borderRadius: "10px",
                 display: "flex",
@@ -352,31 +352,33 @@ export default function Estoque() {
                 AÇÕES
               </Box>
             </Box>
-          </Box>
 
-          <Box
-            sx={{
-              width: "90%",
-              height: "50%",
-            }}
-          >
-            {/* Produtos */}
             <Box
               sx={{
                 width: "100%",
-                height: "35%",
+                height: "80%",
                 mt: 2,
+                gap: 2,
+                overflowY: "scroll",
               }}
             >
+              {/* Produtos */}
               <Box
                 sx={{
                   width: "100%",
-                  height: "100%",
-                  border: 2,
-                  borderRadius: "10px",
+                  height: "35%",
                 }}
               >
-                <Produto />
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    border: 2,
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Produto />
+                </Box>
               </Box>
             </Box>
           </Box>

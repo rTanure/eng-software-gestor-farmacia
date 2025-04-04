@@ -88,6 +88,8 @@ export default function Clientes() {
           className="Container-Principal"
           sx={{
             display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             flexDirection: "column",
             bgcolor: "#D9D9D9",
             width: "100%",
@@ -102,11 +104,11 @@ export default function Clientes() {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-around",
+              justifyContent: "space-between",
               alignItems: "center",
               bgcolor: "#D9D9D9",
               borderRadius: "20px",
-              width: "100.025%",
+              width: "90%",
               height: "15%",
               mt: 2.3,
               flexShrink: 0,
@@ -118,8 +120,8 @@ export default function Clientes() {
               sx={{
                 bgcolor: " #D9D9D9",
                 border: "3px solid #1B2C44",
-                width: "74%",
-                height: "52%",
+                width: "75%",
+                height: "50%",
                 borderRadius: "50px",
                 flexShrink: 0,
               }}
@@ -159,7 +161,7 @@ export default function Clientes() {
                 <AddCircleOutlineIcon
                   sx={{
                     width: "100%",
-                    height: "100%",
+                    height: "90%",
                     color: "#D9D9D9",
                     alignItems: "center",
                     justifyContent: "center",
@@ -198,20 +200,18 @@ export default function Clientes() {
               }}
             >
               <Box
+                className="TextoB"
                 sx={{
-                  color: "#FFFFFF",
-                  fontSize: "17px",
-                  fontWeight: "SemiBold",
+                  color: "white",
                 }}
               >
                 CLIENTE
               </Box>
 
               <Box
+                className="TextoB"
                 sx={{
-                  color: "#FFFFFF",
-                  fontSize: "17px",
-                  fontWeight: "SemiBold",
+                  color: "white",
                 }}
               >
                 AÇÕES

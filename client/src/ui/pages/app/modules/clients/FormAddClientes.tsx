@@ -29,6 +29,7 @@ import PictureAsPdfOutlineIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import AlternateEmailOutlineIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { form } from "framer-motion/client";
 import { useNavigate } from "react-router";
+import SaveIcon from "@mui/icons-material/Save";
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -135,7 +136,7 @@ export const FormAdd = () => {
             ></PersonAddIcon>
           </Box>
           <Typography variant="h6" className="Titulo">
-            CADASTRAR NOVO CLIENTE
+            CADASTRAR CLIENTE
           </Typography>
         </Box>
 
@@ -147,11 +148,13 @@ export const FormAdd = () => {
             flexDirection: "column",
             bgcolor: "#D9D9D9",
             width: "100%",
-            // height: "90%",
+            height: "60%",
             border: "3px solid #4C585B",
             borderRadius: "20px",
             mt: 2.5,
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.9)",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           {/* Formulário */}
@@ -172,8 +175,6 @@ export const FormAdd = () => {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                // alignItems: "center",
-                // height: "100%",
                 width: "100%",
               }}
             >
@@ -181,7 +182,6 @@ export const FormAdd = () => {
                 className="main"
                 sx={{
                   display: "flex",
-                  // height: "95%",
                   width: "90%",
                   flexDirection: "row",
                   overflow: "auto",
@@ -322,19 +322,21 @@ export const FormAdd = () => {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          // width: '6.2%',
-                          // height: '50%',
-                          borderRadius: "10px",
+                          width: "180px",
+                          height: "45px",
+                          borderRadius: "30px",
                           bgcolor: "#4C585B",
+                          mt: 6,
+                          ml: 66,
                           "&:hover": {
                             backgroundColor: "#7E99A3",
                             outline: "2px solid #FFFFFF",
-                            borderRadius: "8px",
+                            borderRadius: "45px",
                           },
                           "&:active": {
                             backgroundColor: "#7E99A3",
                             outline: "2px solid #FFFFFF",
-                            borderRadius: "8px",
+                            borderRadius: "45px",
                           },
                         }}
                       >
@@ -344,10 +346,20 @@ export const FormAdd = () => {
                             height: "100%",
                             borderRadius: "20%",
                             color: "#ffffff",
+                            alignItems: "center",
+                            display: "flex",
+                            justifyContent: "center",
                           }}
                           type="submit"
                         >
-                          Cadastrar Cliente
+                          <SaveIcon></SaveIcon>
+                          <Box
+                            sx={{
+                              ml: 2,
+                            }}
+                          >
+                            SALVAR
+                          </Box>
                         </Button>
                       </Box>
                     </Grid>
