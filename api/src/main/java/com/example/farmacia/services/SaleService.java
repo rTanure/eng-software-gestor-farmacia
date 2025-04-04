@@ -102,4 +102,16 @@ public class SaleService {
 
         return total;
     }
+
+    public double getTotalAmount(){
+        var sales = saleRepository.findAll();
+
+        double total = 0;
+
+        for (Sale sale : sales) {
+            total += sale.getAmount();
+        }
+
+        return total;
+    }
 }
