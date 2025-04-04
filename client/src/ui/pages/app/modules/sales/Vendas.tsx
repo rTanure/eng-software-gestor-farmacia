@@ -1,5 +1,5 @@
 import { Box, TextField, Button } from "@mui/material";
-import React from "react";
+import React, { use } from "react";
 import { drawerWidth } from "../../MenuLateral";
 import Typography from "@mui/material/Typography";
 import StorageIcon from "@mui/icons-material/Storage";
@@ -12,9 +12,44 @@ import SearchBar from "../../SearchBar";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Venda from "./Venda";
 import { useNavigate } from "react-router";
+import { useQuery } from "react-query";
+import { saleMdl } from "../../../../../api/salesMdl";
+import { p } from "framer-motion/client";
 
 export default function Vendas() {
+  const idSale = window.location.pathname.split("/").pop();
+
   const navigate = useNavigate();
+
+  const {data: faturamento, refetch: refetchFaturamento} = useQuery(
+    ["faturamento"],
+    () => saleMdl.getFaturamento(),
+    {
+      select: data => data.data
+    }
+  )
+  const {data: vendas, refetch: refetchVendas} = useQuery(
+    ["vendas"],
+    () => saleMdl.getTotalVendido(),
+    {
+      select: data => data.data
+    }
+  )
+
+  const {data: vendasList, refetch: refetchVendasList} = useQuery(
+    ["vendasList"],
+    () => saleMdl.getAll(),
+    {
+      select: data => data.data
+    }
+  )
+
+  const refetch = () => {
+    refetchFaturamento()
+    refetchVendas()
+    refetchVendasList()
+  }
+
   return (
     <Box
       sx={{
@@ -154,11 +189,11 @@ export default function Vendas() {
                   color: "white",
                 }}
               >
-                LUCROS
+                FATURAMENTO BRUTO:
               </Typography>
               <Box
                 sx={{
-                  width: "20%",
+                  width: "30%",
                   height: "70%",
                   mr: 3,
                   display: "flex",
@@ -172,7 +207,7 @@ export default function Vendas() {
                     color: "white",
                   }}
                 >
-                  0
+                  R$ {faturamento?.toFixed(2)}
                 </Typography>
               </Box>
             </Box>
@@ -197,7 +232,7 @@ export default function Vendas() {
                   color: "white",
                 }}
               >
-                QUANTIDADE
+                PRODUTOS VENDIDOS:
               </Typography>
               <Box
                 sx={{
@@ -215,7 +250,7 @@ export default function Vendas() {
                     color: "white",
                   }}
                 >
-                  0
+                  {vendas}
                 </Typography>
               </Box>
             </Box>
@@ -256,13 +291,13 @@ export default function Vendas() {
               className="BarraPesquisa"
               sx={{
                 bgcolor: " #D9D9D9",
-                border: "3px solid #1B2C44",
+                // border: "3px solid #1B2C44",
                 width: "78%",
                 height: "75%",
                 borderRadius: "50px",
               }}
             >
-              <SearchBar />
+              {/* <SearchBar /> */}
             </Box>
 
             {/* Botão de adicionar */}
@@ -354,13 +389,15 @@ export default function Vendas() {
               sx={{
                 width: "100%",
                 height: "80%",
+                overflowY: "auto",
+
               }}
             >
               {/* Venda */}
               <Box
                 sx={{
                   width: "100%",
-                  height: "35%",
+                  // height: "35%",
                   mt: 2,
                 }}
               >
@@ -368,11 +405,18 @@ export default function Vendas() {
                   sx={{
                     width: "100%",
                     height: "100%",
-                    border: 2,
+                    // border: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
                     borderRadius: "10px",
                   }}
                 >
-                  <Venda />
+                  {
+                    vendasList?.map((venda, index) => (
+                      <Venda venda={venda} refetch={refetch}/>
+                    ))
+                  }
                 </Box>
               </Box>
             </Box>

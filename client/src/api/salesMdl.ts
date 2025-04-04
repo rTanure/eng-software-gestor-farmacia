@@ -2,13 +2,12 @@ import { ModeloBase } from "./ModeloBase";
 
 export interface ISale {
   id?: string | null;
-  name: string;
-  code: string;
-  batch: string;
-  supplierId: string;
-  expirationDate: string;
-  receivedAmount: number;
-  purchasePrice: number;
+  clientId: string;
+  prescriptionId: string | null;
+  productId: string;
+  date: string;
+  amount: number;
+  salePrice: number;
 }
 
 interface IPrescriptionListagemFiltros {
@@ -17,7 +16,7 @@ interface IPrescriptionListagemFiltros {
 
 class SaleMdl extends ModeloBase {
   constructor() {
-    super('/stock');
+    super('/sale');
   }
 
   async getAll() {
@@ -33,11 +32,19 @@ class SaleMdl extends ModeloBase {
   }
 
   async update(sale: ISale) {
-    return this.defaultPutRequest<null>("", sale)
+    return this.defaultPutRequest<null>("/update", sale)
   }
 
   async delete(id: string) {
     return this.defaultDeleteRequest<null>(`/${id}`)
+  }
+
+  async getFaturamento() {
+    return this.defaultGetRequest<number>("/totalVendas")
+  }
+
+  async getTotalVendido() {
+    return this.defaultGetRequest<number>("/totalVendidos")
   }
 }
 

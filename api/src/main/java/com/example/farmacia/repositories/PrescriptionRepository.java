@@ -10,4 +10,6 @@ import java.util.UUID;
 @Repository
 public interface PrescriptionRepository extends JpaRepository<Prescription, UUID>{
     List<Prescription> findAllByClientId(UUID clientIds);
+
+    void deleteAllByClientId(UUID clientId);
 }
